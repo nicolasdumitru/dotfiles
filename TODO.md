@@ -14,3 +14,7 @@ change zsh interactive comment color
 configure ncmpcpp keybindings
 
 set up CUPS and SANE
+
+list the "dependencies" of the configuration (fonts, miscellaneous stuff)
+
+make a script that creates all of the directories this configuration requires (e.g. .local/null)
