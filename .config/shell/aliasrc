@@ -1,0 +1,51 @@
+#!/bin/sh
+
+# force zsh to show the complete history
+alias history="history 0"
+
+# enable color support of ls, less and man, and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+		alias ls='ls -lh --group-directories-first --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias diff='diff --color=auto'
+    alias ip='ip --color=auto'
+fi
+
+# alias to prevent bash from creating random history files
+alias bash='bash --init-file ~/.bash_profile'
+
+# safe(r) file operations
+alias cp='cp -i'
+alias mv='mv -i'
+#alias rm='rm -i'
+
+# ls aliases
+alias la='ls -A'
+
+# sudo to doas transition (just in case)
+#alias sudo='doas'
+#alias sudoedit='doas nvim'
+
+# neovim alias
+alias v='nvim'
+
+# git config files aliases
+alias config='/usr/bin/git --git-dir=$HOME/.configuration/ --work-tree=$HOME'
+
+# screenshot aliases
+alias screenshot='/usr/bin/maim --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png'
+alias screenshot-selection='/usr/bin/maim -s --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png'
+
+#keyboard layout aliases
+alias vimlayout='/usr/bin/xmodmap ~/.config/xmodmap'
+
+# monitor aliases
+alias monitor-dual='/usr/bin/xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1'
+alias monitor-integrated='/usr/bin/xrandr --output eDP-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --off'
+alias monitor-external='/usr/bin/xrandr --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --output eDP-1 --off'
