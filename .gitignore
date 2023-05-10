@@ -1,0 +1,4 @@
+# General ignore rules:
+*.db
+*.db.lock
+*.search
