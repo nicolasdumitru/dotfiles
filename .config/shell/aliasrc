@@ -23,7 +23,7 @@ alias bash='bash --init-file ~/.bash_profile'
 # safe(r) file operations
 alias cp='cp -i'
 alias mv='mv -i'
-#alias rm='rm -i'
+alias rm='rm -I'
 
 # ls aliases
 alias la='ls -A'
