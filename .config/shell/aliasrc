@@ -22,7 +22,7 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -Iv'
 alias shred='shred -v'
-alias rsync='rsync -vrPlu'
+alias rsync='rsync -Prluv'
 
 # ls aliases
 alias la='ls -A'
