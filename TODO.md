@@ -8,8 +8,10 @@ fontconfig arch wiki
 configure alacritty vim mode
 
 learn how to use lazy neovim plugin manager
+neovim control what gqq does and wrap indent
 
 change zsh interactive comment color
+file operation flags (-u for example)
 
 configure ncmpcpp keybindings
 
