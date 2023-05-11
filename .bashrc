@@ -1,10 +1,32 @@
-#
-# ~/.bashrc
-#
+#!/bin/bash 
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-PS1='[\u@\h \W]\$ '
+# profile section
+# {
+# Environmental variables are set here
+[ -f "$HOME/.config/shell/environmentrc" ] && source "$HOME/.config/shell/environmentrc"
+
+# History configurations
+export HISTFILE="$XDG_STATE_HOME"/bash/history
+# }
+
+# rc section
+# {
+# load aliases if existent    
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+
+# keybindings
+set -o vi
+bind -m vi-command 'Control-l: clear-screen'
+bind -m vi-insert 'Control-l: clear-screen'
+
+# configure `time` format
+TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
+
+# Interactive shell prompt
+PS1='(\u@\h)-[\W]-( \$ ) '
+PS2='> '
+PROMPT_COMMAND="echo"
+# }

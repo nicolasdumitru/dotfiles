@@ -1,5 +1,8 @@
 # Config for zsh
 
+# load aliases if existent    
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+
 setopt autocd              # change directory just by typing its name
 setopt interactivecomments # allow comments in interactive mode
 setopt magicequalsubst     # enable filename expansion for arguments of the form ‘anything=expression’
@@ -46,9 +49,6 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 #setopt share_history         # share command history data
 
-# load aliases if existent    
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
-
 # configure `time` format
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 
@@ -81,10 +81,10 @@ fi
 
 configure_prompt() {
     prompt_symbol=@
-    [ "$EUID" -eq 0 ] && prompt_symbol=💀
+    [ "$EUID" -eq 0 ] && prompt_symbol=@
     case "$PROMPT_ALTERNATIVE" in
         twoline)
-            PROMPT=$'%F{%(#.white.white)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.red)}%n$prompt_symbol%m%b%F{%(#.white.white)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.white.white)}]\n└─%B%(#.%F{blue}#.%F{red}[ $ ])%b%F{reset} '
+            PROMPT=$'%F{%(#.white.white)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.red)}%n$prompt_symbol%m%b%F{%(#.white.white)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.white.white)}]\n└──%B%(#.%F{blue}#.%F{red}( $ ))%b%F{reset} '
             RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
             ;;
         oneline)
