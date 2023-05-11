@@ -1,2 +1,1 @@
-#!/bin/bash
-if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+.config/bash/bash-profile
