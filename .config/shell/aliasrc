@@ -17,10 +17,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias ip='ip --color=auto'
 fi
 
-# safe(r) file operations
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -I'
+# file operations
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -Iv'
+alias rsync='rsync -vrPlu'
 
 # ls aliases
 alias la='ls -A'
