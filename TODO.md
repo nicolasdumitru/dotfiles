@@ -21,5 +21,3 @@ list the "dependencies" of the configuration (fonts, miscellaneous stuff)
 make a script that creates all of the directories this configuration requires (e.g. .local/null or .config/nqpnqs/mpd/playlists), place it in the scripts repository and mention it in the README
 
 remove packages: dino nemo network-manager-applet thunderbird
-
-set up two remotes to push to
