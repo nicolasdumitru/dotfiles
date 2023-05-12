@@ -10,6 +10,7 @@ configure alacritty vim mode
 learn how to use lazy neovim plugin manager
 neovim control what gqq does and wrap indent
 
+zsh/shell file bookmarks
 change zsh interactive comment color
 
 configure ncmpcpp keybindings
@@ -17,6 +18,8 @@ configure ncmpcpp keybindings
 set up CUPS and SANE
 
 list the "dependencies" of the configuration (fonts, miscellaneous stuff)
+
+ssh always prefer public key authentication
 
 make a script that creates all of the directories this configuration requires (e.g. .local/null or .config/nqpnqs/mpd/playlists), place it in the scripts repository and mention it in the README
 
