@@ -744,6 +744,3 @@ awful.spawn.with_shell("/usr/bin/nm-applet &")
 
 --Keyboard layout (with Xmodmap):
 awful.spawn.with_shell("/usr/bin/xmodmap ~/.config/xmodmap")
-
---Authentication agent
-awful.spawn.with_shell("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &")
