@@ -53,8 +53,9 @@ awesome.set_preferred_icon_size(32)
 -- Enable/disable window snapping
 awful.mouse.snap.edge_enabled = true
 
--- This is used later as the default terminal and editor to run.
+-- Default terminal and text editor
 terminal = "alacritty"
+terminal_open = terminal .. " -e " -- ".." should be appended before the name of the opened program
 editor = os.getenv("nvim") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -216,7 +217,7 @@ end)
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey,           }, "/",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey, modkey2 }, "h",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
@@ -320,20 +321,20 @@ globalkeys = gears.table.join(
               {description = "quit awesome", group = "awesome"}),
 
     -- Master and stack manipulation
-    awful.key({ modkey, }, ".",     function () awful.tag.incnmaster( 1, nil, true) end,
+    awful.key({ modkey, }, ",",     function () awful.tag.incnmaster( 1, nil, true) end,
               {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, ".",     function () awful.tag.incnmaster(-1, nil, true) end,
+    awful.key({ modkey, "Shift"   }, ",",     function () awful.tag.incnmaster(-1, nil, true) end,
               {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey, }, "/",     function () awful.tag.incncol( 1, nil, true)    end,
+    awful.key({ modkey, }, ".",     function () awful.tag.incncol( 1, nil, true)    end,
               {description = "increase the number of columns", group = "layout"}),
-    awful.key({ modkey, "Shift" }, "/",     function () awful.tag.incncol(-1, nil, true)    end,
+    awful.key({ modkey, "Shift" }, ".",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "space", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Control", "Shift" }, "space", function () awful.layout.inc(-1)                end,
               {description = "select previous", group = "layout"}),
 
-    awful.key({ modkey, }, "c",
+    awful.key({ modkey, }, "w",
               function ()
                   local c = awful.client.restore()
                   -- Focus restored client
@@ -352,8 +353,8 @@ globalkeys = gears.table.join(
                 {description = "run prompt (dmenu)", group = "launcher"}),
 
     -- Text Editor
-    awful.key({ modkey },            "v",     function ()
-					awful.util.spawn("alacritty -e nvim") end,
+    awful.key({ modkey, },            "v",     function ()
+					awful.util.spawn(editor_cmd) end,
                   {description = "Open a text editor (Neovim)", group = "launcher"}),
     -- Browser
     awful.key({ modkey, },            "b",     function ()
@@ -365,7 +366,7 @@ globalkeys = gears.table.join(
                   {description = "Open a password manager (KeePassXC)", group = "launcher"}),
 		-- RSS reader
     awful.key({ modkey, },            "n",     function ()
-        awful.util.spawn("alacritty -e newsboat") end,
+        awful.util.spawn(terminal_open .. "newsboat") end,
                   {description = "Open an RSS/Atom feed reader (Newsboat)", group = "launcher"}),
 		-- Torrent client
     awful.key({ modkey, modkey2 },            "t",     function ()
@@ -377,27 +378,27 @@ globalkeys = gears.table.join(
                   {description = "Open an email bloatware (Thunderbird)", group = "launcher"}),
 		-- Music player
     awful.key({ modkey, modkey2 },            "m",     function ()
-        awful.util.spawn("alacritty -e ncmpcpp") end,
+        awful.util.spawn(terminal_open .. "ncmpcpp") end,
                   {description = "Open a music player (ncmpcpp)", group = "launcher"}),
 		-- System monitor
-    awful.key({ modkey, modkey2 },            "s",     function ()
-        awful.util.spawn("alacritty -e btop") end,
+    awful.key({ modkey, },            "s",     function ()
+        awful.util.spawn(terminal_open .. "btop") end,
                   {description = "Open a system monitor (btop)", group = "launcher"}),
     -- File manager
     awful.key({ modkey, modkey2, },            "f",     function ()
-        awful.util.spawn("alacritty -e lf") end,
+        awful.util.spawn(terminal_open .. "lf") end,
                   {description = "Open a file manager (lf)", group = "launcher"}),
     
     -- Menubar
     awful.key({ modkey }, "r", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
-    -- Manually set up monitors
-    -- dual monitors:
-    awful.key({ modkey, modkey2, "Shift" }, "m", function() 
+    -- Manually set up displays
+    -- dual displays:
+    awful.key({ modkey }, "d", function() 
         awful.spawn.with_shell("/usr/bin/xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1") 
         end,
-            {description = "Switch to the dual monitor setup", group = "screen"}),
+            {description = "Switch to the dual screen setup", group = "screen"}),
 
     -- Lock the screen
     awful.key({ modkey },            "Escape",     function ()
@@ -458,7 +459,7 @@ clientkeys = gears.table.join(
         {description = "toggle fullscreen", group = "client"}),
     awful.key({ modkey, "Shift", }, "w",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
-    awful.key({ modkey,  }, ",",  awful.client.floating.toggle                     ,
+    awful.key({ modkey,  }, "\\",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
@@ -468,7 +469,7 @@ clientkeys = gears.table.join(
               {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
-    awful.key({ modkey, "Shift" }, "c",
+    awful.key({ modkey, "Control" }, "w",
         function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
