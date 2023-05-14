@@ -346,10 +346,10 @@ mpd_music_dir = "~/music"
 #
 #show_duplicate_tags = yes
 #
-#incremental_seeking = yes
-#
-#seek_time = 1
-#
+incremental_seeking = yes
+
+seek_time = 5
+
 #volume_change_step = 2
 #
 #autocenter_mode = no
