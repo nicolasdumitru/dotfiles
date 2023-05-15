@@ -7,6 +7,7 @@ fontconfig arch wiki
 
 configure alacritty vim mode
 
+set neovim to automatically use cindent (or maybe one of the other indenting options, see documentation), on specific files (only files ending in ".c", for example)
 learn how to use lazy neovim plugin manager
 neovim control what gqq does and wrap indent
 
@@ -20,7 +21,6 @@ set up CUPS and SANE
 list the "dependencies" of the configuration (fonts, miscellaneous stuff)
 
 ssh always prefer public key authentication
-
 ssh-agent
 
 make a script that creates all of the directories this configuration requires (e.g. .local/null or .config/nqpnqs/mpd/playlists), place it in the scripts repository and mention it in the README
