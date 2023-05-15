@@ -290,10 +290,10 @@ colors:
   # Normal colors
   normal:
     black:   '#1d1f21'
-    red:     '#dc143c'
+    red:     '#e7143c'
     green:   '#32db7a'
     yellow:  '#f86500'
-    blue:    '#007acc'
+    blue:    '#007aff'
     magenta: '#b294bb'
     cyan:    '#8abeb7'
     white:   '#ffffff'
@@ -301,10 +301,10 @@ colors:
   # Bright colors
   bright:
     black:   '#666666'
-    red:     '#dc143c'
+    red:     '#e7143c'
     green:   '#32db7a'
     yellow:  '#fcae47'
-    blue:    '#007acc'
+    blue:    '#007aff'
     magenta: '#c397d8'
     cyan:    '#70c0b1'
     white:   '#eaeaea'
@@ -434,7 +434,7 @@ colors:
   thickness: 0.15
 
 # Live config reload (changes require restart)
-#live_config_reload: true
+live_config_reload: true
 
 # Shell
 #
