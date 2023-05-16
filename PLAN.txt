@@ -10,6 +10,7 @@ status bar: TBD
 menu/launcher: dmenu
 screen lock utility: slock
 display setting utility: xrandr
+compositor: picom
 
 Audio:
 audio engine: pipewire
@@ -20,40 +21,48 @@ text editor: neovim
 web browser: librewolf
 
 Utilities:
+manual: man (whatever package installs it)
 privilege elevation: su & (open)doas
 firewall: ufw
 keyboard layout setter: xmodmap
 clipboard tool: xclip
 brightness tool: brightnessctl (check out "light" as an alternative)
 
+Better than GNU utilities:
+bat
+ripgrep
+
 file manager: lf
 file sync tool: rsync
+vcs: git
 
 image viewer: (n)sxiv (sxiv is currently unmaintained, might have to find an alternative)
 document viewer (pdf mainly): zathura
-music/audio player: mpd + ncmpcpp (also check out Beets)
+music/audio player: mpd + ncmpcpp
 video player: mpv (to be reviewed)
 
-screenshot tool: maim (to be reviewed)
+screenshot tool: maim
 
 encryption tool: gpg
-password manager: keepassxc
+password manager: keepassxc + pass
 
-email client: neomutt + isync + msmtp (to be reviewed)
-xmpp client: profanity (to be reviewed)
+email client: (basically what mutt-wizard needs) neomutt + isync + msmtp (to be reviewed)
+xmpp client: profanity
 rss/atom reader: newsboat
-address book: abook (to be reviewed)
+address book: abook
 
-torrent client: transmission (to be reviewed)
-
-vcs: git
+torrent client: transmission-gtk
 
 document writing: probably whatever https://lukesmith.xyz/programs/ recommends
 presentations: probably whatever https://lukesmith.xyz/programs/ recommends
 spreadsheets: probably whatever https://lukesmith.xyz/programs/ recommends
 
 Miscellaneous:
+font: jetbrains mono
 script checker: shellcheck
+self-explanatory: exfat-utils
+theme: whatever package provides Adwaita dark or some default dark gtk theme
+color picker: xcolor
 
 Places to find other useful software if necessary (probably necessary):
 https://lukesmith.xyz/programs/ and links listed on this page
