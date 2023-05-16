@@ -2,16 +2,18 @@
 
 # Config for zsh interactive shells
 
-# load aliases if existent    
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
-
 setopt autocd              # change directory just by typing its name
 setopt interactivecomments # allow comments in interactive mode
 setopt magicequalsubst     # enable filename expansion for arguments of the form ‘anything=expression’
-setopt nonomatch           # hide error message if there is no match for the pattern
 setopt notify              # report the status of background jobs immediately
 setopt numericglobsort     # sort filenames numerically when it makes sense
-setopt promptsubst         # enable command substitution in prompt
+
+# History configurations
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history         # share command history data
 
 WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
 
@@ -35,30 +37,18 @@ zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# History configurations
-setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
-setopt hist_ignore_dups       # ignore duplicated commands history list
-setopt hist_ignore_space      # ignore commands that start with space
-setopt hist_verify            # show command with history expansion to user before running it
-#setopt share_history         # share command history data
-
 # configure `time` format
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 
 # make less more friendly for non-text input files, see lesspipe(1)
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
 # configure a colored prompt
+setopt promptsubst         # command substitution in prompt
 configure_prompt() {
-    prompt_symbol=@
-    [ "$EUID" -eq 0 ] && prompt_symbol=@
-            PROMPT=$'%F{%(#.white.white)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.red)}%n$prompt_symbol%m%b%F{%(#.white.white)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.white.white)}]\n└──%B%(#.%F{blue}#.%F{red}( $ ))%b%F{reset} '
-            RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
+	PROMPT=$'%F{%(#.white.white)}┌──(%B%F{%(#.red.red)}%n@%m%b%F{%(#.white.white)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.white.white)}]\n└──%B%(#.%F{blue}#.%F{red}( $ ))%b%F{reset} '
+	
+	RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
 }
 
 # use the colored prompt
@@ -135,6 +125,11 @@ bindkey -s '^o' '^ulfcd\n'
 # Keybindings
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/keybindrc" ]; then
 	source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/keybindrc"
+fi
+
+# load aliases if existent    
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ]; then
+	source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 fi
 
 # Plugins:
