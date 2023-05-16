@@ -1,3 +1,4 @@
+.config/x11 voidrice
 move color configuration to xresources    
     define themes (current & other colors)
     change shell colors
