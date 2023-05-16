@@ -224,13 +224,13 @@ globalkeys = gears.table.join(
     awful.key({ modkey, modkey2 }, "l",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
 
-    awful.key({ modkey,           }, "Tab",
+    awful.key({ modkey,           }, "]",
         function ()
             awful.client.focus.byidx( 1)
         end,
         {description = "focus next by index", group = "client"}
     ),
-    awful.key({ modkey, "Shift" }, "Tab",
+    awful.key({ modkey, }, "[",
         function ()
             awful.client.focus.byidx(-1)
         end,
@@ -277,9 +277,9 @@ globalkeys = gears.table.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Control", "Shift"   }, "Tab", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, }, "]", function () awful.screen.focus_relative( 1) end,
+    awful.key({ modkey, modkey2 }, "]", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
-    awful.key({ modkey, }, "[", function () awful.screen.focus_relative(-1) end,
+    awful.key({ modkey, modkey2 }, "[", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
@@ -386,7 +386,7 @@ globalkeys = gears.table.join(
                   {description = "Open a system monitor (btop)", group = "launcher"}),
     -- File manager
     awful.key({ modkey, modkey2, },            "Return",     function ()
-        awful.util.spawn(terminal_open .. "lf") end,
+        awful.util.spawn(terminal_open .. "lf disown") end,
                   {description = "Open a file manager (lf)", group = "launcher"}),
     
     -- Menubar
@@ -463,9 +463,9 @@ clientkeys = gears.table.join(
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
-    awful.key({ modkey, "Shift" }, "[",      function (c) c:move_to_screen()               end,
+    awful.key({ modkey, modkey2, "Shift" }, "[",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
-    awful.key({ modkey, "Shift" }, "]",      function (c) c:move_to_screen()               end,
+    awful.key({ modkey, modkey2, "Shift" }, "]",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
