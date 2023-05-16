@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+# Configure keybindings
+bindkey ' ' magic-space                           # do history expansion on space
+bindkey '^[[3~' delete-char                       # delete
+bindkey '^[[5~' beginning-of-buffer-or-history    # page up
+bindkey '^[[6~' end-of-buffer-or-history          # page down
