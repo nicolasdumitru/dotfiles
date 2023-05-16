@@ -385,7 +385,7 @@ globalkeys = gears.table.join(
         awful.util.spawn(terminal_open .. "btop") end,
                   {description = "Open a system monitor (btop)", group = "launcher"}),
     -- File manager
-    awful.key({ modkey, modkey2, },            "f",     function ()
+    awful.key({ modkey, modkey2, },            "Return",     function ()
         awful.util.spawn(terminal_open .. "lf") end,
                   {description = "Open a file manager (lf)", group = "launcher"}),
     
