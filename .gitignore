@@ -2,3 +2,6 @@
 *.db
 *.db.lock
 *.search
+
+# Configuration bare repository:
+~/.configuration
