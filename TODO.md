@@ -18,6 +18,8 @@ configure ncmpcpp keybindings
 
 set up CUPS and SANE
 
+configure mounting android phones
+
 list the "dependencies" of the configuration (fonts, miscellaneous stuff)
 
 ssh always prefer public key authentication
