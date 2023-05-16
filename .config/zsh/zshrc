@@ -82,6 +82,8 @@ if [ -x /usr/bin/dircolors ]; then
 	zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 fi
 
+tabs -2
+
 # Set vi mode
 bindkey -v	#vi key bindings
 
@@ -110,15 +112,15 @@ lfcd () {
 	trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
 	lf -last-dir-path="$tmp" "$@"
 	if [ -f "$tmp" ]; then
-			dir="$(cat "$tmp")"
-			[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+		dir="$(cat "$tmp")"
+		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
 	fi
 }
 
 # Bind lfcd to ctrl-o
 bindkey -s '^o' '^ulfcd\n'
 
-# Keybindings
+# (Additional) keybindings
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/keybindrc" ]; then
 	source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/keybindrc"
 fi

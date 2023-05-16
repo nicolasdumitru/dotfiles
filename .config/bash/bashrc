@@ -30,3 +30,5 @@ PS1='(\u@\h)-[\W]-( \$ ) '
 PS2='> '
 PROMPT_COMMAND="echo"
 # }
+
+tabs -2
