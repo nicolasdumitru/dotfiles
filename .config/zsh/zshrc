@@ -41,9 +41,9 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 
 # configure a colored prompt
-setopt promptsubst	# command substitution in prompt
+setopt promptsubst	# command substitution in the prompt
 configure_prompt() {
-	PROMPT=$'%F{%(#.white.white)}┌──(%B%F{%(#.red.red)}%n@%m%b%F{%(#.white.white)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.white.white)}]\n└──%B%(#.%F{blue}#.%F{red}( $ ))%b%F{reset} '
+	PROMPT=$'%F{%(#.white.white)}┌──(%B%F{%(#.red.red)}%n@%m%b%F{%(#.white.white)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.white.white)}]\n└──%B%(#.%F{red}( # %).%F{red}( $ %))%b%F{reset} '
 	
 	RPROMPT=$'%(?.. %? %F{red}%Bx%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
 }
