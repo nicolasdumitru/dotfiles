@@ -18,7 +18,7 @@ configure ncmpcpp keybindings
 
 set up CUPS and SANE
 
-configure mounting android phones
+configure mounting android phones (mtpfs)
 
 list the "dependencies" of the configuration (fonts, miscellaneous stuff)
 
