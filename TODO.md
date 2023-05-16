@@ -18,6 +18,7 @@ configure ncmpcpp keybindings
 
 set up CUPS and SANE
 
+streamline mounting usb drives (with the mounter script)
 configure mounting android phones (mtpfs)
 
 list the "dependencies" of the configuration (fonts, miscellaneous stuff)
