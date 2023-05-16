@@ -2,18 +2,18 @@
 
 # Config for zsh interactive shells
 
-setopt autocd              # change directory just by typing its name
-setopt interactivecomments # allow comments in interactive mode
-setopt magicequalsubst     # enable filename expansion for arguments of the form ‘anything=expression’
-setopt notify              # report the status of background jobs immediately
-setopt numericglobsort     # sort filenames numerically when it makes sense
+setopt autocd								# change directory just by typing its name
+setopt interactivecomments	# allow comments in interactive mode
+setopt magicequalsubst			# enable filename expansion for arguments of the form ‘anything=expression’
+setopt notify								# report the status of background jobs immediately
+setopt numericglobsort			# sort filenames numerically when it makes sense
 
 # History configurations
-setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
-setopt hist_ignore_dups       # ignore duplicated commands history list
-setopt hist_ignore_space      # ignore commands that start with space
-setopt hist_verify            # show command with history expansion to user before running it
-setopt share_history         # share command history data
+setopt hist_expire_dups_first	 # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups				 # ignore duplicated commands history list
+setopt hist_ignore_space			 # ignore commands that start with space
+setopt hist_verify						 # show command with history expansion to user before running it
+setopt share_history					 # share command history data
 
 WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
 
@@ -40,26 +40,19 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # configure `time` format
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 
-# make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
 # configure a colored prompt
-setopt promptsubst         # command substitution in prompt
+setopt promptsubst	# command substitution in prompt
 configure_prompt() {
 	PROMPT=$'%F{%(#.white.white)}┌──(%B%F{%(#.red.red)}%n@%m%b%F{%(#.white.white)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.white.white)}]\n└──%B%(#.%F{blue}#.%F{red}( $ ))%b%F{reset} '
 	
-	RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
+	RPROMPT=$'%(?.. %? %F{red}%Bx%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
 }
 
 # use the colored prompt
 color_prompt=yes
 
 if [ "$color_prompt" = yes ]; then
-    # override default virtualenv indicator in prompt
-    VIRTUAL_ENV_DISABLE_PROMPT=1
-
     configure_prompt
-
 else
     PROMPT='${debian_chroot:+($debian_chroot)}%n@%m:%~%# '
 fi
@@ -76,47 +69,50 @@ precmd() {
 
 # Take advantage of colors ($LS_COLORS for completion as well)
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
-    export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
-    export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-    export LESS_TERMCAP_so=$'\E[01;33m'    # begin reverse video
-    export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-    export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-    export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	export LESS_TERMCAP_mb=$'\E[1;31m'	 # begin blink
+	export LESS_TERMCAP_md=$'\E[1;36m'	 # begin bold
+	export LESS_TERMCAP_me=$'\E[0m'			 # reset bold/blink
+	export LESS_TERMCAP_so=$'\E[01;33m'	 # begin reverse video
+	export LESS_TERMCAP_se=$'\E[0m'			 # reset reverse video
+	export LESS_TERMCAP_us=$'\E[1;32m'	 # begin underline
+	export LESS_TERMCAP_ue=$'\E[0m'			 # reset underline
 
-    zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-    zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+	zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+	zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 fi
 
 # Set vi mode
-bindkey -v                                        # vi key bindings
+bindkey -v	#vi key bindings
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
-    case $KEYMAP in
-        vicmd) echo -ne '\e[1 q';;      # block
-        viins|main) echo -ne '\e[5 q';; # beam
-    esac
+	case $KEYMAP in
+		vicmd) echo -ne '\e[1 q';;      # block
+		viins|main) echo -ne '\e[5 q';; # beam
+	esac
 }
+
 zle -N zle-keymap-select
+
 zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
+	zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+	echo -ne "\e[5 q"
 }
+
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Use lf to switch directories
 lfcd () {
-    tmp="$(mktemp -uq)"
-    trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
+	tmp="$(mktemp -uq)"
+	trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
+	lf -last-dir-path="$tmp" "$@"
+	if [ -f "$tmp" ]; then
+			dir="$(cat "$tmp")"
+			[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+	fi
 }
 
 # Bind lfcd to ctrl-o
