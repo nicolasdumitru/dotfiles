@@ -58,12 +58,14 @@ presentations: probably whatever https://lukesmith.xyz/programs/ recommends
 spreadsheets: probably whatever https://lukesmith.xyz/programs/ recommends
 
 Miscellaneous:
-font: jetbrains mono
+font: jetbrains mono (nerd font)
 script checker: shellcheck
 self-explanatory: exfat-utils
 theme: whatever package provides Adwaita dark or some default dark gtk theme
 color picker: xcolor
 
+Notes:
+telescope.nvim requires fd
 Places to find other useful software if necessary (probably necessary):
 https://lukesmith.xyz/programs/ and links listed on this page
 https://github.com/LukeSmithxyz/LARBS/blob/master/static/progs.csv
