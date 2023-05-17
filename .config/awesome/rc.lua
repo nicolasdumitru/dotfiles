@@ -745,3 +745,6 @@ awful.spawn.with_shell("/usr/bin/nm-applet &")
 
 --Keyboard layout (with Xmodmap):
 awful.spawn.with_shell("/usr/bin/xmodmap ~/.config/xmodmap")
+
+--Music daemon
+awful.spawn.with_shell("/usr/bin/mpd &")
