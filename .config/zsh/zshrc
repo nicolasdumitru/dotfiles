@@ -82,6 +82,14 @@ if [ -x /usr/bin/dircolors ]; then
 	zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 fi
 
+# Use bat to display manpages
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# Git diff with bat
+gitdiff() {
+    /usr/bin/git diff --name-only --relative --diff-filter=d | xargs bat --diff
+}
+
 # Tab width
 tabs -2
 
