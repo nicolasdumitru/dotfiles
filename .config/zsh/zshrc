@@ -43,7 +43,7 @@ TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 # configure a colored prompt
 setopt promptsubst	# command substitution in the prompt
 configure_prompt() {
-	PROMPT=$'%F{%(#.white.white)}┌──(%B%F{%(#.red.red)}%n@%m%b%F{%(#.white.white)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.white.white)}]\n└──%B%(#.%F{red}( # %).%F{red}( $ %))%b%F{reset} '
+	PROMPT=$'%B%F{%(#.white.white)}┌──(%F{%(#.red.red)}%n@%m%F{%(#.white.white)})%b-%B[%F{reset}%(6~.%-1~/…/%4~.%5~)%F{%(#.white.white)}]\n└──%(#.%F{red}( # %).%F{white}(%F{red} $ %F{white}%))%b%F{reset} '
 	
 	RPROMPT=$'%(?.. %? %F{red}%Bx%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
 }
