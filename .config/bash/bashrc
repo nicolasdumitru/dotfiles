@@ -11,9 +11,6 @@
 export HISTFILE="$XDG_STATE_HOME"/bash/history
 
 # rc section
-# configure `time` format
-TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
-
 # Interactive shell prompt
 PS1='(\u@\h)-[\W]-( \$ ) '
 PS2='> '
@@ -25,6 +22,7 @@ if [ -e /usr/bin/bat ]; then
 	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
+# tab width
 tabs -2
 
 # keybindings
@@ -33,4 +31,4 @@ bind -m vi-command 'Control-l: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'
 
 # load aliases if existent    
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "$HOME/.config/shell/aliasrc"
