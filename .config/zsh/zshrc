@@ -82,6 +82,7 @@ if [ -x /usr/bin/dircolors ]; then
 	zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 fi
 
+# Tab width
 tabs -2
 
 # Set vi mode
