@@ -9,8 +9,9 @@ fontconfig arch wiki
 configure alacritty vim mode
 
 set neovim to automatically use cindent (or maybe one of the other indenting options, see documentation), on specific files (only files ending in ".c", for example)
-install lf plugin for neovim
 configure lsp (probably with lsp-zero.nvim)
+remap to open an external terminal in the current working directory
+make leader Y work like the other system clipboard bindings
 
 zsh/shell file bookmarks
 change zsh interactive comment color
