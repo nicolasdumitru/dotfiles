@@ -27,13 +27,13 @@ require("lazy").setup({
 
 -- Gruvbox theme options
 -- Setup must be called before loading the colorscheme
-require("gruvbox-options")
+require("pluginconfig.gruvbox-options")
 
 -- Set the theme
 vim.cmd("colorscheme gruvbox")
 
 -- Treesitter setup
-require("treesitter-setup")
+require("pluginconfig.treesitter-setup")
 
 -- Remaps that use plugin functionality
-require("pluginremap")
+require("pluginconfig.pluginremap")
