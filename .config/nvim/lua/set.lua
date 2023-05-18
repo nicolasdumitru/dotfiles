@@ -22,6 +22,5 @@ vim.opt.scrolloff = 4
 -- Update time
 vim.opt.updatetime = 50
 
--- Cursor in the middle of the screen
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- Remember changes between sessions
+vim.opt.undofile = true
