@@ -349,44 +349,44 @@ globalkeys = gears.table.join(
     -- Run Prompt
 
     awful.key({ modkey, },            "space",     function ()
-    awful.util.spawn("dmenu_run") end,
+    awful.spawn("dmenu_run") end,
                 {description = "run prompt (dmenu)", group = "launcher"}),
 
     -- Text Editor
     awful.key({ modkey, },            "v",     function ()
-					awful.util.spawn(editor_cmd) end,
+					awful.spawn(editor_cmd) end,
                   {description = "Open a text editor (Neovim)", group = "launcher"}),
     -- Browser
     awful.key({ modkey, },            "b",     function ()
-        awful.util.spawn("librewolf") end,
+        awful.spawn("librewolf") end,
                   {description = "Open a browser (Librewolf)", group = "launcher"}),
     -- Password Manager
     awful.key({ modkey, },            "p",     function ()
-        awful.util.spawn("keepassxc") end,
+        awful.spawn("keepassxc") end,
                   {description = "Open a password manager (KeePassXC)", group = "launcher"}),
 		-- RSS reader
     awful.key({ modkey, },            "n",     function ()
-        awful.util.spawn(terminal_open .. "newsboat") end,
+        awful.spawn(terminal_open .. "newsboat") end,
                   {description = "Open an RSS/Atom feed reader (Newsboat)", group = "launcher"}),
 		-- Torrent client
     awful.key({ modkey, modkey2 },            "t",     function ()
-        awful.util.spawn("transmission-gtk") end,
+        awful.spawn("transmission-gtk") end,
                   {description = "Open a torrent client (Transmission)", group = "launcher"}),
 		-- Email client
     awful.key({ modkey, },            "e",     function ()
-        awful.util.spawn("thunderbird") end,
+        awful.spawn("thunderbird") end,
                   {description = "Open an email bloatware (Thunderbird)", group = "launcher"}),
 		-- Music player
     awful.key({ modkey, modkey2 },            "m",     function ()
-        awful.util.spawn(terminal_open .. "ncmpcpp") end,
+        awful.spawn(terminal_open .. "ncmpcpp") end,
                   {description = "Open a music player (ncmpcpp)", group = "launcher"}),
 		-- System monitor
     awful.key({ modkey, },            "s",     function ()
-        awful.util.spawn(terminal_open .. "btop") end,
+        awful.spawn(terminal_open .. "btop") end,
                   {description = "Open a system monitor (btop)", group = "launcher"}),
     -- File manager
     awful.key({ modkey, modkey2, },            "Return",     function ()
-        awful.util.spawn(terminal_open .. "lf") end,
+        awful.spawn(terminal_open .. "lf") end,
                   {description = "Open a file manager (lf)", group = "launcher"}),
     
     -- Menubar
@@ -402,7 +402,7 @@ globalkeys = gears.table.join(
 
     -- Lock the screen
     awful.key({ modkey },            "Escape",     function ()
-        awful.util.spawn("/usr/bin/slock") end,
+        awful.spawn("/usr/bin/slock") end,
                   {description = "Lock the screen", group = "screen"}),
     -- Take a screenshot
     awful.key({},            "Print",     function ()
