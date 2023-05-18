@@ -3,7 +3,7 @@
 
 vim.g.mapleader = " "
 -- Show Netrw
-vim.keymap.set("n", "<leader>lf", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
 
 -- Unhighlight search results
 vim.keymap.set("n", "<leader>/", ":noh <CR>")
