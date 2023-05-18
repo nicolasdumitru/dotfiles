@@ -3,10 +3,10 @@
 
 vim.g.mapleader = " "
 -- Show Netrw
-vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>lf", vim.cmd.Ex)
 
--- Unhighlight search results
-vim.keymap.set("n", "<leader>/", ":noh <CR>")
+-- Change current working directory
+vim.keymap.set("n", "<leader>cd", ":cd %:h <CR>")
 
 -- Keep cursor in the middle of the screen
 -- when scrolling half a page
@@ -19,12 +19,19 @@ vim.keymap.set("n", "N", "Nzz") -- or "Nzzzv"
 -- Keep the copied string in register when pasting over a highlight
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- Easily copy stuff into the system clipoboard
+-- Easily yank (copy) stuff into the system clipoboard
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", "\"+Y")
+vim.keymap.set("n", "<leader>Y", [["+Y]])
 
+-- Easily delete (cut) stuff into the system clipoboard
+vim.keymap.set({"n", "v"}, "<leader>d", [["+d]])
+vim.keymap.set("n", "<leader>D", [["+D]])
+
+-- Easily delete stuff without copying it
+vim.keymap.set({"n", "v"}, "<leader>c", [["_c]])
+vim.keymap.set("n", "<leader>C", [["_C]])
 -- Delete stuff without copying it
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+--vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 -- Move lines in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
