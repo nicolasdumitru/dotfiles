@@ -5,8 +5,11 @@ vim.g.mapleader = " "
 -- Show Netrw
 vim.keymap.set("n", "<leader>lf", vim.cmd.Ex)
 
--- Change current working directory
-vim.keymap.set("n", "<leader>cd", ":cd %:h <CR>")
+-- Update current working directory
+vim.keymap.set("n", "<leader>cd", ":cd %:p:h <CR>")
+
+-- Open an external terminal in the current working directory
+vim.keymap.set("n", "<leader>tt", ":cd %:p:h <CR> :!$TERM & disown <CR> :mode <CR>")
 
 -- Keep cursor in the middle of the screen
 -- when scrolling half a page
