@@ -18,8 +18,30 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{ "ellisonleao/gruvbox.nvim", priority = 1000 },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	{ "nvim-telescope/telescope.nvim", branch = '0.1.x',
-      dependencies = { "nvim-lua/plenary.nvim" }}
+	{
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    dependencies = {
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},             -- Required
+      {                                      -- Optional
+        'williamboman/mason.nvim',
+        build = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
+      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},     -- Required
+      {'hrsh7th/cmp-nvim-lsp'}, -- Required
+      {'L3MON4D3/LuaSnip'},     -- Required
+		}
+	},
+	{
+		"nvim-telescope/telescope.nvim", branch = '0.1.x',
+      dependencies = { "nvim-lua/plenary.nvim" }
+	}
 })
 
 -- Gruvbox theme options
@@ -28,6 +50,21 @@ require("pluginconfig.gruvbox-options")
 
 -- Set the theme
 vim.cmd("colorscheme gruvbox")
+
+-- LSP (LSP Zero)
+require("pluginconfig.lsp-zero-config")
+--[[
+local lsp = require('lsp-zero').preset({})
+
+lsp.on_attach(function(client, bufnr)
+  lsp.default_keymaps({buffer = bufnr})
+end)
+
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+lsp.setup()
+
+]]--
 
 -- Treesitter setup
 require("pluginconfig.treesitter-setup")
