@@ -50,6 +50,7 @@ email client: (basically what mutt-wizard needs) neomutt + isync + msmtp (to be 
 xmpp client: profanity
 rss/atom reader: newsboat
 address book: abook
+calendar client: calcurse (with the optional dependencies)
 
 torrent client: transmission-gtk
 
