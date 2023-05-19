@@ -7,6 +7,9 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.cindent = true
 
+-- Show tabs
+vim.opt.list = true
+
 -- Search settings (case sensitivity)
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
