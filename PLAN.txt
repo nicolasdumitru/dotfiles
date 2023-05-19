@@ -58,6 +58,7 @@ presentations: probably whatever https://lukesmith.xyz/programs/ recommends
 spreadsheets: probably whatever https://lukesmith.xyz/programs/ recommends
 
 (more than a) calculator: bc (GNU bc)
+scientific programming language: GNU Octave
 
 Miscellaneous:
 font: jetbrains mono (nerd font)
