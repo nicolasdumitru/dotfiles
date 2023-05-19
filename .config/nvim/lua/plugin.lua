@@ -18,7 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{ "ellisonleao/gruvbox.nvim", priority = 1000 },
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	{ "nvim-telescope/telescope.nvim", branch = '0.1.1',
+	{ "nvim-telescope/telescope.nvim", branch = '0.1.x',
       dependencies = { "nvim-lua/plenary.nvim" }}
 })
 
