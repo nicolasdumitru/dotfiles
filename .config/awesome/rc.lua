@@ -297,7 +297,7 @@ globalkeys = gears.table.join(
                 end
               end,
               {description = "move focused client to next tag and view tag", group = "tag"}),
-          
+
     awful.key({ modkey, modkey2, "Shift" }, "h", function()
                 local screen = awful.screen.focused()
                 local t = screen.selected_tag
