@@ -2,10 +2,11 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Indentation (number of spaces)
+-- Indentation settings
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.cindent = true
+vim.opt.expandtab = false
 
 -- Show tabs
 vim.opt.list = true
@@ -27,3 +28,7 @@ vim.opt.updatetime = 50
 
 -- Remember changes between sessions
 vim.opt.undofile = true
+
+-- Use a swapfile for the buffer
+vim.opt.swapfile = true
+
