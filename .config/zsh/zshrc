@@ -9,11 +9,11 @@ setopt notify								# report the status of background jobs immediately
 setopt numericglobsort			# sort filenames numerically when it makes sense
 
 # History configurations
-setopt hist_expire_dups_first	 # delete duplicates first when HISTFILE size exceeds HISTSIZE
-setopt hist_ignore_dups				 # ignore duplicated commands history list
-setopt hist_ignore_space			 # ignore commands that start with space
-setopt hist_verify						 # show command with history expansion to user before running it
-setopt share_history					 # share command history data
+setopt hist_expire_dups_first		# delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups					# ignore duplicated commands history list
+setopt hist_ignore_space				# ignore commands that start with space
+setopt hist_verify							# show command with history expansion to user before running it
+setopt share_history						# share command history data
 
 WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
 
@@ -44,7 +44,7 @@ TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 setopt promptsubst	# command substitution in the prompt
 configure_prompt() {
 	PROMPT=$'%B%F{%(#.white.white)}┌──(%F{%(#.red.red)}%n@%m%F{%(#.white.white)})%b-%B[%F{reset}%(6~.%-1~/…/%4~.%5~)%F{%(#.white.white)}]\n└──%(#.%F{red}( # %).%F{white}(%F{red} $ %F{white}%))%b%F{reset} '
-	
+
 	RPROMPT=$'%(?.. %? %F{red}%Bx%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
 }
 
@@ -52,9 +52,9 @@ configure_prompt() {
 color_prompt=yes
 
 if [ "$color_prompt" = yes ]; then
-    configure_prompt
+	configure_prompt
 else
-    PROMPT='${debian_chroot:+($debian_chroot)}%n@%m:%~%# '
+	PROMPT='${debian_chroot:+($debian_chroot)}%n@%m:%~%# '
 fi
 unset color_prompt
 
@@ -89,7 +89,7 @@ fi
 
 # Git diff with bat
 gitdiff() {
-    /usr/bin/git diff --name-only --relative --diff-filter=d | xargs bat --diff
+	/usr/bin/git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
 # Tab width
