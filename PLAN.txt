@@ -57,6 +57,8 @@ document writing: probably whatever https://lukesmith.xyz/programs/ recommends
 presentations: probably whatever https://lukesmith.xyz/programs/ recommends
 spreadsheets: probably whatever https://lukesmith.xyz/programs/ recommends
 
+(more than a) calculator: bc (GNU bc)
+
 Miscellaneous:
 font: jetbrains mono (nerd font)
 script checker: shellcheck
