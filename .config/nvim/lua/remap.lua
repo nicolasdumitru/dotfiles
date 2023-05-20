@@ -41,6 +41,9 @@ vim.keymap.set("n", "<leader>X", "<cmd>!chmod -x %<CR>", { silent = true })
 -- when scrolling half a page
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- when scrolling a full page
+vim.keymap.set("n", "<C-f>", "<C-f>zz")
+vim.keymap.set("n", "<C-b>", "<C-b>zz")
 -- when viewing search results
 vim.keymap.set("n", "n", "nzz") -- or "nzzzv"
 vim.keymap.set("n", "N", "Nzz") -- or "Nzzzv"

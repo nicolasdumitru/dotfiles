@@ -16,8 +16,16 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Lazy plugins
 require("lazy").setup({
+	-- Gruvbox theme
 	{ "ellisonleao/gruvbox.nvim", priority = 1000 },
+	-- Treesitter
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	-- Telescope
+	{
+		"nvim-telescope/telescope.nvim", branch = "0.1.x",
+			dependencies = { "nvim-lua/plenary.nvim" }
+	},
+	-- LSP Zero
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v2.x",
@@ -31,31 +39,31 @@ require("lazy").setup({
 				end,
 			},
 			{"williamboman/mason-lspconfig.nvim"}, -- Optional
-
 			-- Autocompletion
 			{"hrsh7th/nvim-cmp"},     -- Required
 			{"hrsh7th/cmp-nvim-lsp"}, -- Required
 			{"L3MON4D3/LuaSnip"},     -- Required
 		}
 	},
-	{
-		"nvim-telescope/telescope.nvim", branch = "0.1.x",
-			dependencies = { "nvim-lua/plenary.nvim" }
-	}
+	-- Autoclose
+	{ "m4xshen/autoclose.nvim" },
 })
 
 -- Gruvbox theme options
 -- Setup must be called before loading the colorscheme
-require("pluginconfig.gruvbox-options")
+require("pluginconfig.gruvbox-config")
 
 -- Set the theme
 vim.cmd("colorscheme gruvbox")
 
+-- Treesitter setup
+require("pluginconfig.treesitter-config")
+
 -- LSP (LSP Zero)
 require("pluginconfig.lsp-zero-config")
 
--- Treesitter setup
-require("pluginconfig.treesitter-setup")
+-- Autoclose plugin
+require("pluginconfig.autoclose-config")
 
 -- Remaps that use plugin functionality
 require("pluginconfig.pluginremap")
