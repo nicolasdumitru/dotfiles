@@ -409,6 +409,11 @@ globalkeys = gears.table.join(
         awful.spawn.with_shell("/usr/bin/maim pictures/screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png") end,
                   {description = "Take a screenshot", group = "screen"}),
 
+    -- Take a selection screenshot
+    awful.key({ "Shift", },            "Print",     function ()
+        awful.spawn.with_shell("/usr/bin/maim -s --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png") end,
+                  {description = "Take a selection screenshot", group = "screen"}),
+
     -- Volume control
     awful.key({ modkey, }, "=", function() 
         awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%") 
