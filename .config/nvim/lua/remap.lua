@@ -13,7 +13,7 @@ vim.keymap.set("n", "<leader>tt", ":cd %:p:h <CR> :!$TERM & disown <CR> :mode <C
 
 -- Easily yank (copy) stuff into the system clipoboard
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set("n", "<leader>Y", [["+y$]])
 
 -- Easily delete (cut) stuff into the system clipoboard
 vim.keymap.set({"n", "v"}, "<leader>d", [["+d]])
@@ -50,3 +50,11 @@ vim.keymap.set("n", "N", "Nzz") -- or "Nzzzv"
 
 -- Keep the cursor in the same place when appending lines
 vim.keymap.set("n", "J", "mzJ`z")
+
+-- Undo after deleting a word with ctrl-backspace in insert mode
+vim.keymap.set("i", "<C-<BS>>", "<C-G>u<C-<BS>" )
+
+-- Default bindings that I'd like to make sure I keep regardless of potential future updates
+vim.keymap.set("n", "Y", "y$" )
+vim.keymap.set("i", "<C-U>", "<C-G>u<C-U>" )
+vim.keymap.set("i", "<C-W>", "<C-G>u<C-W>" )
