@@ -17,13 +17,13 @@ vim.opt.rtp:prepend(lazypath)
 -- Lazy plugins
 require("lazy").setup({
 	-- Gruvbox theme
-	{ "ellisonleao/gruvbox.nvim", priority = 1000 },
+	{"ellisonleao/gruvbox.nvim", priority = 1000},
 	-- Treesitter
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim", branch = "0.1.x",
-			dependencies = { "nvim-lua/plenary.nvim" }
+			dependencies = {"nvim-lua/plenary.nvim"}
 	},
 	-- LSP Zero
 	{
@@ -46,7 +46,7 @@ require("lazy").setup({
 		}
 	},
 	-- Autoclose
-	{ "m4xshen/autoclose.nvim" },
+	{"m4xshen/autoclose.nvim"},
 })
 
 -- Gruvbox theme options
