@@ -347,48 +347,54 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Run Prompt
-
     awful.key({ modkey, },            "space",     function ()
     awful.spawn("dmenu_run") end,
                 {description = "run prompt (dmenu)", group = "launcher"}),
-
     -- Text Editor
-    awful.key({ modkey, },            "v",     function ()
+    awful.key({ modkey, },            "e",     function ()
 					awful.spawn(editor_cmd) end,
                   {description = "Open a text editor (Neovim)", group = "launcher"}),
-    -- Browser
-    awful.key({ modkey, },            "b",     function ()
-        awful.spawn("librewolf") end,
-                  {description = "Open a browser (Librewolf)", group = "launcher"}),
-    -- Password Manager
-    awful.key({ modkey, },            "p",     function ()
-        awful.spawn("keepassxc") end,
-                  {description = "Open a password manager (KeePassXC)", group = "launcher"}),
-		-- RSS reader
-    awful.key({ modkey, },            "n",     function ()
-        awful.spawn(terminal_open .. "newsboat") end,
-                  {description = "Open an RSS/Atom feed reader (Newsboat)", group = "launcher"}),
-		-- Torrent client
-    awful.key({ modkey, modkey2 },            "t",     function ()
-        awful.spawn("transmission-gtk") end,
-                  {description = "Open a torrent client (Transmission)", group = "launcher"}),
-		-- Email client
-    awful.key({ modkey, },            "e",     function ()
-        awful.spawn("thunderbird") end,
-                  {description = "Open an email bloatware (Thunderbird)", group = "launcher"}),
-		-- Music player
-    awful.key({ modkey, modkey2 },            "m",     function ()
-        awful.spawn(terminal_open .. "ncmpcpp") end,
-                  {description = "Open a music player (ncmpcpp)", group = "launcher"}),
-		-- System monitor
-    awful.key({ modkey, },            "s",     function ()
-        awful.spawn(terminal_open .. "btop") end,
-                  {description = "Open a system monitor (btop)", group = "launcher"}),
     -- File manager
     awful.key({ modkey, modkey2, },            "Return",     function ()
         awful.spawn(terminal_open .. "lf") end,
                   {description = "Open a file manager (lf)", group = "launcher"}),
-    
+		-- System monitor
+    awful.key({ modkey, },            "s",     function ()
+        awful.spawn(terminal_open .. "btop") end,
+                  {description = "Open a system monitor (btop)", group = "launcher"}),
+    -- Browser
+    awful.key({ modkey, },            "b",     function ()
+        awful.spawn("librewolf") end,
+                  {description = "Open a browser (Librewolf)", group = "launcher"}),
+		-- Email client
+    awful.key({ modkey, modkey2, },            "e",     function ()
+        awful.spawn("thunderbird") end,
+                  {description = "Open an email bloatware (Thunderbird)", group = "launcher"}),
+    -- Password Manager
+    awful.key({ modkey, },            "p",     function ()
+        awful.spawn("keepassxc") end,
+                  {description = "Open a password manager (KeePassXC)", group = "launcher"}),
+		-- Torrent client
+    awful.key({ modkey, modkey2 },            "t",     function ()
+        awful.spawn("transmission-gtk") end,
+                  {description = "Open a torrent client (Transmission)", group = "launcher"}),
+		-- RSS reader
+    awful.key({ modkey, },            "n",     function ()
+        awful.spawn(terminal_open .. "newsboat") end,
+                  {description = "Open an RSS/Atom feed reader (Newsboat)", group = "launcher"}),
+    -- Calendar
+    awful.key({ modkey, },            "c",     function ()
+        awful.spawn(terminal_open .. "calcurse") end,
+                  {description = "Open a calendar (calcurse)", group = "launcher"}),
+    -- Address book
+    awful.key({ modkey, },            "a",     function ()
+        awful.spawn(terminal_open .. "abook") end,
+                  {description = "Open an address book (abook)", group = "launcher"}),
+		-- Music player
+    awful.key({ modkey, modkey2 },            "m",     function ()
+        awful.spawn(terminal_open .. "ncmpcpp") end,
+                  {description = "Open a music player (ncmpcpp)", group = "launcher"}),
+
     -- Menubar
     awful.key({ modkey }, "r", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
