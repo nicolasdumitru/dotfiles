@@ -67,6 +67,7 @@ script checker: shellcheck
 self-explanatory: exfat-utils
 theme: whatever package provides Adwaita dark or some default dark gtk theme
 color picker: xcolor
+cli data transfer: curl & wget
 
 Notes:
 telescope.nvim requires fd
