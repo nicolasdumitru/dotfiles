@@ -5,7 +5,7 @@ vim.opt.relativenumber = true
 -- Indentation settings
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
-vim.opt.cindent = true
+vim.opt.smartindent = true
 vim.opt.expandtab = false
 
 -- Show tabs
@@ -31,4 +31,3 @@ vim.opt.undofile = true
 
 -- Use a swapfile for the buffer
 vim.opt.swapfile = true
-
