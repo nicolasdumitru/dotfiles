@@ -27,8 +27,8 @@ vim.keymap.set("n", "<leader>C", [["_C]])
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Move lines in visual mode
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 
 -- Replace a word in the whole file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
