@@ -10,6 +10,7 @@ configure alacritty vim mode
 
 set neovim to automatically use cindent (or maybe one of the other indenting options, see documentation), on specific files (only files ending in ".c", for example)
 
+zsh shift tab selects previous autocomplete option
 zsh/shell file bookmarks
 change zsh interactive comment color
 
