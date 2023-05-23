@@ -317,7 +317,7 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "\\", awesome.quit,
+    awful.key({ modkey, modkey2, "Control", "Shift" }, "\\", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
     -- Master and stack manipulation
