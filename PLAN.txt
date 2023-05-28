@@ -68,6 +68,7 @@ self-explanatory: exfat-utils
 theme: whatever package provides Adwaita dark or some default dark gtk theme
 color picker: xcolor
 cli data transfer: curl & wget
+list open files: lsof (useful when unable to unmount a drive)
 
 Notes:
 telescope.nvim requires fd
