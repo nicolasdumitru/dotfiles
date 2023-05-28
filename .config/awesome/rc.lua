@@ -351,11 +351,11 @@ globalkeys = gears.table.join(
     awful.spawn("dmenu_run") end,
                 {description = "run prompt (dmenu)", group = "launcher"}),
     -- Text Editor
-    awful.key({ modkey, },            "e",     function ()
+    awful.key({ modkey, modkey2, },            "Return",     function ()
 					awful.spawn(editor_cmd) end,
                   {description = "Open a text editor (Neovim)", group = "launcher"}),
     -- File manager
-    awful.key({ modkey, modkey2, },            "Return",     function ()
+    awful.key({ modkey, modkey2, },            "f",     function ()
         awful.spawn(terminal_open .. "lf") end,
                   {description = "Open a file manager (lf)", group = "launcher"}),
 		-- System monitor
@@ -367,7 +367,7 @@ globalkeys = gears.table.join(
         awful.spawn("librewolf") end,
                   {description = "Open a browser (Librewolf)", group = "launcher"}),
 		-- Email client
-    awful.key({ modkey, modkey2, },            "e",     function ()
+    awful.key({ modkey, },            "e",     function ()
         awful.spawn("thunderbird") end,
                   {description = "Open an email bloatware (Thunderbird)", group = "launcher"}),
     -- Password Manager
