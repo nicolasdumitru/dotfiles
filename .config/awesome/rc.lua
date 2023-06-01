@@ -754,8 +754,8 @@ awful.spawn.with_shell("/usr/bin/picom &")
 --Internet connection tray applet (nm-applet):
 awful.spawn.with_shell("/usr/bin/nm-applet &")
 
---Keyboard layout (with Xmodmap):
-awful.spawn.with_shell("/usr/bin/xmodmap ~/.config/xmodmap")
-
 --Music daemon
 awful.spawn.with_shell("/usr/bin/mpd &")
+
+--Keyboard layout (with Xmodmap):
+awful.spawn.with_shell("/usr/bin/xmodmap ~/.config/xmodmap")
