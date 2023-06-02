@@ -30,4 +30,4 @@ make a script that creates all of the directories this configuration requires (e
 
 remove packages: dino network-manager-applet thunderbird
 
-find minimal implementations for the following utilities: clock
+find minimal implementations for the following utilities: clock (with stopwatch and alarm features), audio input/output management
