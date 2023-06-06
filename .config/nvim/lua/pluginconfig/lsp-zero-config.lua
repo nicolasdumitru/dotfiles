@@ -50,8 +50,8 @@ cmp.setup({
 	},
 	mapping = {
 		["<CR>"] = cmp.mapping.confirm({select = true}),
-		["<Tab>"] = cmp_action.luasnip_supertab(),
-		["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+		['<Tab>'] = cmp_action.tab_complete(),
+		['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
