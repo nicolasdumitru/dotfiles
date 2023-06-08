@@ -156,12 +156,23 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+local function set_initial_tag(s)
+	local screen = s
+	local tag = screen.tags[3]
+	if tag then
+		tag:view_only()
+	end
+end
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ " home ", " www ", " gnrl ", " gnrl ", " code ", " gnrl ", " comm ", " node ", " syst " }, s, awful.layout.layouts[1])
+    awful.tag({ " code ", " www ", " home ", " gnrl ", " comm ", " node ", " syst " }, s, awful.layout.layouts[1])
+
+		-- Set the tag that is focused when awesome starts
+		set_initial_tag(s)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
