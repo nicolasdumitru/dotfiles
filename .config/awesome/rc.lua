@@ -323,9 +323,7 @@ globalkeys = gears.table.join(
               end,
               {description = "move focused client to previous tag and view tag", group = "tag"}),
 
-    -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
+    -- Quit/reload awesome
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, modkey2, "Control", "Shift" }, "\\", awesome.quit,
@@ -359,8 +357,12 @@ globalkeys = gears.table.join(
 
     -- Run Prompt
     awful.key({ modkey, },            "space",     function ()
-    awful.spawn("dmenu_run") end,
+			awful.spawn("dmenu_run") end,
                 {description = "run prompt (dmenu)", group = "launcher"}),
+		-- Terminal
+    awful.key({ modkey,           }, "Return", function ()
+			awful.spawn(terminal) end,
+              {description = "open a terminal", group = "launcher"}),
     -- Text Editor
     awful.key({ modkey, modkey2, },            "Return",     function ()
 					awful.spawn(editor_cmd) end,
