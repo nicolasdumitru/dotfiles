@@ -14,16 +14,16 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  #TERM: alacritty
+  TERM: alacritty
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. Both lines and columns
@@ -31,39 +31,40 @@
   # least `2`, while using a value of `0` for columns and lines will fall back
   # to the window manager's recommended size
   #dimensions:
-  #  columns: 0
-  #  lines: 0
+    columns: 0
+    lines: 0
 
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
   #position:
-  #  x: 0
-  #  y: 0
+    x: 0
+    y: 0
 
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   #padding:
-  #  x: 0
-  #  y: 0
+    x: 0
+    y: 0
 
   # Spread additional padding evenly around the terminal content.
-  #dynamic_padding: false
+    dynamic_padding: false
 
   # Window decorations
   #
   # Values for `decorations`:
   #     - full: Borders and title bar
   #     - none: Neither borders nor title bar
+    decorations: none
 
   # Background opacity
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  #opacity: 1.0
+    opacity: 1.0
 
   # Startup Mode (changes require restart)
   #
@@ -75,46 +76,40 @@
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
   #startup_mode: Windowed
+    startup_mode: Windowed
 
   # Window title
-  #title: Alacritty
+    title: Alacritty
 
   # Allow terminal applications to change Alacritty's window title.
-  #dynamic_title: true
+    dynamic_title: true
 
   # Window class (Linux/BSD only):
-  #class:
+    class:
     # Application instance name
-    #instance: Alacritty
+      instance: Alacritty
     # General application class
-    #general: Alacritty
+      general: Alacritty
 
   # Decorations theme variant
   #
   # Override the variant of the System theme/GTK theme/Wayland client side
   # decorations. Commonly supported values are `Dark`, `Light`, and `None` for
   # auto pick-up. Set this to `None` to use the default theme variant.
-  #decorations_theme_variant: None
+    decorations_theme_variant: None
 
   # Resize increments
   #
   # Prefer resizing window by discrete steps equal to cell dimensions.
   #resize_increments: false
 
-  # Make `Option` key behave as `Alt` (macOS only):
-  #   - OnlyLeft
-  #   - OnlyRight
-  #   - Both
-  #   - None (default)
-  #option_as_alt: None
-
 #scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  #history: 10000
+    history: 50000
 
   # Scrolling distance multiplier.
-  #multiplier: 3
+    multiplier: 3
 
 # Font configuration
 font:
@@ -171,54 +166,67 @@ font:
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
   #offset:
-  #  x: 0
-  #  y: 0
+  x: 0
+  y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
   # right, increasing `y` moves the glyph upward.
   #glyph_offset:
-  #  x: 0
-  #  y: 0
+  x: 0
+  y: 0
 
   # Use built-in font for box drawing characters.
   #
   # If `true`, Alacritty will use a custom built-in font for box drawing
   # characters (Unicode points 2500 - 259f).
   #
-  #builtin_box_drawing: true
+  builtin_box_drawing: true
 
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
+  draw_bold_text_with_bright_colors: false
 
 # Colors
 colors:
   # Default colors
   primary:
-    background: '#1a1a1a'
-    foreground: '#dddddd'
+    background: '#282828'
+    foreground: '#ebdbb2'
 
       # Normal colors
   normal:
-    black:   '#1d1f21'
-    red:     '#e7143c'
-    green:   '#32db7a'
-    yellow:  '#f86500'
-    blue:    '#007aff'
-    magenta: '#b294bb'
-    cyan:    '#8abeb7'
-    white:   '#ffffff'
+    black:   '#1d2021' #
+    red:     '#e7143c' #
+    green:   '#32db7a' #
+    yellow:  '#fe8019' #
+    blue:    '#458588' #
+    magenta: '#b16286' #
+    cyan:    '#689d6a'
+    white:   '#ebdbb2'
 
       # Bright colors
     bright:
-      black:   '#666666'
-      red:     '#e7143c'
-      green:   '#32db7a'
+      black:   '#3c3836'
+      red:     '#fb4934'
+      green:   '#b8bb26'
       yellow:  '#fcae47'
-      blue:    '#007aff'
-      magenta: '#c397d8'
-      cyan:    '#70c0b1'
-      white:   '#eaeaea'
+      blue:    '#83a598'
+      magenta: '#d3869b'
+      cyan:    '#8ec07c'
+      white:   '#ebdbb2'
+
+  # Dim colors
+  # If the dim colors are not set, they will be calculated automatically based on the `normal` colors.
+    dim:
+      black:   '#131415'
+      red:     '#864343'
+      green:   '#777c44'
+      yellow:  '#9e824c'
+      blue:    '#556a7d'
+      magenta: '#75617b'
+      cyan:    '#5b7d78'
+      white:   '#828482'
+
     # Bright and dim foreground colors
     # The dimmed foreground color is calculated automatically if it is not present. If the bright foreground color is not set, or `draw_bold_text_with_bright_colors` is `false`, the normal foreground color will be used.
     dim_foreground: '#828482'
@@ -229,14 +237,14 @@ colors:
   # Allowed values are CellForeground/CellBackground, which reference the affected cell, or hexadecimal colors like #ff00ff.
   cursor:
     #text: CellBackground
-    text: '#1a1a1a' 
+    text: '#282828' 
     cursor: '#ffffff'
 
   # Vi mode cursor colors
   # Colors for the cursor when the vi mode is active.
   # Allowed values are CellForeground/CellBackground, which reference the affected cell, or hexadecimal colors like #ff00ff.
   vi_mode_cursor:
-    text: '#1a1a1a'
+    text: '#282828'
     cursor: '#ffffff'
   
   # Search colors
@@ -244,11 +252,11 @@ colors:
   search:
     # Allowed values are CellForeground/CellBackground, which reference the affected cell, or hexadecimal colors like #ff00ff.
     matches:
-      foreground: '#000000'
-      background: '#ffffff'
+      foreground: '#ebdbb2'
+      background: '#504945'
     focused_match:
-      foreground: '#ffffff'
-      background: '#000000'
+      foreground: '#282828'
+      background: '#fe8019'
 
   # Keyboard hints
   #hints:
@@ -283,19 +291,6 @@ colors:
   selection:
     text: CellBackground
     background: CellForeground
-
-
-  # Dim colors
-  # If the dim colors are not set, they will be calculated automatically based on the `normal` colors.
-  dim:
-    black:   '#131415'
-    red:     '#864343'
-    green:   '#777c44'
-    yellow:  '#9e824c'
-    blue:    '#556a7d'
-    magenta: '#75617b'
-    cyan:    '#5b7d78'
-    white:   '#828482'
 
   # Indexed Colors
   #
@@ -355,24 +350,24 @@ colors:
   #
   #command: None
 
-#selection:
+selection:
   # This string contains all characters that are used as separators for
   # "semantic words" in Alacritty.
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
+  save_to_clipboard: false
 
-#cursor:
+cursor:
   # Cursor style
-  #style:
+  style:
     # Cursor shape
     #
     # Values for `shape`:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    #shape: Block
+    shape: Beam
 
     # Cursor blinking state
     #
@@ -381,7 +376,7 @@ colors:
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    #blinking: Off
+    blinking: Off
 
   # Vi mode cursor style
   #
@@ -389,7 +384,7 @@ colors:
   # the style of the active value of the normal cursor.
   #
   # See `cursor.style` for available options.
-  #vi_mode_style: None
+  vi_mode_style: Block
 
   # Cursor blinking interval in milliseconds.
   #blink_interval: 750
@@ -406,9 +401,10 @@ colors:
   # Thickness of the cursor relative to the cell width as floating point number
   # from `0.0` to `1.0`.
   thickness: 0.15
+  #thickness: 1.0
 
 # Live config reload (changes require restart)
-live_config_reload: true
+live_config_reload: false
 
 # Shell
 #
@@ -433,7 +429,7 @@ live_config_reload: true
 # Offer IPC using `alacritty msg` (unix only)
 #ipc_socket: true
 
-#mouse:
+mouse:
   # Click settings
   #
   # The `double_click` and `triple_click` settings control the time
@@ -443,7 +439,7 @@ live_config_reload: true
   #triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
-  #hide_when_typing: false
+  hide_when_typing: true
 
 # Hints
 #
