@@ -31,3 +31,6 @@ vim.opt.undofile = true
 
 -- Use a swapfile for the buffer
 vim.opt.swapfile = true
+
+-- Hidden (hide abbandoned buffers)
+vim.opt.hidden = true
