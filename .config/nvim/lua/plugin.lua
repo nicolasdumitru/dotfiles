@@ -21,16 +21,17 @@ require("lazy").setup({
 		"ellisonleao/gruvbox.nvim",
 		priority = 1000
 	},
+	-- Lualine
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = {"nvim-tree/nvim-web-devicons"}
+	},
+	-- Fugitive
+	{"tpope/vim-fugitive"},
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate"
-	},
-	-- Telescope
-	{
-		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
-		dependencies = {"nvim-lua/plenary.nvim"}
 	},
 	-- LSP Zero
 	{
@@ -54,6 +55,12 @@ require("lazy").setup({
 	},
 	-- Autoclose
 	{"m4xshen/autoclose.nvim"},
+	-- Telescope
+	{
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = {"nvim-lua/plenary.nvim"}
+	},
 })
 
 -- Gruvbox theme options
@@ -63,13 +70,16 @@ require("pluginconfig.gruvbox-config")
 -- Set the theme
 vim.cmd("colorscheme gruvbox")
 
+-- Lualine setup
+require("pluginconfig.lualine-config")
+
 -- Treesitter setup
 require("pluginconfig.treesitter-config")
 
--- LSP (LSP Zero)
+-- LSP (LSP Zero) setup
 require("pluginconfig.lsp-zero-config")
 
--- Autoclose
+-- Autoclose setup
 require("pluginconfig.autoclose-config")
 
 -- Remaps that use plugin functionality
