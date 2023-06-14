@@ -85,7 +85,7 @@ require("pluginconfig.lsp-zero-config")
 require("pluginconfig.autoclose-config")
 
 -- Toggleterm setup
-	require("toggleterm-config")
+require("pluginconfig.toggleterm-config")
 
 -- Remaps that use plugin functionality
 require("pluginconfig.pluginremap")
