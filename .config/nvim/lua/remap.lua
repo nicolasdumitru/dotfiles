@@ -54,6 +54,9 @@ vim.keymap.set("n", "J", "mzJ`z")
 -- Undo after deleting a word with ctrl-backspace in insert mode
 vim.keymap.set("i", "<C-<BS>>", "<C-G>u<C-<BS>" )
 
+-- Open a new tab page
+vim.keymap.set("n", "<leader>nt", ":tabe <CR>" )
+
 -- Default bindings that I'd like to make sure I keep regardless of potential future updates
 vim.keymap.set("n", "Y", "y$" )
 vim.keymap.set("i", "<C-U>", "<C-G>u<C-U>" )

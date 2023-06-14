@@ -14,6 +14,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Lazy remaps
+vim.keymap.set("n", "<leader>pm", vim.cmd.Lazy)
+
 -- Lazy plugins
 require("lazy").setup({
 	-- Gruvbox theme
@@ -62,7 +65,17 @@ require("lazy").setup({
 		dependencies = {"nvim-lua/plenary.nvim"}
 	},
 	-- Toggleterm
-	{"akinsho/toggleterm.nvim", version = "*", config = true},
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		config = true
+	},
+	-- Bufferline
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = {"nvim-tree/nvim-web-devicons"}
+	},
 })
 
 -- Gruvbox theme options
@@ -84,8 +97,11 @@ require("pluginconfig.lsp-zero-config")
 -- Autoclose setup
 require("pluginconfig.autoclose-config")
 
+-- Telescope remaps
+require("pluginconfig.telescope-remap")
+
 -- Toggleterm setup
 require("pluginconfig.toggleterm-config")
 
--- Remaps that use plugin functionality
-require("pluginconfig.pluginremap")
+-- Bufferline setup
+require("pluginconfig.bufferline-config")
