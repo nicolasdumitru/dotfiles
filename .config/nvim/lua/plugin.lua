@@ -61,6 +61,8 @@ require("lazy").setup({
 		branch = "0.1.x",
 		dependencies = {"nvim-lua/plenary.nvim"}
 	},
+	-- Toggleterm
+	{"akinsho/toggleterm.nvim", version = "*", config = true},
 })
 
 -- Gruvbox theme options
@@ -81,6 +83,9 @@ require("pluginconfig.lsp-zero-config")
 
 -- Autoclose setup
 require("pluginconfig.autoclose-config")
+
+-- Toggleterm setup
+	require("toggleterm-config")
 
 -- Remaps that use plugin functionality
 require("pluginconfig.pluginremap")
