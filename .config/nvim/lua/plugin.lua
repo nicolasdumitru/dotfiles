@@ -70,12 +70,6 @@ require("lazy").setup({
 		version = "*",
 		config = true
 	},
-	-- Bufferline
-	{
-		"akinsho/bufferline.nvim",
-		version = "*",
-		dependencies = {"nvim-tree/nvim-web-devicons"}
-	},
 })
 
 -- Gruvbox theme options
@@ -102,6 +96,3 @@ require("pluginconfig.telescope-remap")
 
 -- Toggleterm setup
 require("pluginconfig.toggleterm-config")
-
--- Bufferline setup
-require("pluginconfig.bufferline-config")
