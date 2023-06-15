@@ -19,7 +19,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
