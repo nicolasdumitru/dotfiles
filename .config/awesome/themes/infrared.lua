@@ -1,5 +1,5 @@
 ---------------------------
--- Default awesome theme --
+-- Infrared Theme --
 ---------------------------
 
 local theme_assets = require("beautiful.theme_assets")
