@@ -367,34 +367,26 @@ globalkeys = gears.table.join(
     awful.key({ modkey, modkey2, },            "Return",     function ()
 					awful.spawn(editor_cmd) end,
                   {description = "Open a text editor (Neovim)", group = "launcher"}),
-    -- File manager
-    awful.key({ modkey, modkey2, },            "f",     function ()
-        awful.spawn(terminal_open .. "lf") end,
-                  {description = "Open a file manager (lf)", group = "launcher"}),
-		-- System monitor
-    awful.key({ modkey, },            "s",     function ()
-        awful.spawn(terminal_open .. "btop") end,
-                  {description = "Open a system monitor (btop)", group = "launcher"}),
-    -- Browser
-    awful.key({ modkey, },            "b",     function ()
-        awful.spawn("librewolf") end,
-                  {description = "Open a browser (Librewolf)", group = "launcher"}),
+		-- Browser
+		awful.key({ modkey, },            "b",     function ()
+			awful.spawn("librewolf") end,
+			{description = "Open a browser (Librewolf)", group = "launcher"}),
 		-- Email client
-    awful.key({ modkey, },            "e",     function ()
-        awful.spawn("thunderbird") end,
-                  {description = "Open an email bloatware (Thunderbird)", group = "launcher"}),
-    -- Password Manager
-    awful.key({ modkey, },            "p",     function ()
-        awful.spawn("keepassxc") end,
-                  {description = "Open a password manager (KeePassXC)", group = "launcher"}),
-		-- Torrent client
-    awful.key({ modkey, modkey2 },            "t",     function ()
-        awful.spawn("transmission-gtk") end,
-                  {description = "Open a torrent client (Transmission)", group = "launcher"}),
+		awful.key({ modkey, modkey2, },            "m",     function ()
+			awful.spawn("thunderbird") end,
+			{description = "Open an email bloatware (Thunderbird)", group = "launcher"}),
 		-- RSS reader
     awful.key({ modkey, },            "n",     function ()
         awful.spawn(terminal_open .. "newsboat") end,
                   {description = "Open an RSS/Atom feed reader (Newsboat)", group = "launcher"}),
+    -- File manager
+    awful.key({ modkey, modkey2, },            "f",     function ()
+        awful.spawn(terminal_open .. "lf") end,
+                  {description = "Open a file manager (lf)", group = "launcher"}),
+		-- Chat client
+		awful.key({ modkey, "Shift", },            "c",     function ()
+			awful.spawn(terminal_open .. "profanity") end,
+			{description = "Open a chat client (Profanity)", group = "launcher"}),
     -- Calendar
     awful.key({ modkey, },            "c",     function ()
         awful.spawn(terminal_open .. "calcurse") end,
@@ -404,9 +396,21 @@ globalkeys = gears.table.join(
         awful.spawn(terminal_open .. "abook") end,
                   {description = "Open an address book (abook)", group = "launcher"}),
 		-- Music player
-    awful.key({ modkey, modkey2 },            "m",     function ()
+    awful.key({ modkey, modkey2 },            "p",     function ()
         awful.spawn(terminal_open .. "ncmpcpp") end,
                   {description = "Open a music player (ncmpcpp)", group = "launcher"}),
+		-- System monitor
+    awful.key({ modkey, },            "s",     function ()
+        awful.spawn(terminal_open .. "btop") end,
+                  {description = "Open a system monitor (btop)", group = "launcher"}),
+    -- Password Manager
+    awful.key({ modkey, },            "p",     function ()
+        awful.spawn("keepassxc") end,
+                  {description = "Open a password manager (KeePassXC)", group = "launcher"}),
+		-- Torrent client
+    awful.key({ modkey, modkey2 },            "t",     function ()
+        awful.spawn("transmission-gtk") end,
+                  {description = "Open a torrent client (Transmission)", group = "launcher"}),
 
     -- Menubar
     awful.key({ modkey }, "r", function() menubar.show() end,
@@ -485,8 +489,10 @@ clientkeys = gears.table.join(
               {description = "close", group = "client"}),
     awful.key({ modkey,  }, "/",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
+		--[[
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
+		]]
     awful.key({ modkey, modkey2, "Shift" }, "[",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
     awful.key({ modkey, modkey2, "Shift" }, "]",      function (c) c:move_to_screen()               end,
