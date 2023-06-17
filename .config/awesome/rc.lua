@@ -384,7 +384,7 @@ globalkeys = gears.table.join(
         awful.spawn(terminal_open .. "lf") end,
                   {description = "Open a file manager (lf)", group = "launcher"}),
 		-- Chat client
-		awful.key({ modkey, "Shift", },            "c",     function ()
+		awful.key({ modkey, modkey2, },            "c",     function ()
 			awful.spawn(terminal_open .. "profanity") end,
 			{description = "Open a chat client (Profanity)", group = "launcher"}),
     -- Calendar
@@ -418,8 +418,8 @@ globalkeys = gears.table.join(
 
     -- Manually set up displays
     -- dual displays:
-    awful.key({ modkey }, "d", function() 
-        awful.spawn.with_shell("/usr/bin/xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1") 
+    awful.key({ modkey }, "d", function()
+        awful.spawn.with_shell("/usr/bin/xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
         end,
             {description = "Switch to the dual screen setup", group = "screen"}),
 
@@ -438,36 +438,36 @@ globalkeys = gears.table.join(
                   {description = "Take a selection screenshot", group = "screen"}),
 
     -- Volume control
-    awful.key({ modkey, }, "=", function() 
-        awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%") 
-        end), 
-    awful.key({ modkey }, "-", function() 
-        awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%") 
+    awful.key({ modkey, }, "=", function()
+        awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%")
         end),
-    awful.key({ modkey }, "BackSpace", function() 
-        awful.spawn.with_shell("/usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle") 
+    awful.key({ modkey }, "-", function()
+        awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%")
         end),
-    awful.key({}, "XF86AudioRaiseVolume", function() 
-        awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%") 
-        end), 
-    awful.key({}, "XF86AudioLowerVolume", function() 
-        awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%") 
+    awful.key({ modkey }, "BackSpace", function()
+        awful.spawn.with_shell("/usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle")
         end),
-    awful.key({}, "XF86AudioMute", function() 
-        awful.spawn.with_shell("/usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle") 
+    awful.key({}, "XF86AudioRaiseVolume", function()
+        awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%")
+        end),
+    awful.key({}, "XF86AudioLowerVolume", function()
+        awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%")
+        end),
+    awful.key({}, "XF86AudioMute", function()
+        awful.spawn.with_shell("/usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle")
         end),
     -- Brightness control
-    awful.key({}, "XF86MonBrightnessUp", function() 
-        awful.spawn.with_shell("/usr/bin/brightnessctl set +10%") 
-        end), 
-    awful.key({}, "XF86MonBrightnessDown", function() 
-        awful.spawn.with_shell("/usr/bin/brightnessctl set 10%-") 
+    awful.key({}, "XF86MonBrightnessUp", function()
+        awful.spawn.with_shell("/usr/bin/brightnessctl set +10%")
         end),
-    awful.key({ modkey, modkey2 }, "=", function() 
-        awful.spawn.with_shell("/usr/bin/brightnessctl set +10%") 
-        end), 
-    awful.key({ modkey, modkey2 }, "-", function() 
-        awful.spawn.with_shell("/usr/bin/brightnessctl set 10%-") 
+    awful.key({}, "XF86MonBrightnessDown", function()
+        awful.spawn.with_shell("/usr/bin/brightnessctl set 10%-")
+        end),
+    awful.key({ modkey, modkey2 }, "=", function()
+        awful.spawn.with_shell("/usr/bin/brightnessctl set +10%")
+        end),
+    awful.key({ modkey, modkey2 }, "-", function()
+        awful.spawn.with_shell("/usr/bin/brightnessctl set 10%-")
         end),
 
     --Move systray to another monitor
@@ -572,7 +572,7 @@ clientkeys = gears.table.join(
       awful.key({ modkey, "Shift"   }, "Right", function (c)
         c:relative_move( 10,   0,   0,   0) end,
       {description = "Floating Move Right", group = "client"})
-  
+
 )
 
 -- Bind all key numbers to tags.
