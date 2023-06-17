@@ -9,6 +9,7 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export TERMINAL_PROG="alacritty"
 export BROWSER="librewolf"
+export SUDO_ASKPASS="/usr/local/bin/dmenupass"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
