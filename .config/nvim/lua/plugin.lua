@@ -29,8 +29,6 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = {"nvim-tree/nvim-web-devicons"}
 	},
-	-- Fugitive
-	{"tpope/vim-fugitive"},
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -56,19 +54,28 @@ require("lazy").setup({
 			{"L3MON4D3/LuaSnip"},     -- Required
 		}
 	},
-	-- Autoclose
-	{"m4xshen/autoclose.nvim"},
+	-- Fugitive
+	{"tpope/vim-fugitive"},
 	-- Telescope
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
 		dependencies = {"nvim-lua/plenary.nvim"}
 	},
+	-- Autoclose
+	{"m4xshen/autoclose.nvim"},
 	-- Toggleterm
 	{
 		"akinsho/toggleterm.nvim",
 		version = "*",
 		config = true
+	},
+	{
+		"lmburns/lf.nvim",
+		dependencies = {
+			{"plenary.nvim"},
+			{"toggleterm.nvim"},
+		}
 	},
 })
 
@@ -96,3 +103,6 @@ require("pluginconfig.telescope-remap")
 
 -- Toggleterm setup
 require("pluginconfig.toggleterm-config")
+
+-- Lf setup
+require("pluginconfig.lf-config")
