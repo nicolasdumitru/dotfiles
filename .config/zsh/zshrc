@@ -129,7 +129,7 @@ lfcd () {
 }
 
 # Bind lfcd to ctrl-o
-bindkey -s '^f' '^ulfcd\n'
+bindkey -s '^o' '^ulfcd\n'
 
 # (Additional) keybindings
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/keybindrc" ]; then
