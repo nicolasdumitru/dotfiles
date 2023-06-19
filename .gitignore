@@ -5,6 +5,3 @@
 
 # Configuration bare repository:
 ~/.configuration
-
-# lazy.nvim lockfile
-lazy-lock.json
