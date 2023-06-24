@@ -24,11 +24,12 @@ theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#b8bb26"
 
 theme.useless_gap   = dpi(2)
-theme.border_width  = dpi(2)
+theme.border_width  = dpi(3)
 theme.border_normal = "#504945"
 theme.border_focus  = "#fe8019"
 theme.border_marked = "#fb4934"
 
+theme.hotkeys_modifiers_fg = theme.fg_normal
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
