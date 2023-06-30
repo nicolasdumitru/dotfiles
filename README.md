@@ -8,5 +8,21 @@ These are the dotfiles that I use on my GNU/Linux system. The main focus of thes
 
 WARNING: These configuration folders include symlinks in order to move some files away from their standard location (e.g. newsboat urls) or need symlinks to work (e.g. librewolf will not use the overrides in .config/my-librewolf by default; it needs a symlink to do that).
 
+Commands to create a new repository like this from scratch:
+```bash
+git init --bare $HOME/.configuration
+alias config='/usr/bin/git --git-dir=$HOME/.configuration/ --work-tree=$HOME'
+config config --local status.showUntrackedFiles no
+echo "alias config='/usr/bin/git --git-dir=$HOME/.configuration/ --work-tree=$HOME'" >> $HOME/.bashrc
+```
+Installing these dotfiles onto a new system:
+```bash
+echo ".configuration" >> .gitignore
+git clone --bare <git-repo-url> $HOME/.configuration
+alias config='/usr/bin/git --git-dir=$HOME/.configuration/ --work-tree=$HOME'
+config checkout
+config config --local status.showUntrackedFiles no
+```
+
 The technique used to create this repository:
 https://www.atlassian.com/git/tutorials/dotfiles
