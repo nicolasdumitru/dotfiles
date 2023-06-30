@@ -5,5 +5,5 @@
 
 # History configurations
 HISTFILE=~/.local/state/zsh-history
-HISTSIZE=100000
-SAVEHIST=200000
+HISTSIZE=10000000
+SAVEHIST=20000000
