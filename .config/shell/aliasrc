@@ -44,12 +44,7 @@ alias screenshot-selection='/usr/bin/maim -s --format=png --quality 10 ~/picture
 #keyboard layout aliases
 alias vimlayout='/usr/bin/xmodmap ~/.config/xmodmap'
 
-# monitor aliases
-alias monitor-dual='/usr/bin/xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1'
-alias monitor-integrated='/usr/bin/xrandr --output eDP-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --off'
-alias monitor-external='/usr/bin/xrandr --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --output eDP-1 --off'
-
 # personal aliases
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/nqpnqs/shell/aliasrc" ]; then
-	source "${XDG_CONFIG_HOME:-$HOME/.config}/nqpnqs/shell/aliasrc"
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/nqpnqs/shell/aliasrc ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/nqpnqs/shell/aliasrc
 fi
