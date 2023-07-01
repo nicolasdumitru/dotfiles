@@ -228,7 +228,7 @@ end)
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey, "Shift" }, "/",      hotkeys_popup.show_help,
+    awful.key({ modkey, }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey, modkey2 }, "h",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
@@ -380,7 +380,7 @@ globalkeys = gears.table.join(
 		awful.spawn(terminal_open .. "newsboat") end,
 		{description = "Open an RSS/Atom feed reader (Newsboat)", group = "launcher"}),
 	-- File manager
-	awful.key({ modkey, modkey2, },            "f",     function ()
+	awful.key({ modkey, },            "/",     function ()
 		awful.spawn(terminal_open .. "lf") end,
 		{description = "Open a file manager (lf)", group = "launcher"}),
 	-- Chat client
@@ -400,7 +400,7 @@ globalkeys = gears.table.join(
 		awful.spawn(terminal_open .. "ncmpcpp") end,
 		{description = "Open a music player (ncmpcpp)", group = "launcher"}),
 		-- System monitor
-	awful.key({ modkey, },            "s",     function ()
+	awful.key({ modkey, modkey2, },            "s",     function ()
 		awful.spawn(terminal_open .. "btop") end,
 		{description = "Open a system monitor (btop)", group = "launcher"}),
 	-- Password Manager
@@ -495,7 +495,7 @@ clientkeys = gears.table.join(
         {description = "toggle fullscreen", group = "client"}),
     awful.key({ modkey, "Shift", }, "w",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
-    awful.key({ modkey,  }, "/",  awful.client.floating.toggle                     ,
+    awful.key({ modkey, "Shift", }, "f",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
 		--[[
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
