@@ -128,8 +128,8 @@ lfcd () {
 	fi
 }
 
-# Bind lfcd to ctrl-o
-bindkey -s '^o' '^ulfcd\n'
+# Bind lfcd to ctrl-/ (terminals may not distinguish between ctrl-/ and ctrl-_)
+bindkey -s '^_' '^ulfcd\n'
 
 # (Additional) keybindings
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/keybindrc" ]; then
