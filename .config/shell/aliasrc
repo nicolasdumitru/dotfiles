@@ -3,10 +3,9 @@
 # force zsh to show the complete history
 alias history="history 0"
 
-# enable color support of ls, less and man, and also add handy aliases
+# enable color support of various commands
 if [ -x /usr/bin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls -lh --group-directories-first --color=auto'
 	alias dir='dir --color=auto'
 	alias vdir='vdir --color=auto'
 
@@ -24,8 +23,16 @@ alias rm='rm -Iv'
 alias shred='shred -v'
 alias rsync='rsync -Prluv'
 
-# ls aliases
-alias la='ls -A'
+# ls (exa) aliases
+if [ -x /usr/bin/exa ]; then
+	alias ls='exa -lghF --group-directories-first --git --icons --color=always'
+	alias la='ls -a'
+	alias li='ls --time-style=long-iso'
+	alias lia='li -a'
+else
+	alias ls='ls -lh --group-directories-first --color=auto'
+	alias la='ls -A'
+fi
 
 # sudo to doas transition (just in case)
 #alias sudo='doas'
