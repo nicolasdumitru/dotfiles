@@ -83,7 +83,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # If bat is installed, use it to display man pages
-if [ -e /usr/bin/bat ]; then
+if [ -x /usr/bin/bat ]; then
 	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 	export MANROFFOPT="-c"
 fi
