@@ -365,6 +365,10 @@ globalkeys = gears.table.join(
 			awful.spawn("dmenu_run")
 		end,
 		{ description = "run prompt (dmenu)", group = "launcher" }),
+	awful.key({ modkey, modkey2, }, "b", function()
+			awful.spawn("bookmark-insert")
+		end,
+		{ description = "run prompt (dmenu)", group = "launcher" }),
 	-- Terminal
 	awful.key({ modkey, }, "Return", function()
 			awful.spawn(terminal)
