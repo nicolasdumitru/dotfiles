@@ -221,7 +221,7 @@ awful.screen.connect_for_each_screen(function(s)
 			s.mypromptbox,
 		},
 		s.mytasklist, -- Middle widget
-		{             -- Right widgets
+		{       -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			mykeyboardlayout,
 			s.systray,
@@ -365,10 +365,17 @@ globalkeys = gears.table.join(
 			awful.spawn("dmenu_run")
 		end,
 		{ description = "run prompt (dmenu)", group = "launcher" }),
+	-- Bookmark inserting script
 	awful.key({ modkey, modkey2, }, "b", function()
-			awful.spawn("bookmark-insert")
+			awful.spawn("dmenubookmarkinsert")
 		end,
-		{ description = "run prompt (dmenu)", group = "launcher" }),
+		{ description = "bookmarks - insert a bookmark", group = "launcher" }),
+	-- Emoji inserting script
+	awful.key({ modkey, }, "e", function()
+			awful.spawn("dmenuunicode")
+		end,
+		{ description = "emoji - copy an emoji", group = "launcher" }),
+
 	-- Terminal
 	awful.key({ modkey, }, "Return", function()
 			awful.spawn(terminal)
@@ -453,7 +460,7 @@ globalkeys = gears.table.join(
 	-- dual displays:
 	awful.key({ modkey }, "d", function()
 			awful.spawn.with_shell(
-			"/usr/bin/xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
+				"/usr/bin/xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
 		end,
 		{ description = "Switch to the dual screen setup", group = "screen" }),
 
@@ -471,7 +478,7 @@ globalkeys = gears.table.join(
 	-- Take a selection screenshot
 	awful.key({ "Shift", }, "Print", function()
 			awful.spawn.with_shell(
-			"/usr/bin/maim -s --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png")
+				"/usr/bin/maim -s --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png")
 		end,
 		{ description = "Take a selection screenshot", group = "screen" }),
 
@@ -734,7 +741,7 @@ awful.rules.rules = {
 			role = {
 				"AlarmWindow", -- Thunderbird's calendar.
 				"ConfigManager", -- Thunderbird's about:config.
-				"pop-up",  -- e.g. Google Chrome's (detached) Developer Tools.
+				"pop-up", -- e.g. Google Chrome's (detached) Developer Tools.
 			}
 		},
 		properties = { floating = true }
@@ -786,7 +793,7 @@ client.connect_signal("request::titlebars", function(c)
 			buttons = buttons,
 			layout  = wibox.layout.fixed.horizontal
 		},
-		{     -- Middle
+		{ -- Middle
 			{ -- Title
 				align  = "center",
 				widget = awful.titlebar.widget.titlewidget(c)
@@ -813,7 +820,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --Autostart apps
 --Start in dual monitor mode by default
 awful.spawn.with_shell(
-"/usr/bin/xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
+	"/usr/bin/xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
 
 --Compositor (picom):
 awful.spawn.with_shell("/usr/bin/picom &")
