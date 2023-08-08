@@ -59,9 +59,14 @@ awful.mouse.snap.edge_enabled = true
 
 -- Default terminal and text editor
 Terminal = "alacritty"
-Terminal_open = Terminal .. " -e " -- ".." should be appended before the name of the opened program
+Shell = "zsh"
 Editor = os.getenv("nvim") or "nvim"
-Editor_cmd = Terminal_open .. Editor
+
+function Terminal_open(name)
+	return Terminal .. " --hold -e " .. Shell .. " -c '" .. name .. " ; " .. Shell .. " -i -s'"
+end
+
+Editor_cmd = Terminal_open(Editor)
 
 -- Default modkey.
 modkey = "Mod4"
@@ -398,37 +403,37 @@ globalkeys = gears.table.join(
 		{ description = "Open an email bloatware (Thunderbird)", group = "launcher" }),
 	-- Feed reader
 	awful.key({ modkey, }, "r", function()
-			awful.spawn(Terminal_open .. "newsboat")
+			awful.spawn(Terminal_open("newsboat"))
 		end,
 		{ description = "Open an RSS/Atom feed reader (Newsboat)", group = "launcher" }),
 	-- File manager
 	awful.key({ modkey, }, "/", function()
-			awful.spawn(Terminal_open .. "lf")
+			awful.spawn(Terminal_open("lf"))
 		end,
 		{ description = "Open a file manager (lf)", group = "launcher" }),
 	-- Chat client
 	awful.key({ modkey, modkey2, }, "c", function()
-			awful.spawn(Terminal_open .. "profanity")
+			awful.spawn(Terminal_open("profanity"))
 		end,
 		{ description = "Open a chat client (Profanity)", group = "launcher" }),
 	-- Calendar
 	awful.key({ modkey, }, "c", function()
-			awful.spawn(Terminal_open .. "calcurse")
+			awful.spawn(Terminal_open("calcurse"))
 		end,
 		{ description = "Open a calendar (calcurse)", group = "launcher" }),
 	-- Address book
 	awful.key({ modkey, }, "a", function()
-			awful.spawn(Terminal_open .. "abook")
+			awful.spawn(Terminal_open("abook"))
 		end,
 		{ description = "Open an address book (abook)", group = "launcher" }),
 	-- Music player
 	awful.key({ modkey, modkey2 }, "p", function()
-			awful.spawn(Terminal_open .. "ncmpcpp")
+			awful.spawn(Terminal_open("ncmpcpp"))
 		end,
 		{ description = "Open a music player (ncmpcpp)", group = "launcher" }),
 	-- System monitor
 	awful.key({ modkey, modkey2, }, "s", function()
-			awful.spawn(Terminal_open .. "btop")
+			awful.spawn(Terminal_open("btop"))
 		end,
 		{ description = "Open a system monitor (btop)", group = "launcher" }),
 	-- Password Manager
