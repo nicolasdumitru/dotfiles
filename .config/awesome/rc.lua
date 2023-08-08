@@ -396,8 +396,8 @@ globalkeys = gears.table.join(
 			awful.spawn("thunderbird")
 		end,
 		{ description = "Open an email bloatware (Thunderbird)", group = "launcher" }),
-	-- RSS reader
-	awful.key({ modkey, }, "n", function()
+	-- Feed reader
+	awful.key({ modkey, }, "r", function()
 			awful.spawn(Terminal_open .. "newsboat")
 		end,
 		{ description = "Open an RSS/Atom feed reader (Newsboat)", group = "launcher" }),
