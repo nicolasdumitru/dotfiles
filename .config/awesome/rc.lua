@@ -57,16 +57,35 @@ awesome.set_preferred_icon_size(32)
 -- Enable/disable window snapping
 awful.mouse.snap.edge_enabled = true
 
--- Default terminal and text editor
-Terminal = "alacritty"
-Shell = "zsh"
-Editor = os.getenv("nvim") or "nvim"
+-- Default programs
+Utility = {
+	launcher = "dmenu_run",
+	bookmark = "dmenubookmarkinsert",
+	usb_mounter = "dmenumounter",
+	usb_unmounter = "dmenuunmounter",
+	emoji = "dmenuunicode",
+
+	shell = "zsh",
+	terminal = "alacritty",
+	text_editor = os.getenv("nvim") or "nvim",
+	browser = "librewolf",
+	mail = "thunderbird",
+	feed_reader = "newsboat",
+	file_manager = "lfcd",
+	chat = "profanity",
+	calendar = "calcurse",
+	address_book = "abook",
+	music_player = "ncmpcpp",
+	system_monitor = "btop",
+	password_manager = "keepassxc",
+	torrent = "transmission-gtk",
+}
 
 function Terminal_open(name)
-	return Terminal .. " --hold -e " .. Shell .. " -c '" .. name .. " ; " .. Shell .. " -i -s'"
+	return Utility.terminal .. " --hold -e " .. Utility.shell .. " -c '" .. name .. " ; " .. Utility.shell .. " -i -s'"
 end
 
-Editor_cmd = Terminal_open(Editor)
+Editor_cmd = Terminal_open(Utility.text_editor)
 
 -- Default modkey.
 Modkey = "Mod4"
@@ -85,7 +104,7 @@ awful.layout.layouts = {
 -- Create a launcher widget and a main menu
 Myawesomemenu = {
 	{ "hotkeys",     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-	{ "manual",      Terminal .. " -e man awesome" },
+	{ "manual",      Utility.terminal .. " -e man awesome" },
 	{ "edit config", Editor_cmd .. " " .. awesome.conffile },
 	{ "restart",     awesome.restart },
 	{ "quit",        function() awesome.quit() end },
@@ -93,7 +112,7 @@ Myawesomemenu = {
 
 Mymainmenu = awful.menu({
 	items = { { "awesome", Myawesomemenu, beautiful.awesome_icon },
-		{ "open terminal", Terminal }
+		{ "open terminal", Utility.terminal }
 	}
 })
 
@@ -103,7 +122,7 @@ Mylauncher = awful.widget.launcher({
 })
 
 -- Menubar configuration
-menubar.utils.terminal = alacritty -- Set the terminal for applications that require it
+menubar.utils.terminal = Utility.terminal -- Set the terminal for applications that require it
 -- }}}
 
 -- Keyboard map indicator and switcher
@@ -365,97 +384,97 @@ Globalkeys = gears.table.join(
 		end,
 		{ description = "restore minimized", group = "client" }),
 
-	-- Run Prompt
+	-- Launcher
 	awful.key({ Modkey, }, "space", function()
-			awful.spawn("dmenu_run")
+			awful.spawn(Utility.launcher)
 		end,
-		{ description = "run prompt (dmenu)", group = "launcher" }),
-	-- Bookmark inserting script
+		{ description = "program launcher (" .. Utility.launcher .. ")", group = "launcher" }),
+	-- Bookmark inserting utility
 	awful.key({ Modkey, Modkey2, }, "b", function()
-			awful.spawn("dmenubookmarkinsert")
+			awful.spawn(Utility.bookmark)
 		end,
 		{ description = "bookmarks - insert a bookmark", group = "launcher" }),
-	-- Emoji inserting script
+	-- Mount a USB drive
+	awful.key({ Modkey, Modkey2, }, "u", function()
+			awful.spawn.with_shell(Utility.usb_mounter)
+		end,
+		{ description = "Mount a usb drive", group = "launcher" }),
+	-- Unmount a USB drive
+	awful.key({ Modkey, Modkey2, "Shift" }, "u", function()
+			awful.spawn.with_shell(Utility.usb_unmounter)
+		end,
+		{ description = "Unmount a usb drive", group = "launcher" }),
+	-- Emoji utility
 	awful.key({ Modkey, }, "e", function()
-			awful.spawn("dmenuunicode")
+			awful.spawn(Utility.emoji)
 		end,
 		{ description = "emoji - copy an emoji", group = "launcher" }),
 
 	-- Terminal
 	awful.key({ Modkey, }, "Return", function()
-			awful.spawn(Terminal)
+			awful.spawn(Utility.terminal)
 		end,
 		{ description = "open a terminal", group = "launcher" }),
 	-- Text Editor
 	awful.key({ Modkey, Modkey2, }, "Return", function()
-			awful.spawn(Editor_cmd)
+			awful.spawn(Terminal_open(Utility.text_editor))
 		end,
-		{ description = "Open a text editor (Neovim)", group = "launcher" }),
+		{ description = "Open a text editor (" .. Utility.text_editor .. ")", group = "launcher" }),
 	-- Browser
 	awful.key({ Modkey, }, "b", function()
-			awful.spawn("librewolf")
+			awful.spawn(Utility.browser)
 		end,
-		{ description = "Open a browser (Librewolf)", group = "launcher" }),
+		{ description = "Open a browser (" .. Utility.browser .. ")", group = "launcher" }),
 	-- Email client
 	awful.key({ Modkey, Modkey2, }, "m", function()
-			awful.spawn("thunderbird")
+			awful.spawn(Utility.mail)
 		end,
-		{ description = "Open an email bloatware (Thunderbird)", group = "launcher" }),
+		{ description = "Open an email bloatware (" .. Utility.mail .. ")", group = "launcher" }),
 	-- Feed reader
 	awful.key({ Modkey, }, "r", function()
-			awful.spawn(Terminal_open("newsboat"))
+			awful.spawn(Terminal_open(Utility.feed_reader))
 		end,
-		{ description = "Open an RSS/Atom feed reader (Newsboat)", group = "launcher" }),
+		{ description = "Open an RSS/Atom feed reader (" .. Utility.feed_reader .. ")", group = "launcher" }),
 	-- File manager
 	awful.key({ Modkey, }, "/", function()
-			awful.spawn(Terminal_open("lf"))
+			awful.spawn(Terminal_open(Utility.file_manager))
 		end,
-		{ description = "Open a file manager (lf)", group = "launcher" }),
+		{ description = "Open a file manager (" .. Utility.file_manager .. ")", group = "launcher" }),
 	-- Chat client
 	awful.key({ Modkey, Modkey2, }, "c", function()
-			awful.spawn(Terminal_open("profanity"))
+			awful.spawn(Terminal_open(Utility.chat))
 		end,
-		{ description = "Open a chat client (Profanity)", group = "launcher" }),
+		{ description = "Open a chat client (" .. Utility.chat .. ")", group = "launcher" }),
 	-- Calendar
 	awful.key({ Modkey, }, "c", function()
-			awful.spawn(Terminal_open("calcurse"))
+			awful.spawn(Terminal_open(Utility.calendar))
 		end,
-		{ description = "Open a calendar (calcurse)", group = "launcher" }),
+		{ description = "Open a calendar (" .. Utility.calendar .. ")", group = "launcher" }),
 	-- Address book
 	awful.key({ Modkey, }, "a", function()
-			awful.spawn(Terminal_open("abook"))
+			awful.spawn(Terminal_open(Utility.address_book))
 		end,
-		{ description = "Open an address book (abook)", group = "launcher" }),
+		{ description = "Open an address book (" .. Utility.address_book .. ")", group = "launcher" }),
 	-- Music player
 	awful.key({ Modkey, Modkey2 }, "p", function()
-			awful.spawn(Terminal_open("ncmpcpp"))
+			awful.spawn(Terminal_open(Utility.music_player))
 		end,
-		{ description = "Open a music player (ncmpcpp)", group = "launcher" }),
+		{ description = "Open a music player (" .. Utility.music_player .. ")", group = "launcher" }),
 	-- System monitor
 	awful.key({ Modkey, Modkey2, }, "s", function()
-			awful.spawn(Terminal_open("btop"))
+			awful.spawn(Terminal_open(Utility.system_monitor))
 		end,
-		{ description = "Open a system monitor (btop)", group = "launcher" }),
+		{ description = "Open a system monitor (" .. Utility.system_monitor .. ")", group = "launcher" }),
 	-- Password Manager
 	awful.key({ Modkey, }, "p", function()
-			awful.spawn("keepassxc")
+			awful.spawn(Utility.password_manager)
 		end,
-		{ description = "Open a password manager (KeePassXC)", group = "launcher" }),
+		{ description = "Open a password manager (" .. Utility.password_manager .. ")", group = "launcher" }),
 	-- Torrent client
 	awful.key({ Modkey, Modkey2 }, "t", function()
-			awful.spawn("transmission-gtk")
+			awful.spawn(Utility.torrent)
 		end,
-		{ description = "Open a torrent client (Transmission)", group = "launcher" }),
-	-- Mount a USB drive
-	awful.key({ Modkey, Modkey2, }, "u", function()
-			awful.spawn.with_shell("dmenumounter")
-		end,
-		{ description = "Mount a usb drive", group = "launcher" }),
-	-- Unmount a USB drive
-	awful.key({ Modkey, Modkey2, "Shift" }, "u", function()
-			awful.spawn.with_shell("dmenuunmounter")
-		end,
-		{ description = "Unmount a usb drive", group = "launcher" }),
+		{ description = "Open a torrent client (" .. Utility.torrent .. ")", group = "launcher" }),
 
 	-- Manually set up displays
 	-- dual displays:
