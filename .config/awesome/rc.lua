@@ -57,7 +57,7 @@ awesome.set_preferred_icon_size(32)
 -- Enable/disable window snapping
 awful.mouse.snap.edge_enabled = true
 
--- Default programs
+-- Default utilities
 Utility = {
 	launcher = "dmenu_run",
 	bookmark = "dmenubookmarkinsert",
@@ -417,7 +417,7 @@ Globalkeys = gears.table.join(
 		{ description = "open a terminal", group = "launcher" }),
 	-- Text Editor
 	awful.key({ Modkey, Modkey2, }, "Return", function()
-			awful.spawn(Terminal_open(Utility.text_editor))
+			awful.spawn(Editor_cmd)
 		end,
 		{ description = "Open a text editor (" .. Utility.text_editor .. ")", group = "launcher" }),
 	-- Browser
