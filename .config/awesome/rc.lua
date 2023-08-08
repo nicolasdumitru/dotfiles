@@ -452,10 +452,6 @@ globalkeys = gears.table.join(
 		end,
 		{ description = "Unmount a usb drive", group = "launcher" }),
 
-	-- Menubar
-	awful.key({ modkey }, "r", function() menubar.show() end,
-		{ description = "show the menubar", group = "launcher" }),
-
 	-- Manually set up displays
 	-- dual displays:
 	awful.key({ modkey }, "d", function()
