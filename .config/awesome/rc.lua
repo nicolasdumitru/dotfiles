@@ -58,10 +58,10 @@ awesome.set_preferred_icon_size(32)
 awful.mouse.snap.edge_enabled = true
 
 -- Default terminal and text editor
-terminal = "alacritty"
-terminal_open = terminal .. " -e " -- ".." should be appended before the name of the opened program
-editor = os.getenv("nvim") or "nvim"
-editor_cmd = terminal .. " -e " .. editor
+Terminal = "alacritty"
+Terminal_open = Terminal .. " -e " -- ".." should be appended before the name of the opened program
+Editor = os.getenv("nvim") or "nvim"
+Editor_cmd = Terminal_open .. Editor
 
 -- Default modkey.
 modkey = "Mod4"
@@ -80,15 +80,15 @@ awful.layout.layouts = {
 -- Create a launcher widget and a main menu
 myawesomemenu = {
 	{ "hotkeys",     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-	{ "manual",      terminal .. " -e man awesome" },
-	{ "edit config", editor_cmd .. " " .. awesome.conffile },
+	{ "manual",      Terminal .. " -e man awesome" },
+	{ "edit config", Editor_cmd .. " " .. awesome.conffile },
 	{ "restart",     awesome.restart },
 	{ "quit",        function() awesome.quit() end },
 }
 
 mymainmenu = awful.menu({
 	items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-		{ "open terminal", terminal }
+		{ "open terminal", Terminal }
 	}
 })
 
@@ -378,12 +378,12 @@ globalkeys = gears.table.join(
 
 	-- Terminal
 	awful.key({ modkey, }, "Return", function()
-			awful.spawn(terminal)
+			awful.spawn(Terminal)
 		end,
 		{ description = "open a terminal", group = "launcher" }),
 	-- Text Editor
 	awful.key({ modkey, modkey2, }, "Return", function()
-			awful.spawn(editor_cmd)
+			awful.spawn(Editor_cmd)
 		end,
 		{ description = "Open a text editor (Neovim)", group = "launcher" }),
 	-- Browser
@@ -398,37 +398,37 @@ globalkeys = gears.table.join(
 		{ description = "Open an email bloatware (Thunderbird)", group = "launcher" }),
 	-- RSS reader
 	awful.key({ modkey, }, "n", function()
-			awful.spawn(terminal_open .. "newsboat")
+			awful.spawn(Terminal_open .. "newsboat")
 		end,
 		{ description = "Open an RSS/Atom feed reader (Newsboat)", group = "launcher" }),
 	-- File manager
 	awful.key({ modkey, }, "/", function()
-			awful.spawn(terminal_open .. "lf")
+			awful.spawn(Terminal_open .. "lf")
 		end,
 		{ description = "Open a file manager (lf)", group = "launcher" }),
 	-- Chat client
 	awful.key({ modkey, modkey2, }, "c", function()
-			awful.spawn(terminal_open .. "profanity")
+			awful.spawn(Terminal_open .. "profanity")
 		end,
 		{ description = "Open a chat client (Profanity)", group = "launcher" }),
 	-- Calendar
 	awful.key({ modkey, }, "c", function()
-			awful.spawn(terminal_open .. "calcurse")
+			awful.spawn(Terminal_open .. "calcurse")
 		end,
 		{ description = "Open a calendar (calcurse)", group = "launcher" }),
 	-- Address book
 	awful.key({ modkey, }, "a", function()
-			awful.spawn(terminal_open .. "abook")
+			awful.spawn(Terminal_open .. "abook")
 		end,
 		{ description = "Open an address book (abook)", group = "launcher" }),
 	-- Music player
 	awful.key({ modkey, modkey2 }, "p", function()
-			awful.spawn(terminal_open .. "ncmpcpp")
+			awful.spawn(Terminal_open .. "ncmpcpp")
 		end,
 		{ description = "Open a music player (ncmpcpp)", group = "launcher" }),
 	-- System monitor
 	awful.key({ modkey, modkey2, }, "s", function()
-			awful.spawn(terminal_open .. "btop")
+			awful.spawn(Terminal_open .. "btop")
 		end,
 		{ description = "Open a system monitor (btop)", group = "launcher" }),
 	-- Password Manager
