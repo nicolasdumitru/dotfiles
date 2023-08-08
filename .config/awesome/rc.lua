@@ -82,7 +82,7 @@ Utility = {
 }
 
 function Terminal_open(name)
-	return Utility.terminal .. " --hold -e " .. Utility.shell .. " -c '" .. name .. " ; " .. Utility.shell .. " -i -s'"
+	return Utility.terminal .. " --hold -e " .. Utility.shell .. " -c " .. "'" .. name .. " ; exec " .. Utility.shell .. " -i -s" .. "'"
 end
 
 Editor_cmd = Terminal_open(Utility.text_editor)
