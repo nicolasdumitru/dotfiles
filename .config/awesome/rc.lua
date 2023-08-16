@@ -67,6 +67,7 @@ Utility = {
 
 	shell = "zsh",
 	terminal = "alacritty",
+	terminal_here = "terminalhere",
 	text_editor = os.getenv("nvim") or "nvim",
 	browser = "librewolf",
 	mail = "thunderbird",
@@ -415,6 +416,11 @@ Globalkeys = gears.table.join(
 			awful.spawn(Utility.terminal)
 		end,
 		{ description = "open a terminal", group = "launcher" }),
+	-- Terminal here
+	awful.key({ Modkey, "Shift", }, "Return", function()
+			awful.spawn.with_shell(Utility.terminal_here)
+		end,
+		{ description = "open a terminal in the working directory of the focused window", group = "launcher" }),
 	-- Text Editor
 	awful.key({ Modkey, Modkey2, }, "Return", function()
 			awful.spawn(Editor_cmd)
