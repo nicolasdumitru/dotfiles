@@ -34,10 +34,6 @@ else
 	alias la='ls -A'
 fi
 
-# sudo to doas transition (just in case)
-#alias sudo='doas'
-#alias sudoedit='doas nvim'
-
 # neovim alias
 alias v='nvim'
 
