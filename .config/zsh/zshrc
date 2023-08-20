@@ -88,11 +88,6 @@ if [ -x /usr/bin/bat ]; then
 	export MANROFFOPT="-c"
 fi
 
-# Git diff with bat
-gitdiff() {
-	/usr/bin/git diff --name-only --relative --diff-filter=d | xargs bat --diff
-}
-
 # Tab width
 tabs -2
 
