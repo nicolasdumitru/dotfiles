@@ -2,6 +2,10 @@
 
 # Config for zsh interactive shells
 
+# ensure that all commands run here are the intended ones
+\unalias -a
+unset -f command 2>> /dev/null
+
 setopt autocd								# change directory just by typing its name
 setopt interactivecomments	# allow comments in interactive mode
 setopt magicequalsubst			# enable filename expansion for arguments of the form ‘anything=expression’
@@ -108,7 +112,6 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Shell builitin commands help
-unalias run-help
 autoload run-help
 HELPDIR=/usr/share/zsh/"${ZSH_VERSION}"/help
 alias help=run-help
@@ -137,7 +140,7 @@ if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/keybindrc ]; then
 	source "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/keybindrc
 fi
 
-# load aliases if existent    
+# load aliases if existent
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc ]; then
 	source "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc
 fi
