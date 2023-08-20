@@ -72,7 +72,7 @@ Utility = {
 	browser = "librewolf",
 	mail = "thunderbird",
 	feed_reader = "newsboat",
-	file_manager = ". listfiles",
+	file_manager = "lfcd",
 	chat = "profanity",
 	calendar = "calcurse",
 	address_book = "abook --config ~/.config/abook/abookrc --datafile ~/personal/addressbook",
@@ -83,7 +83,7 @@ Utility = {
 }
 
 function Terminal_open(name)
-	return Utility.terminal .. " -e " .. Utility.shell .. " -c " .. "'" .. name .. " ; exec " .. Utility.shell .. " -i -s" .. "'"
+	return Utility.terminal .. " -e " .. Utility.shell .. " -i -c " .. "'" .. name .. " ; exec " .. Utility.shell .. " -i -s" .. "'"
 end
 
 Editor_cmd = Terminal_open(Utility.text_editor)
