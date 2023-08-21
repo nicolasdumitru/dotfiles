@@ -118,12 +118,7 @@ alias help=run-help
 
 # Use lf to switch directories
 lfcd () {
-	{
-		\unset -f unalias
-		\unalias unalias
-		\unset -f cd
-		\unalias cd
-	} 2>> /dev/null
+	\umask 177
 	tmp="$(command mktemp)"
 	command lf -last-dir-path="$tmp" "$@"
 	if [ -f "$tmp" ]; then
@@ -133,7 +128,7 @@ lfcd () {
 		\return 1
 	fi
 	if [ -d "$dir" ] && [ "$dir" != "$(pwd)" ]; then
-		cd "$dir" || \return 1
+		\cd "$dir" || \return 1
 	fi
 }
 
