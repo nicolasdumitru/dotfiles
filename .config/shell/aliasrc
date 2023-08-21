@@ -41,7 +41,7 @@ alias v='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/.configuration/ --work-tree=$HOME'
 
 # abook files
-alias abook='abook --config ~/.config/abook/abookrc --datafile ~/personal/addressbook'
+alias abook='abook --config ~/.config/abook/abookrc --datafile ~/personal/abook/addressbook'
 
 # screenshot aliases
 alias screenshot='/usr/bin/maim --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png'
