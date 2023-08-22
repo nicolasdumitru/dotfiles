@@ -118,7 +118,7 @@ alias help=run-help
 
 # Use lf to switch directories
 lfcd () {
-	\umask 177
+	\umask 077
 	tmp="$(command mktemp)"
 	command lf -last-dir-path="$tmp" "$@"
 	if [ -f "$tmp" ]; then
