@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# ensure that all commands run here are the intended ones
+{
+	\unset -f unalias
+	\unalias -a
+	unset -f command
+	unset -f umask
+	unset -f zstyle
+	unset -f bindkey
+} 2>> /dev/null
+# `export` can't be a function name since it is a shell reserved word
+# `unset` function names break the shell
+# `autoload` and `setopt` function names break the shell
+
+# file mode creation mask (default file permission bits)
+umask 077

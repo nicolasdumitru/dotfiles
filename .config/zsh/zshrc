@@ -2,29 +2,71 @@
 
 # Config for zsh interactive shells
 
-# ensure that all commands run here are the intended ones
-\unalias -a
-unset -f command 2>> /dev/null
+# Security
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/securityrc ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/securityrc
+fi
 
+# Plugins:
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/pluginrc ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/pluginrc
+fi
+
+# Security
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/securityrc ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/securityrc
+fi
+
+# ZSH-specific settings
 setopt autocd								# change directory just by typing its name
 setopt interactivecomments	# allow comments in interactive mode
 setopt magicequalsubst			# enable filename expansion for arguments of the form ‘anything=expression’
 setopt notify								# report the status of background jobs immediately
 setopt numericglobsort			# sort filenames numerically when it makes sense
+setopt promptsubst	# command substitution in the prompt
 
-# History configurations
+# history configurations
 setopt hist_expire_dups_first			# delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups					# ignore duplicated commands history list
 setopt hist_ignore_space				# ignore commands that start with space
 setopt hist_verify						# show command with history expansion to user before running it
 setopt share_history					# share command history data
 
-WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
+# ZSH-specific variables
+# don't consider certain characters part of the word
+WORDCHARS=${WORDCHARS//\/}
 
-# hide EOL sign ('%')
-PROMPT_EOL_MARK=""
+# configure `time` format
+TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 
-# enable completion features
+# history configurations
+HISTFILE=~/.local/state/zsh-history
+HISTSIZE=10000000
+SAVEHIST=20000000
+
+# Take advantage of colors ($LS_COLORS for completion as well)
+if [ -x /usr/bin/dircolors ]; then
+	[ -r ~/.dircolors ] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	# begin blink
+	export LESS_TERMCAP_mb=$'\E[1;31m'
+	# begin bold
+	export LESS_TERMCAP_md=$'\E[1;36m'
+	# reset bold/blink
+	export LESS_TERMCAP_me=$'\E[0m'
+	# begin reverse video
+	export LESS_TERMCAP_so=$'\E[01;33m'
+	# reset reverse video
+	export LESS_TERMCAP_se=$'\E[0m'
+	# begin underline
+	export LESS_TERMCAP_us=$'\E[1;32m'
+	# reset underline
+	export LESS_TERMCAP_ue=$'\E[0m'
+
+	zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+	zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+fi
+
+# Enable completion features
 autoload -Uz compinit
 compinit -d ~/.cache/zcompdump
 zstyle ':completion:*:*:*:*:*' menu select
@@ -41,111 +83,68 @@ zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# configure `time` format
-TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
+# Shell builitin commands help
+autoload run-help
+HELPDIR=/usr/share/zsh/"${ZSH_VERSION}"/help
+alias help=run-help
 
+# Prompt configuration
 # configure a colored prompt
-setopt promptsubst	# command substitution in the prompt
 configure_prompt() {
 	PROMPT=$'%B%F{%(#.white.white)}┌──(%F{%(#.red.red)}%n@%m%F{%(#.white.white)})%b-%B[%F{reset}%(6~.%-1~/…/%4~.%5~)%F{%(#.white.white)}]\n└──%(#.%F{red}( # %).%F{white}(%F{red} $ %F{white}%))%b%F{reset} '
 
 	RPROMPT=$'%(?.. %? %F{red}%Bx%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
 }
 
-# use the colored prompt
-color_prompt=yes
+configure_prompt
 
-if [ "$color_prompt" = yes ]; then
-	configure_prompt
-else
-	PROMPT='${debian_chroot:+($debian_chroot)}%n@%m:%~%# '
-fi
-unset color_prompt
+# set a colorless prompt (only uncomment the next line if necessary)
+# PROMPT='$%n@%m:%~%# '
 
-# Print a new line before the prompt, but only if it is not the first line
+# print a new line before the prompt, but only if it is not the first line
 precmd() {
 	if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
 		NEW_LINE_BEFORE_PROMPT=1
 	else
-		print ""
+		command echo
 	fi
 }
 
-# Take advantage of colors ($LS_COLORS for completion as well)
-if [ -x /usr/bin/dircolors ]; then
-	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	export LESS_TERMCAP_mb=$'\E[1;31m'	 # begin blink
-	export LESS_TERMCAP_md=$'\E[1;36m'	 # begin bold
-	export LESS_TERMCAP_me=$'\E[0m'			 # reset bold/blink
-	export LESS_TERMCAP_so=$'\E[01;33m'	 # begin reverse video
-	export LESS_TERMCAP_se=$'\E[0m'			 # reset reverse video
-	export LESS_TERMCAP_us=$'\E[1;32m'	 # begin underline
-	export LESS_TERMCAP_ue=$'\E[0m'			 # reset underline
+# hide EOL sign ('%')
+PROMPT_EOL_MARK=""
 
-	zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-	zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-fi
-
-# If bat is installed, use it to display man pages
-if [ -x /usr/bin/bat ]; then
-	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-	export MANROFFOPT="-c"
-fi
-
-# Tab width
-tabs -2
-
-# Set vi mode
-bindkey -v	#vi key bindings
-
-# Change cursor shape for different vi modes.
+# change cursor shape for different vi modes.
 function zle-keymap-select () {
 	case $KEYMAP in
-		vicmd) echo -ne '\e[1 q';;      # block
-		viins|main) echo -ne '\e[5 q';; # beam
+		vicmd) command echo -ne '\e[1 q';;      # block
+		viins|main) command echo -ne '\e[5 q';; # beam
 	esac
 }
 
 zle -N zle-keymap-select
 
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+# use beam shape cursor on startup
+command echo -ne '\e[5 q'
 
-# Shell builitin commands help
-autoload run-help
-HELPDIR=/usr/share/zsh/"${ZSH_VERSION}"/help
-alias help=run-help
-
-# Use lf to switch directories
-lfcd () {
-	\umask 077
-	tmp="$(command mktemp)"
-	command lf -last-dir-path="$tmp" "$@"
-	if [ -f "$tmp" ]; then
-		dir="$(command cat "$tmp")"
-		command rm -f "$tmp"
-	else
-		\return 1
-	fi
-	if [ -d "$dir" ] && [ "$dir" != "$(pwd)" ]; then
-		\cd "$dir" || \return 1
-	fi
+# use beam shape cursor for each new prompt
+preexec() {
+	command echo -ne '\e[5 q'
 }
 
-# Bind lfcd to ctrl-/ (terminals may not distinguish between ctrl-/ and ctrl-_)
-bindkey -s '^_' 'lfcd\n'
+# Tab width
+command tabs -4
 
-# (Additional) keybindings
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/keybindrc ]; then
-	source "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/keybindrc
+# Load keybindings if existent
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/keybindingrc ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/keybindingrc
 fi
 
-# load aliases if existent
+# Load aliases if existent
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc ]; then
-	source "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc
 fi
 
-# Plugins:
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/pluginrc ]; then
-	source "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/pluginrc
+# Load functions if existent
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/functionrc ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/functionrc
 fi

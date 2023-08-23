@@ -1,9 +1,6 @@
 #!/bin/zsh
 
-# Environmental variables are set here
-[ -f "$HOME/.config/shell/environmentrc" ] && source "$HOME/.config/shell/environmentrc"
-
-# History configurations
-HISTFILE=~/.local/state/zsh-history
-HISTSIZE=10000000
-SAVEHIST=20000000
+# Environment variables are set here.
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/environmentrc ]; then
+	. "$HOME/.config/shell/environmentrc"
+fi

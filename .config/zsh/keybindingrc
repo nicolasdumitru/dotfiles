@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+# Keybindings
+# vi keybindings
+bindkey -v
+
+# do history expansion on space
+bindkey ' ' magic-space
+# delete
+bindkey '^[[3~' delete-char
+# page up
+bindkey '^[[5~' beginning-of-buffer-or-history
+# page down
+bindkey '^[[6~' end-of-buffer-or-history
+
+# bind lfcd to ctrl-/ (terminals may not distinguish between ctrl-/ and ctrl-_)
+bindkey -s '^_' 'lfcd\n'

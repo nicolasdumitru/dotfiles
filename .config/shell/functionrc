@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# POSIX-compliant-syntax functions meant for use in interactive shells.
+
+# Use lf to switch directories
+lfcd () {
+	\umask 077
+	tmp="$(command mktemp)"
+	command lf -last-dir-path="$tmp" "$@"
+	if [ -f "$tmp" ]; then
+		dir="$(command cat "$tmp")"
+		command rm -f "$tmp"
+	else
+		\return 1
+	fi
+	if [ -d "$dir" ] && [ "$dir" != "$(pwd)" ]; then
+		\cd "$dir" || \return 1
+	fi
+}
+
+# nsxiv but cycle through all the images in the current directory
+nsxiv () {
+	command rotdir "${1}" | command nsxiv -i
+}
