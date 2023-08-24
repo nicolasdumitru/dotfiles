@@ -2,5 +2,7 @@
 
 # Environment variables are set here.
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/environmentrc ]; then
-	. "$HOME/.config/shell/environmentrc"
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/environmentrc
+else
+	command echo "environmentrc could not be found"
 fi

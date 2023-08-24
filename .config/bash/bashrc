@@ -2,21 +2,12 @@
 
 # Config for bash interactive shells
 
-# Baseline
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/baselinerc ]; then
-	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/baselinerc
-else
-	command echo "Baseline couldn't be set." 1>&2
-fi
+# Environment variables
+. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/environmentrc
 
-# If not running interactively, don't do anything
+# If not running interactively, don't do anything else
 if [[ $- != *i* ]]; then
 	return 0
-fi
-
-# Environment variables
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/environmentrc ];then
-	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/environmentrc
 fi
 
 # Interactive shell prompt
@@ -27,20 +18,21 @@ PROMPT_COMMAND="command echo"
 # History configuration
 HISTFILE="$XDG_STATE_HOME"/bash/history
 
-# Tab width
-command tabs -4
+# Baseline
+. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/baselinerc
 
-# Load aliases if existent
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc ]; then
-	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc
-fi
+# Load aliases
+. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc
 
-# Load functions if existent
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/functionrc ]; then
-	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/functionrc
-fi
+# Load functions
+. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/functionrc
 
-# keybindings
+# Keybindings
+# vi keybindings
 set -o vi
+# ctrl-l clear
 bind -m vi-command 'Control-l: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'
+
+#lfcd
+bind -m vi-insert '"\C-_":"lfcd\C-m"'

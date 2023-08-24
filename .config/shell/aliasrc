@@ -1,56 +1,31 @@
 #!/bin/sh
 
-# force zsh to show the complete history
-alias history="history 0"
-
-# enable color support of various commands
-if command -v dircolors 1>/dev/null 2>&1; then
-	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias dir='dir --color=auto'
-	alias vdir='vdir --color=auto'
-
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto'
-	alias diff='diff --color=auto'
-	alias ip='ip --color=auto'
-fi
-
 # file operations
-alias cp='cp -ivu'
-alias mv='mv -ivu'
-alias rm='rm -Iv'
-alias shred='shred -v'
-alias rsync='rsync -Prluv'
+alias ls='command ls -l'
+alias la='ls -A'
+alias cp='command cp -i'
+alias mv='command mv -i'
+alias rsync='command rsync -Prluv'
 
-# ls (exa) aliases
-if command -v exa 1>/dev/null 2>&1; then
-	alias ls='exa -lghF --group-directories-first --git --icons --color=always'
-	alias la='ls -a'
-	alias li='ls --time-style=long-iso'
-	alias lia='li -a'
-else
-	alias ls='ls -lh --group-directories-first --color=auto'
-	alias la='ls -A'
-fi
+# networking
+alias ip="command ip -c=auto"
 
 # neovim alias
-alias v='nvim'
-
-# git config files aliases
-alias config='command git --git-dir=$HOME/.configuration/ --work-tree=$HOME'
+alias v="$EDITOR"
 
 # abook files
-alias abook='command abook --config ~/.config/abook/abookrc --datafile ~/personal/abook/addressbook'
+alias abook='command abook --config "${XDG_CONFIG_HOME:-$HOME/.config}"/abook/abookrc --datafile "$HOME"/personal/abook/addressbook'
 
-#keyboard layout aliases
-alias vimlayout='command xmodmap ~/.config/xmodmap'
+# vim keymap
+alias vkm='command xmodmap "${XDG_CONFIG_HOME:-$HOME/.config}"/xmodmap || command  sudo loadkeys "${XDG_CONFIG_HOME:-$HOME/.config}"/ttykeymap'
 
-# screenshot aliases
-alias screenshot='command maim --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png'
-alias screenshot-selection='command maim -s --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png'
+# exa (override ls if exa is installed)
+if command -v exa 1>/dev/null 2>&1; then
+	alias ls='command exa -lghF --group-directories-first --git --icons --color=automatic'
+	alias la='ls -a'
+	alias lt='ls --time-style=long-iso'
+	alias lta='lt -a'
+fi
 
 # personal aliases
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/nqpnqs/shell/aliasrc ]; then
-	. "${XDG_CONFIG_HOME:-$HOME/.config}"/nqpnqs/shell/aliasrc
-fi
+. "${XDG_CONFIG_HOME:-$HOME/.config}"/nqpnqs/shell/aliasrc

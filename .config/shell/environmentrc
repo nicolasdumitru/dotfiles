@@ -2,19 +2,21 @@
 
 # Additions to $PATH:
 export PATH="$PATH:$HOME"/.local/bin
-#export PATH="$PATH:$HOME"/.local/go/bin
 
 # Default programs:
-export EDITOR="nvim"
+if command -v nvim 1>/dev/null 2>&1; then
+	export EDITOR="nvim"
+else
+	export EDITOR="vi"
+fi
 export TERMINAL="alacritty"
-export TERMINAL_PROG="alacritty"
 export BROWSER="librewolf"
 # sudo's askpass has to be set with an absolute path
-SUDO_ASKPASS="$(command -v dmenupass)"
+SUDO_ASKPASS="$(command -v dmenuaskpass)"
 export SUDO_ASKPASS
 # if bat is installed, use it to display man pages
 if command -v bat 1>/dev/null 2>&1; then
-	export MANPAGER="sh -c 'col -bx | command bat -l man -p'"
+	export MANPAGER="sh -c 'col -bx | \command bat -l man -p'"
 	export MANROFFOPT="-c"
 fi
 
@@ -27,6 +29,8 @@ export XDG_CACHE_HOME="$HOME"/.cache
 # Shells:
 # Zsh
 export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
+# Bash
+export BASH_ENV="$XDG_CONFIG_HOME"/bash/bash-profile
 # Readline
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 

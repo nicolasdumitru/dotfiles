@@ -21,5 +21,16 @@ lfcd () {
 
 # image viewer that cycles through all the images in the current directory
 imgv () {
-	command rotdir "${1}" | command nsxiv -i
+	file=''
+	if [ -f "$1" ];then
+		file="$1"
+		shift 1
+	fi
+	command rotdir "$file" | command nsxiv -i "$@" 2>/dev/null
+	unset -v file
+}
+
+# git config files
+config () {
+	command git --git-dir="$HOME"/.configuration/ --work-tree="$HOME" "$@"
 }
