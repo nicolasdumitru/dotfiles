@@ -1,2 +1,5 @@
 #!/bin/bash
-if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/bashrc ]; then
+	. "$XDG_CONFIG_HOME"/bashrc
+fi

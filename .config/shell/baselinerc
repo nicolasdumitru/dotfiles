@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Executing this file with dot (.) sets a safety baseline for using the shell
+
 # ensure that all commands run here are the intended ones
 {
 	\unset -f unalias
@@ -13,5 +15,5 @@
 # `unset` function names break the shell
 # `autoload` and `setopt` function names break the shell
 
-# file mode creation mask (default file permission bits)
+# set the file mode creation mask (default file permission bits)
 umask 077

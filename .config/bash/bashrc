@@ -1,35 +1,46 @@
-#!/bin/bash 
+#!/bin/bash
+
+# Config for bash interactive shells
+
+# Baseline
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/baselinerc ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/baselinerc
+else
+	command echo "Baseline couldn't be set." 1>&2
+fi
 
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+if [[ $- != *i* ]]; then
+	return 0
+fi
 
-# profile section
-# Environmental variables are set here
-[ -f "$HOME/.config/shell/environmentrc" ] && source "$HOME"/.config/shell/environmentrc
+# Environment variables
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/environmentrc ];then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/environmentrc
+fi
 
-# History configurations
-export HISTFILE="$XDG_STATE_HOME"/bash/history
-
-# rc section
 # Interactive shell prompt
 PS1='(\u@\h)-[\W]-( \$ ) '
 PS2='> '
-PROMPT_COMMAND="echo"
-# }
+PROMPT_COMMAND="command echo"
 
-# If bat is installed, use it to display man pages
-if [ -x /usr/bin/bat ]; then
-	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-	export MANROFFOPT="-c"
+# History configuration
+HISTFILE="$XDG_STATE_HOME"/bash/history
+
+# Tab width
+command tabs -4
+
+# Load aliases if existent
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc
 fi
 
-# tab width
-tabs -2
+# Load functions if existent
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/functionrc ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/functionrc
+fi
 
 # keybindings
 set -o vi
 bind -m vi-command 'Control-l: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'
-
-# load aliases if existent    
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "$HOME"/.config/shell/aliasrc

@@ -5,6 +5,7 @@
 # Use lf to switch directories
 lfcd () {
 	\umask 077
+
 	tmp="$(command mktemp)"
 	command lf -last-dir-path="$tmp" "$@"
 	if [ -f "$tmp" ]; then
@@ -18,7 +19,7 @@ lfcd () {
 	fi
 }
 
-# nsxiv but cycle through all the images in the current directory
-nsxiv () {
+# image viewer that cycles through all the images in the current directory
+imgv () {
 	command rotdir "${1}" | command nsxiv -i
 }

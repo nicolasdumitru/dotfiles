@@ -13,7 +13,7 @@ export BROWSER="librewolf"
 SUDO_ASKPASS="$(command -v dmenupass)"
 export SUDO_ASKPASS
 # if bat is installed, use it to display man pages
-if command -vp bat 1>/dev/null 2>&1; then
+if command -v bat 1>/dev/null 2>&1; then
 	export MANPAGER="sh -c 'col -bx | command bat -l man -p'"
 	export MANROFFOPT="-c"
 fi

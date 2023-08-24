@@ -2,68 +2,14 @@
 
 # Config for zsh interactive shells
 
-# Security
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/securityrc ]; then
-	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/securityrc
+# Baseline
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/baselinerc ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/baselinerc
 fi
 
 # Plugins:
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/pluginrc ]; then
 	. "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/pluginrc
-fi
-
-# Security
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/securityrc ]; then
-	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/securityrc
-fi
-
-# ZSH-specific settings
-setopt autocd								# change directory just by typing its name
-setopt interactivecomments	# allow comments in interactive mode
-setopt magicequalsubst			# enable filename expansion for arguments of the form ‘anything=expression’
-setopt notify								# report the status of background jobs immediately
-setopt numericglobsort			# sort filenames numerically when it makes sense
-setopt promptsubst	# command substitution in the prompt
-
-# history configurations
-setopt hist_expire_dups_first			# delete duplicates first when HISTFILE size exceeds HISTSIZE
-setopt hist_ignore_dups					# ignore duplicated commands history list
-setopt hist_ignore_space				# ignore commands that start with space
-setopt hist_verify						# show command with history expansion to user before running it
-setopt share_history					# share command history data
-
-# ZSH-specific variables
-# don't consider certain characters part of the word
-WORDCHARS=${WORDCHARS//\/}
-
-# configure `time` format
-TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
-
-# history configurations
-HISTFILE=~/.local/state/zsh-history
-HISTSIZE=10000000
-SAVEHIST=20000000
-
-# Take advantage of colors ($LS_COLORS for completion as well)
-if [ -x /usr/bin/dircolors ]; then
-	[ -r ~/.dircolors ] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	# begin blink
-	export LESS_TERMCAP_mb=$'\E[1;31m'
-	# begin bold
-	export LESS_TERMCAP_md=$'\E[1;36m'
-	# reset bold/blink
-	export LESS_TERMCAP_me=$'\E[0m'
-	# begin reverse video
-	export LESS_TERMCAP_so=$'\E[01;33m'
-	# reset reverse video
-	export LESS_TERMCAP_se=$'\E[0m'
-	# begin underline
-	export LESS_TERMCAP_us=$'\E[1;32m'
-	# reset underline
-	export LESS_TERMCAP_ue=$'\E[0m'
-
-	zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-	zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 fi
 
 # Enable completion features
@@ -86,7 +32,27 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # Shell builitin commands help
 autoload run-help
 HELPDIR=/usr/share/zsh/"${ZSH_VERSION}"/help
-alias help=run-help
+
+# Baseline
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/baselinerc ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/baselinerc
+else
+	command echo "Baseline couldn't be set." 1>&2
+fi
+
+# ZSH-specific settings
+# change directory just by typing its name
+setopt autocd
+# allow comments in interactive mode
+setopt interactivecomments
+# enable filename expansion for arguments of the form ‘anything=expression’
+setopt magicequalsubst
+# report the status of background jobs immediately
+setopt notify
+# sort filenames numerically when it makes sense
+setopt numericglobsort
+# command substitution in the prompt
+setopt promptsubst
 
 # Prompt configuration
 # configure a colored prompt
@@ -131,13 +97,56 @@ preexec() {
 	command echo -ne '\e[5 q'
 }
 
+# ZSH-specific variables
+# don't consider certain characters part of the word
+WORDCHARS=${WORDCHARS//\/}
+
+# configure `time` format
+TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
+
+# Take advantage of colors ($LS_COLORS for completion as well)
+if command -v dircolors 1>/dev/null 2>&1; then
+	[ -r ~/.dircolors ] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	# begin blink
+	export LESS_TERMCAP_mb=$'\E[1;31m'
+	# begin bold
+	export LESS_TERMCAP_md=$'\E[1;36m'
+	# reset bold/blink
+	export LESS_TERMCAP_me=$'\E[0m'
+	# begin reverse video
+	export LESS_TERMCAP_so=$'\E[01;33m'
+	# reset reverse video
+	export LESS_TERMCAP_se=$'\E[0m'
+	# begin underline
+	export LESS_TERMCAP_us=$'\E[1;32m'
+	# reset underline
+	export LESS_TERMCAP_ue=$'\E[0m'
+
+	zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+	zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+fi
+
+# History configuration
+# delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_expire_dups_first
+# ignore duplicated commands history list
+setopt hist_ignore_dups
+# ignore commands that start with space
+setopt hist_ignore_space
+# show command with history expansion to user before running it
+setopt hist_verify
+# share command history data
+setopt share_history
+
+HISTFILE=~/.local/state/zsh-history
+HISTSIZE=10000000
+SAVEHIST=20000000
+
 # Tab width
 command tabs -4
 
-# Load keybindings if existent
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/keybindingrc ]; then
-	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/keybindingrc
-fi
+# Builtin command help
+alias help=run-help
 
 # Load aliases if existent
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc ]; then
@@ -147,4 +156,9 @@ fi
 # Load functions if existent
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/functionrc ]; then
 	. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/functionrc
+fi
+
+# Load keybindings if existent
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/keybindingrc ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/keybindingrc
 fi

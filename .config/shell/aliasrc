@@ -4,7 +4,7 @@
 alias history="history 0"
 
 # enable color support of various commands
-if [ -x /usr/bin/dircolors ]; then
+if command -v dircolors 1>/dev/null 2>&1; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 	alias dir='dir --color=auto'
 	alias vdir='vdir --color=auto'
@@ -24,7 +24,7 @@ alias shred='shred -v'
 alias rsync='rsync -Prluv'
 
 # ls (exa) aliases
-if [ -x /usr/bin/exa ]; then
+if command -v exa 1>/dev/null 2>&1; then
 	alias ls='exa -lghF --group-directories-first --git --icons --color=always'
 	alias la='ls -a'
 	alias li='ls --time-style=long-iso'
@@ -38,17 +38,17 @@ fi
 alias v='nvim'
 
 # git config files aliases
-alias config='/usr/bin/git --git-dir=$HOME/.configuration/ --work-tree=$HOME'
+alias config='command git --git-dir=$HOME/.configuration/ --work-tree=$HOME'
 
 # abook files
-alias abook='abook --config ~/.config/abook/abookrc --datafile ~/personal/abook/addressbook'
-
-# screenshot aliases
-alias screenshot='/usr/bin/maim --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png'
-alias screenshot-selection='/usr/bin/maim -s --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png'
+alias abook='command abook --config ~/.config/abook/abookrc --datafile ~/personal/abook/addressbook'
 
 #keyboard layout aliases
-alias vimlayout='/usr/bin/xmodmap ~/.config/xmodmap'
+alias vimlayout='command xmodmap ~/.config/xmodmap'
+
+# screenshot aliases
+alias screenshot='command maim --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png'
+alias screenshot-selection='command maim -s --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png'
 
 # personal aliases
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/nqpnqs/shell/aliasrc ]; then
