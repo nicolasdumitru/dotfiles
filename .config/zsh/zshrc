@@ -7,7 +7,7 @@
 
 # Enable completion features
 autoload -Uz compinit
-compinit -d ~/.cache/zcompdump
+compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}"/zcompdump
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete
