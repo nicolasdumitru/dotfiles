@@ -63,7 +63,7 @@ Utility = {
 	bookmark = "dmenubookmarkinsert",
 	usb_mounter = "dmenumounter",
 	usb_unmounter = "dmenuunmounter",
-	emoji = "dmenuunicode",
+	characters = "dmenucharacters",
 
 	shell = "zsh",
 	terminal = "alacritty",
@@ -74,7 +74,7 @@ Utility = {
 	feed_reader = "newsboat",
 	file_manager = "lfcd",
 	chat = "profanity",
-	calendar = "calcurse",
+	organizer = "calcurse",
 	address_book = "abook",
 	music_player = "ncmpcpp",
 	system_monitor = "btop",
@@ -405,11 +405,11 @@ Globalkeys = gears.table.join(
 			awful.spawn.with_shell(Utility.usb_unmounter)
 		end,
 		{ description = "Unmount a usb drive", group = "launcher" }),
-	-- Emoji utility
-	awful.key({ Modkey, }, "e", function()
-			awful.spawn(Utility.emoji)
+	-- Characters utility
+	awful.key({ Modkey, }, "c", function()
+			awful.spawn(Utility.characters)
 		end,
-		{ description = "emoji - copy an emoji", group = "launcher" }),
+		{ description = "characters - copy a characters", group = "launcher" }),
 
 	-- Terminal
 	awful.key({ Modkey, }, "Return", function()
@@ -451,11 +451,11 @@ Globalkeys = gears.table.join(
 			awful.spawn(Terminal_open(Utility.chat))
 		end,
 		{ description = "Open a chat client (" .. Utility.chat .. ")", group = "launcher" }),
-	-- Calendar
-	awful.key({ Modkey, }, "c", function()
-			awful.spawn(Terminal_open(Utility.calendar))
+	-- Organizer
+	awful.key({ Modkey, }, "o", function()
+			awful.spawn(Terminal_open(Utility.organizer))
 		end,
-		{ description = "Open a calendar (" .. Utility.calendar .. ")", group = "launcher" }),
+		{ description = "Open an organizer/calendar (" .. Utility.organizer .. ")", group = "launcher" }),
 	-- Address book
 	awful.key({ Modkey, }, "a", function()
 			awful.spawn(Terminal_open(Utility.address_book))
