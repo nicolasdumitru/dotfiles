@@ -859,3 +859,6 @@ awful.spawn.with_shell("/usr/bin/mpd &")
 
 --Keyboard layout (with Xmodmap):
 awful.spawn.with_shell("/usr/bin/xmodmap ~/.config/xmodmap")
+
+--Wallpaper (feh)
+awful.spawn.with_shell('command feh --no-fehbg --randomize --bg-fill "$HOME"/pictures/wallpapers/gruvbox')
