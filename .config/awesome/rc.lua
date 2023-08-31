@@ -497,7 +497,7 @@ Globalkeys = gears.table.join(
 		{ description = "Lock the screen", group = "screen" }),
 	-- Take a screenshot
 	awful.key({}, "Print", function()
-			awful.spawn.with_shell("screenshot full")
+			awful.spawn.with_shell("screenshot -n full")
 		end,
 		{ description = "Take a screenshot", group = "screen" }),
 
