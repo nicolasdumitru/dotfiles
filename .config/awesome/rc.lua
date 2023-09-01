@@ -64,6 +64,10 @@ Utility = {
 	usb_mounter = "dmenumounter",
 	usb_unmounter = "dmenuunmounter",
 	characters = "dmenucharacters",
+	screenshot = {
+		full = "screenshot -n full",
+		interactive = "dmenuscreenshot",
+	},
 
 	shell = "zsh",
 	terminal = "alacritty",
@@ -497,16 +501,15 @@ Globalkeys = gears.table.join(
 		{ description = "Lock the screen", group = "screen" }),
 	-- Take a screenshot
 	awful.key({}, "Print", function()
-			awful.spawn.with_shell("screenshot -n full")
+			awful.spawn.with_shell(Utility.screenshot.full)
 		end,
-		{ description = "Take a screenshot", group = "screen" }),
+		{ description = "Take a full screenshot (all screens)", group = "screen" }),
 
-	-- Take a selection screenshot
+	-- Choose a screenshot type
 	awful.key({ "Shift", }, "Print", function()
-			awful.spawn.with_shell(
-				"/usr/bin/maim -s --format=png --quality 10 ~/pictures/screenshots/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png")
+			awful.spawn.with_shell(Utility.screenshot.interactive)
 		end,
-		{ description = "Take a selection screenshot", group = "screen" }),
+		{ description = "Choose what kind of screenshot to take", group = "screen" }),
 
 	-- Volume control
 	awful.key({ Modkey, }, "=", function()
