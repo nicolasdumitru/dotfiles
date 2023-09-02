@@ -5,18 +5,22 @@ export PATH="$PATH:$HOME"/.local/bin
 
 # Default programs:
 if command -v nvim 1>/dev/null 2>&1; then
-	export EDITOR="nvim"
+	EDITOR="$(command -v nvim)"
+	export EDITOR
 else
-	export EDITOR="vi"
+	EDITOR="$(command -v vi)"
+	export EDITOR
 fi
-export TERMINAL="alacritty"
-export BROWSER="librewolf"
+TERMINAL="$(command -v alacritty)"
+export TERMINAL
+BROWSER="$(command -v librewolf)"
+export BROWSER
 # sudo's askpass has to be set with an absolute path
 SUDO_ASKPASS="$(command -v dmenuaskpass)"
 export SUDO_ASKPASS
 # if bat is installed, use it to display man pages
 if command -v bat 1>/dev/null 2>&1; then
-	export MANPAGER="sh -c 'col -bx | \command bat -l man -p'"
+	export MANPAGER="sh -c 'col -bx | command bat -l man -p'"
 	export MANROFFOPT="-c"
 fi
 
