@@ -18,9 +18,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
--- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
+-- {{{ Error handling Check if awesome encountered an error during startup and fell back to another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
 	naughty.notify({
 		preset = naughty.config.presets.critical,
@@ -490,13 +488,13 @@ Globalkeys = gears.table.join(
 	-- dual displays:
 	awful.key({ Modkey }, "d", function()
 			awful.spawn.with_shell(
-				"/usr/bin/xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
+				"command xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
 		end,
 		{ description = "Switch to the dual screen setup", group = "screen" }),
 
 	-- Lock the screen
 	awful.key({ Modkey }, "Escape", function()
-			awful.spawn("/usr/bin/slock")
+			awful.spawn("command slock")
 		end,
 		{ description = "Lock the screen", group = "screen" }),
 	-- Take a screenshot
@@ -513,35 +511,35 @@ Globalkeys = gears.table.join(
 
 	-- Volume control
 	awful.key({ Modkey, }, "=", function()
-		awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%")
+		awful.spawn.with_shell("command pactl set-sink-volume @DEFAULT_SINK@ +5%")
 	end),
 	awful.key({ Modkey }, "-", function()
-		awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%")
+		awful.spawn.with_shell("command pactl set-sink-volume @DEFAULT_SINK@ -5%")
 	end),
 	awful.key({ Modkey }, "BackSpace", function()
-		awful.spawn.with_shell("/usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle")
+		awful.spawn.with_shell("command pactl set-sink-mute @DEFAULT_SINK@ toggle")
 	end),
 	awful.key({}, "XF86AudioRaiseVolume", function()
-		awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%")
+		awful.spawn.with_shell("command pactl set-sink-volume @DEFAULT_SINK@ +5%")
 	end),
 	awful.key({}, "XF86AudioLowerVolume", function()
-		awful.spawn.with_shell("/usr/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%")
+		awful.spawn.with_shell("command pactl set-sink-volume @DEFAULT_SINK@ -5%")
 	end),
 	awful.key({}, "XF86AudioMute", function()
-		awful.spawn.with_shell("/usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle")
+		awful.spawn.with_shell("command pactl set-sink-mute @DEFAULT_SINK@ toggle")
 	end),
 	-- Brightness control
 	awful.key({}, "XF86MonBrightnessUp", function()
-		awful.spawn.with_shell("/usr/bin/brightnessctl set +10%")
+		awful.spawn.with_shell("command brightnessctl set +10%")
 	end),
 	awful.key({}, "XF86MonBrightnessDown", function()
-		awful.spawn.with_shell("/usr/bin/brightnessctl set 10%-")
+		awful.spawn.with_shell("command brightnessctl set 10%-")
 	end),
 	awful.key({ Modkey, Modkey2 }, "=", function()
-		awful.spawn.with_shell("/usr/bin/brightnessctl set +10%")
+		awful.spawn.with_shell("command brightnessctl set +10%")
 	end),
 	awful.key({ Modkey, Modkey2 }, "-", function()
-		awful.spawn.with_shell("/usr/bin/brightnessctl set 10%-")
+		awful.spawn.with_shell("command brightnessctl set 10%-")
 	end),
 
 	--Move systray to another monitor
@@ -849,19 +847,19 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --Autostart apps
 --Start in dual monitor mode by default
 awful.spawn.with_shell(
-	"/usr/bin/xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
+	"command xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
 
 --Compositor (picom):
-awful.spawn.with_shell("/usr/bin/picom &")
+awful.spawn.with_shell("command picom &")
 
 --Internet connection tray applet (nm-applet):
-awful.spawn.with_shell("/usr/bin/nm-applet &")
+awful.spawn.with_shell("command nm-applet &")
 
 --Music daemon
-awful.spawn.with_shell("/usr/bin/mpd &")
+awful.spawn.with_shell("command mpd &")
 
 --Keyboard layout (with Xmodmap):
-awful.spawn.with_shell("/usr/bin/xmodmap ~/.config/xmodmap")
+awful.spawn.with_shell("command xmodmap ~/.config/xmodmap")
 
 --Wallpaper (feh)
 awful.spawn.with_shell('command feh --no-fehbg --randomize --bg-fill "$HOME"/pictures/wallpapers/gruvbox')
