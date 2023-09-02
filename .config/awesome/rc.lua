@@ -63,8 +63,8 @@ Utility = {
 	usb_unmounter = "dmenuunmounter",
 	characters = "dmenucharacters",
 	screenshot = {
-		full = "screenshot -n full",
-		interactive = "dmenuscreenshot",
+		full = "screenshot -n full 1>/var/log/nick/screenshot 2>&1",
+		interactive = "dmenuscreenshot 1>/var/log/nick/dmenuscreenshot 2>&1",
 	},
 
 	shell = "zsh",
