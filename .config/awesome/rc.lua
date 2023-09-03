@@ -494,7 +494,7 @@ Globalkeys = gears.table.join(
 
 	-- Lock the screen
 	awful.key({ Modkey }, "Escape", function()
-			awful.spawn("command slock")
+			awful.spawn("slock")
 		end,
 		{ description = "Lock the screen", group = "screen" }),
 	-- Take a screenshot
@@ -846,8 +846,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 --Autostart apps
 --Start in dual monitor mode by default
-awful.spawn.with_shell(
-	"command xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
+awful.spawn.with_shell("command xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
 
 --Compositor (picom):
 awful.spawn.with_shell("command picom &")
