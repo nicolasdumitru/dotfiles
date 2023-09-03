@@ -4,19 +4,7 @@
 
 # Use lf to switch directories
 lfcd () {
-	\umask 077
-
-	tmp="$(command mktemp)"
-	command lf -last-dir-path="$tmp" "$@"
-	if [ -f "$tmp" ]; then
-		dir="$(command cat "$tmp")"
-		command rm -f "$tmp"
-	else
-		\return 1
-	fi
-	if [ -d "$dir" ] && [ "$dir" != "$(pwd)" ]; then
-		\cd "$dir" || \return 1
-	fi
+	\cd "$(command lf -print-last-dir "$@")"
 }
 
 # image viewer that cycles through all the images in the current directory
