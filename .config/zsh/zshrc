@@ -2,8 +2,15 @@
 
 # Config for zsh interactive shells
 
-# Plugins:
-. "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/pluginrc
+# antidote
+# load antidote
+. "${XDG_DATA_HOME:-$HOME/.local/share}"/antidote-zsh-plugin-manager/antidote.zsh
+
+# initialize plugins
+antidote load
+
+# Plugin configurations
+. "${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}"/plugin-config/zsh-syntax-highlighting
 
 # Enable completion features
 autoload -Uz compinit
