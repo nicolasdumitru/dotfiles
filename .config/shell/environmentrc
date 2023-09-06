@@ -24,22 +24,14 @@ if command -v bat 1>/dev/null 2>&1; then
 	export MANROFFOPT="-c"
 fi
 
-# XDG user directories:
+# User directories:
+# XDG user directories
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_DATA_HOME="$HOME"/.local/share
 export XDG_STATE_HOME="$HOME"/.local/state
 export XDG_CACHE_HOME="$HOME"/.cache
-
-# Personal user directories:
+# Personal user directories
 export USER_BIN_HOME="$HOME"/.local/bin
-
-# Shells:
-# Zsh
-export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
-# Bash
-export BASH_ENV="$XDG_CONFIG_HOME"/bash/bash-profile
-# Readline
-export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 
 # Programming languages:
 #Rust

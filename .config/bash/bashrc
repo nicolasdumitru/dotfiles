@@ -1,14 +1,22 @@
 #!/bin/bash
 
-# Config for bash interactive shells
+# Config for bash shells
+
+# All bash shells:
 
 # Environment variables
+# Shared (these must be loaded first)
 . "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/environmentrc
+# Bash-specific
+export BASH_ENV="${XDG_CONFIG_HOME:-$HOME/.config}"/bash/bash-profile
+export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}"/readline/inputrc
 
 # If not running interactively, don't do anything else
 if [[ $- != *i* ]]; then
 	return 0
 fi
+
+# Interactive bash shells only:
 
 # Interactive shell prompt
 PS1='(\u@\h)-[\W]-( \$ ) '
