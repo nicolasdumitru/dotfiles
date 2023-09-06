@@ -30,6 +30,7 @@ theme.border_focus  = "#fe8019"
 theme.border_marked = "#fb4934"
 
 theme.hotkeys_modifiers_fg = theme.fg_normal
+theme.taglist_fg_occupied = "#83a598"
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
