@@ -2,6 +2,7 @@
 
 # Additions to $PATH:
 export PATH="$PATH:$HOME"/.local/bin
+export PATH="$PATH:$HOME"/.local/share/python/bin
 
 # Default programs:
 if command -v nvim 1>/dev/null 2>&1; then
