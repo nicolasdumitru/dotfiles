@@ -33,6 +33,7 @@ export XDG_CACHE_HOME="$HOME"/.cache
 # Personal user directories
 export PERSONAL_KEYS_HOME="$HOME"/0-keys
 export PERSONAL_BIN_HOME="$HOME"/.local/bin
+export PERSONAL_DATA_HOME="$HOME"/personal
 
 # Programming languages:
 #Rust
