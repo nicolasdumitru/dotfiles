@@ -10,14 +10,17 @@ alias rsync='command rsync -Prluv'
 # networking
 alias ip="command ip -c=auto"
 
-# neovim alias
+# editor
 alias v="$EDITOR"
 
-# abook files
+# abook
 alias abook='command abook --config "${XDG_CONFIG_HOME:-$HOME/.config}"/abook/abookrc --datafile "$HOME"/personal/abook/addressbook'
 
-# vim keymap
-alias vkm='command xmodmap "${XDG_CONFIG_HOME:-$HOME/.config}"/xmodmap || command  sudo loadkeys "${XDG_CONFIG_HOME:-$HOME/.config}"/ttykeymap'
+# mbsync
+alias mbsync='command mbsync --config "${PERSONAL_DATA_HOME:-$HOME/personal}"/isync/mbsyncrc'
+
+# vim keybindings
+alias vkb='command xmodmap "${XDG_CONFIG_HOME:-$HOME/.config}"/xmodmap || command  sudo loadkeys "${XDG_CONFIG_HOME:-$HOME/.config}"/ttykeymap'
 
 # exa (override ls if exa is installed)
 if command -v exa 1>/dev/null 2>&1; then
