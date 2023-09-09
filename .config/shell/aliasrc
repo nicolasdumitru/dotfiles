@@ -22,9 +22,9 @@ alias mbsync='command mbsync --config "${PERSONAL_DATA_HOME:-$HOME/personal}"/is
 # vim keybindings
 alias vkb='command xmodmap "${XDG_CONFIG_HOME:-$HOME/.config}"/xmodmap || command  sudo loadkeys "${XDG_CONFIG_HOME:-$HOME/.config}"/ttykeymap'
 
-# exa (override ls if exa is installed)
-if command -v exa 1>/dev/null 2>&1; then
-	alias ls='command exa -lghF --group-directories-first --git --icons --color=automatic'
+# eza (override ls if eza is installed)
+if command -v eza 1>/dev/null 2>&1; then
+	alias ls='command eza -lghF --group-directories-first --git --icons --color=automatic'
 	alias la='ls -a'
 	alias lt='ls --time-style=long-iso'
 	alias lta='lt -a'
