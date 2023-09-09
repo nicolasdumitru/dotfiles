@@ -11,7 +11,7 @@ alias rsync='command rsync -Prluv'
 alias ip="command ip -c=auto"
 
 # editor
-alias v="$EDITOR"
+alias e='$EDITOR'
 
 # abook
 alias abook='command abook --config "${XDG_CONFIG_HOME:-$HOME/.config}"/abook/abookrc --datafile "$HOME"/personal/abook/addressbook'
@@ -29,6 +29,3 @@ if command -v eza 1>/dev/null 2>&1; then
 	alias lt='ls --time-style=long-iso'
 	alias lta='lt -a'
 fi
-
-# personal aliases
-. "${XDG_CONFIG_HOME:-$HOME/.config}"/nqpnqs/shell/aliasrc
