@@ -66,6 +66,10 @@ Utility = {
 		full = "screenshot -n full 1>/var/log/nick/screenshot 2>&1",
 		interactive = "dmenuscreenshot 1>/var/log/nick/dmenuscreenshot 2>&1",
 	},
+	display = {
+		dual = "displayctl -n dual 1>/var/log/nick/screenshot 2>&1",
+		interactive = "dmenudisplayctl 1>/var/log/nick/screenshot 2>&1"
+	},
 
 	shell = "zsh",
 	terminal = "alacritty",
@@ -85,7 +89,8 @@ Utility = {
 }
 
 function Terminal_open(name)
-	return Utility.terminal .. " -e " .. Utility.shell .. " -i -c " .. "'" .. name .. " ; exec " .. Utility.shell .. " -i -s" .. "'"
+	return Utility.terminal ..
+	" -e " .. Utility.shell .. " -i -c " .. "'" .. name .. " ; exec " .. Utility.shell .. " -i -s" .. "'"
 end
 
 Editor_cmd = Terminal_open(Utility.text_editor)
@@ -412,6 +417,16 @@ Globalkeys = gears.table.join(
 			awful.spawn(Utility.characters)
 		end,
 		{ description = "characters - copy a characters", group = "launcher" }),
+	-- Configure dual displays
+	awful.key({ Modkey, }, "d", function()
+			awful.spawn.with_shell(Utility.display.dual)
+		end,
+		{ description = "Switch to the dual screen setup", group = "screen" }),
+	-- Interactive displays utility
+	awful.key({ Modkey, "Shift", }, "d", function()
+			awful.spawn(Utility.display.interactive)
+		end,
+		{ description = "characters - copy a characters", group = "launcher" }),
 
 	-- Terminal
 	awful.key({ Modkey, }, "Return", function()
@@ -483,14 +498,6 @@ Globalkeys = gears.table.join(
 			awful.spawn(Utility.torrent)
 		end,
 		{ description = "Open a torrent client (" .. Utility.torrent .. ")", group = "launcher" }),
-
-	-- Manually set up displays
-	-- dual displays:
-	awful.key({ Modkey }, "d", function()
-			awful.spawn.with_shell(
-				"command xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
-		end,
-		{ description = "Switch to the dual screen setup", group = "screen" }),
 
 	-- Lock the screen
 	awful.key({ Modkey }, "Escape", function()
@@ -846,7 +853,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 --Autostart apps
 --Start in dual monitor mode by default
-awful.spawn.with_shell("command xrandr --output eDP-1 --mode 1920x1080 --refresh 144 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --refresh 144 --rotate normal --left-of eDP-1")
+awful.spawn.with_shell(Utility.display.dual)
 
 --Compositor (picom):
 awful.spawn.with_shell("command picom &")
