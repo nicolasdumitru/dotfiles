@@ -2,12 +2,12 @@
 
 # POSIX-compliant-syntax functions meant for use in interactive shells.
 
-# lfcd - directory structure navigation with lf
+# lfcd - file system navigation with lf
 lfcd () {
 	cd "$(command lf -print-last-dir "$@")" || return 1
 }
 
-# fzfcd - fuzzy finder directory structure navigation
+# fzfcd - fuzzy finder file system navigation
 fzfcd () {
 	cd "$(command find . -type d -name "*" -print | command fzf --scheme=path --preview='command ls {}' "$@")" || return 1
 }

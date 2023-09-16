@@ -13,5 +13,7 @@ bindkey '^[[5~' beginning-of-buffer-or-history
 # page down
 bindkey '^[[6~' end-of-buffer-or-history
 
-# bind lfcd to ctrl-/ (terminals may not distinguish between ctrl-/ and ctrl-_)
-bindkey -s '^_' 'lfcd\n'
+# lfcd - ctrl-o
+bindkey -s '^o' 'lfcd\n'
+# fzfcd - ctrl-/ (terminals may not distinguish between ctrl-/ and ctrl-_)
+bindkey -s '^_' 'fzfcd\n'
