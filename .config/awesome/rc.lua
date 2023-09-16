@@ -417,7 +417,7 @@ Globalkeys = gears.table.join(
 	awful.key({ Modkey, }, "c", function()
 			awful.spawn(Utility.characters)
 		end,
-		{ description = "characters - copy a characters", group = "launcher" }),
+		{ description = "characters - copy a unicode character/emoji/glyph etc", group = "launcher" }),
 	-- Configure dual displays
 	awful.key({ Modkey, }, "d", function()
 			awful.spawn.with_shell(Utility.display.dual)
@@ -427,7 +427,7 @@ Globalkeys = gears.table.join(
 	awful.key({ Modkey, "Shift", }, "d", function()
 			awful.spawn(Utility.display.interactive)
 		end,
-		{ description = "characters - copy a characters", group = "launcher" }),
+		{ description = "configure displays interactvely", group = "launcher" }),
 
 	-- Terminal
 	awful.key({ Modkey, }, "Return", function()
