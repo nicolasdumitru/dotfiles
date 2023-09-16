@@ -2,13 +2,14 @@
 
 # POSIX-compliant-syntax functions meant for use in interactive shells.
 
-# Use lf to switch directories
+# lfcd - directory structure navigation with lf
 lfcd () {
-	\cd "$(command lf -print-last-dir "$@")" || return 1
+	cd "$(command lf -print-last-dir "$@")" || return 1
 }
 
-ffcd () {
-	\cd "$(find . -type d -name "*" -print | fzf --scheme=path "$@")" || return 1
+# fzfcd - fuzzy finder directory structure navigation
+fzfcd () {
+	cd "$(command find . -type d -name "*" -print | command fzf --scheme=path --preview='command ls {}' "$@")" || return 1
 }
 
 # image viewer that cycles through all the images in the current directory
