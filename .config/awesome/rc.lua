@@ -79,6 +79,7 @@ Utility = {
 	mail = "thunderbird",
 	feed_reader = "newsboat",
 	file_manager = "lfcd",
+	directory_fuzzy_finder = "fzfcd",
 	chat = "profanity",
 	organizer = "calcurse",
 	address_book = "abook",
@@ -459,17 +460,22 @@ Globalkeys = gears.table.join(
 		end,
 		{ description = "Open an RSS/Atom feed reader (" .. Utility.feed_reader .. ")", group = "launcher" }),
 	-- File manager
-	awful.key({ Modkey, }, "/", function()
+	awful.key({ Modkey, }, "o", function()
 			awful.spawn(Terminal_open(Utility.file_manager))
 		end,
 		{ description = "Open a file manager (" .. Utility.file_manager .. ")", group = "launcher" }),
+	-- Directory fuzzy finder
+	awful.key({ Modkey, }, "/", function()
+			awful.spawn(Terminal_open(Utility.directory_fuzzy_finder))
+		end,
+		{ description = "Open a directory fuzzy finder (" .. Utility.directory_fuzzy_finder .. ")", group = "launcher" }),
 	-- Chat client
 	awful.key({ Modkey, Modkey2, }, "c", function()
 			awful.spawn(Terminal_open(Utility.chat))
 		end,
 		{ description = "Open a chat client (" .. Utility.chat .. ")", group = "launcher" }),
 	-- Organizer
-	awful.key({ Modkey, }, "o", function()
+	awful.key({ Modkey, Modkey2, }, "o", function()
 			awful.spawn(Terminal_open(Utility.organizer))
 		end,
 		{ description = "Open an organizer/calendar (" .. Utility.organizer .. ")", group = "launcher" }),
