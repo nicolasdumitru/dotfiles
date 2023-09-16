@@ -4,7 +4,11 @@
 
 # Use lf to switch directories
 lfcd () {
-	\cd "$(command lf -print-last-dir "$@")"
+	\cd "$(command lf -print-last-dir "$@")" || return 1
+}
+
+ffcd () {
+	\cd "$(find . -type d -name "*" -print | fzf --scheme=path "$@")" || return 1
 }
 
 # image viewer that cycles through all the images in the current directory
