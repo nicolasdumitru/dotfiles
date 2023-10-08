@@ -3,8 +3,16 @@
 # Config for zsh interactive shells
 
 # antidote
+antidote_home="${XDG_DATA_HOME:-$HOME/.local/share}"/zsh/antidote
+
+if ! [ -d "$antidote_home" ] || ! [ -r "$antidote_home"/antidote.zsh ]; then
+	command rm -rf "$antidote_home"
+	command mkdir -p "$antidote_home"
+	command git clone --depth=1 https://github.com/mattmc3/antidote.git "${antidote_home}"
+fi
+
 # load antidote
-. "${XDG_DATA_HOME:-$HOME/.local/share}"/antidote-zsh-plugin-manager/antidote.zsh
+source "$antidote_home"/antidote.zsh
 
 # initialize plugins
 antidote load
