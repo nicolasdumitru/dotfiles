@@ -7,6 +7,9 @@ alias cp='command cp -i'
 alias mv='command mv -i'
 alias rsync='command rsync -Prluv'
 
+# date
+alias numdate='date "+%Y-%m-%d-%H-%M-%S"'
+
 # networking
 alias ip="command ip -c=auto"
 
