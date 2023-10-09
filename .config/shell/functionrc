@@ -27,3 +27,7 @@ imgv () {
 config () {
 	command git --git-dir="$HOME"/.configuration/ --work-tree="$HOME" "$@"
 }
+
+pconfig () {
+	command git --git-dir="$HOME"/.private-configuration/ --work-tree="$HOME" "$@"
+}
