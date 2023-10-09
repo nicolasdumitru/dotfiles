@@ -16,6 +16,9 @@ alias ip="command ip -c=auto"
 # editor
 alias e='$EDITOR'
 
+# git
+alias g='command git'
+
 # abook
 alias abook='command abook --config "${XDG_CONFIG_HOME:-$HOME/.config}"/abook/abookrc --datafile "$HOME"/personal/abook/addressbook'
 
