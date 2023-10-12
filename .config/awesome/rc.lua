@@ -460,7 +460,7 @@ Globalkeys = gears.table.join(
 		end,
 		{ description = "Open an RSS/Atom feed reader (" .. Utility.feed_reader .. ")", group = "launcher" }),
 	-- File manager
-	awful.key({ Modkey, }, "o", function()
+	awful.key({ Modkey, }, "\\", function()
 			awful.spawn(Terminal_open(Utility.file_manager))
 		end,
 		{ description = "Open a file manager (" .. Utility.file_manager .. ")", group = "launcher" }),
