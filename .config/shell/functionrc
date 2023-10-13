@@ -9,7 +9,7 @@ lfcd () {
 
 # fzfcd - fuzzy finder file system navigation
 fzfcd () {
-	cd "$(command find . -type d -name "*" -print | command fzf --scheme=path --preview='command ls {}' "$@")" || return 1
+	lfcd "$(command find . -type d -name "*" -print | command fzf --scheme=path --preview='command ls {}' "$@")" || return 1
 }
 
 # image viewer that cycles through all the images in the current directory
