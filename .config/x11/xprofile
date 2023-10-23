@@ -1,0 +1,11 @@
+#!/bin/sh
+
+autostart="picom nm-applet dunst"
+
+for program in $autostart; do
+	"$program" &
+done >/dev/null 2>&1
+
+displayctl -n dual 1>/var/log/nick/displayctl 2>&1
+xmodmap ~/.config/xmodmap
+feh --no-fehbg --randomize --bg-fill "$HOME"/pictures/wallpapers/gruvbox

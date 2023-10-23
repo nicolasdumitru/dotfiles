@@ -853,25 +853,3 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
-
---Autostart apps
---Start in dual monitor mode by default
-awful.spawn.with_shell(Utility.display.dual)
-
---Compositor (picom):
-awful.spawn.with_shell("command picom &")
-
---Internet connection tray applet (nm-applet):
-awful.spawn.with_shell("command nm-applet &")
-
---Music daemon
-awful.spawn.with_shell("command mpd &")
-
--- Notification daemon
-awful.spawn.with_shell("command dunst &")
-
---Keyboard layout (with Xmodmap):
-awful.spawn.with_shell("command xmodmap ~/.config/xmodmap")
-
---Wallpaper (feh)
-awful.spawn.with_shell('command feh --no-fehbg --randomize --bg-fill "$HOME"/pictures/wallpapers/gruvbox')
