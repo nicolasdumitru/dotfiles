@@ -1,11 +1,19 @@
 #!/bin/sh
 
-autostart="picom nm-applet dunst"
+# Notification Server
+dunst &
 
-for program in $autostart; do
-	"$program" &
-done >/dev/null 2>&1
-
+# Display setup
 displayctl -n dual 1>/var/log/nick/displayctl 2>&1
-xmodmap ~/.config/xmodmap
+
+# Compositor
+picom &
+
+# Wallpaper
 feh --no-fehbg --randomize --bg-fill "$HOME"/pictures/wallpapers/gruvbox
+
+# Keyboard layout modifications
+xmodmap ~/.config/xmodmap
+
+# Internet connection applet
+nm-applet &
