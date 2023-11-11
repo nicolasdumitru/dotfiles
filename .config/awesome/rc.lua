@@ -461,12 +461,12 @@ Globalkeys = gears.table.join(
 		end,
 		{ description = "Open an RSS/Atom feed reader (" .. Utility.feed_reader .. ")", group = "launcher" }),
 	-- File manager
-	awful.key({ Modkey, }, "\\", function()
+	awful.key({ Modkey, }, "/", function()
 			awful.spawn(Terminal_open(Utility.file_manager))
 		end,
 		{ description = "Open a file manager (" .. Utility.file_manager .. ")", group = "launcher" }),
 	-- Directory fuzzy finder
-	awful.key({ Modkey, }, "/", function()
+	awful.key({ Modkey, }, "\\", function()
 			awful.spawn(Terminal_open(Utility.directory_fuzzy_finder))
 		end,
 		{ description = "Open a directory fuzzy finder (" .. Utility.directory_fuzzy_finder .. ")", group = "launcher" }),
