@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Notification Server
-dunst &
+pidof -sx dunst || dunst &
 
 # Display setup
 displayctl -n dual 1>/var/log/nick/displayctl 2>&1
 
 # Compositor
-picom &
+pidof -sx picom || picom &
 
 # Wallpaper
 feh --no-fehbg --randomize --bg-fill "$HOME"/pictures/wallpapers/gruvbox
@@ -16,4 +16,4 @@ feh --no-fehbg --randomize --bg-fill "$HOME"/pictures/wallpapers/gruvbox
 xmodmap ~/.config/xmodmap
 
 # Internet connection applet
-nm-applet &
+pidof -sx nm-applet || nm-applet &
