@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Additions to $PATH:
-export PATH="$PATH:$HOME"/.local/bin
-export PATH="$PATH:$HOME"/.local/share/python/bin
-
 # Default programs:
 if command -v nvim 1>/dev/null 2>&1; then
 	EDITOR="$(command -v nvim)"
@@ -61,3 +57,7 @@ export WGETRC="$XDG_CONFIG_HOME"/wget/wgetrc
 # GTK
 export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+
+# Additions to $PATH:
+export PATH="$PATH:$HOME"/.local/bin
+export PATH="$PATH:$XDG_DATA_HOME"/python/bin
