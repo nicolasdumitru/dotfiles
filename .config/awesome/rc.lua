@@ -89,7 +89,7 @@ Utility = {
 
 function Terminal_open(name)
 	return Utility.terminal ..
-	" -e " .. Utility.shell .. " -i -c " .. "'" .. name .. " ; exec " .. Utility.shell .. " -i -s" .. "'"
+		" -e " .. Utility.shell .. " -i -c " .. "'" .. name .. " ; exec " .. Utility.shell .. " -i -s" .. "'"
 end
 
 Editor_cmd = Terminal_open(Utility.text_editor)
@@ -446,6 +446,10 @@ Globalkeys = gears.table.join(
 			awful.spawn(Utility.browser)
 		end,
 		{ description = "Open a browser (" .. Utility.browser .. ")", group = "launcher" }),
+	awful.key({ Modkey, }, "e", function()
+			awful.spawn("emacs")
+		end,
+		{ description = "Open GNU Emacs", group = "launcher" }),
 	-- Email client
 	awful.key({ Modkey, Modkey2, }, "m", function()
 			awful.spawn(Utility.mail)
