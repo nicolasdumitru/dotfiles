@@ -61,3 +61,4 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 # Additions to $PATH:
 export PATH="$PATH:$HOME"/.local/bin
 export PATH="$PATH:$XDG_DATA_HOME"/python/bin
+export PATH="$PATH:$XDG_CONFIG_HOME"/emacs/bin
