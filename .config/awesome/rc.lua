@@ -616,34 +616,34 @@ Clientkeys = gears.table.join(
 			if c.floating then
 				c:relative_move(0, 0, 0, -5)
 			else
-				awful.client.incwfact(0.025)
+				awful.client.incwfact(0.02)
 			end
 		end,
-		{ description = "Floating Resize Vertical -", group = "client" }),
+		{ description = "Resize window vertically -", group = "client" }),
 	awful.key({ Modkey, Modkey2 }, "Down", function(c)
 			if c.floating then
 				c:relative_move(0, 0, 0, 5)
 			else
-				awful.client.incwfact(-0.025)
+				awful.client.incwfact(-0.02)
 			end
 		end,
-		{ description = "Floating Resize Vertical +", group = "client" }),
+		{ description = "Resize window vertically +", group = "client" }),
 	awful.key({ Modkey, Modkey2 }, "Left", function(c)
 			if c.floating then
 				c:relative_move(0, 0, -5, 0)
 			else
-				awful.tag.incmwfact(-0.025)
+				awful.tag.incmwfact(-0.02)
 			end
 		end,
-		{ description = "Floating Resize Horizontal -", group = "client" }),
+		{ description = "Resize window horizontally -", group = "client" }),
 	awful.key({ Modkey, Modkey2 }, "Right", function(c)
 			if c.floating then
 				c:relative_move(0, 0, 5, 0)
 			else
-				awful.tag.incmwfact(0.025)
+				awful.tag.incmwfact(0.02)
 			end
 		end,
-		{ description = "Floating Resize Horizontal +", group = "client" }),
+		{ description = "Resize window horizontally +", group = "client" }),
 
 	-- Moving floating windows
 	awful.key({ Modkey, "Shift" }, "Down", function(c)

@@ -127,6 +127,6 @@ theme.awesome_icon = theme_assets.awesome_icon(
 theme.icon_theme = nil
 
 --Vertical split ratio
-theme.master_width_factor = 0.50
+theme.master_width_factor = 0.54
 
 return theme
