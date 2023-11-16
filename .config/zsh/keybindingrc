@@ -13,7 +13,7 @@ bindkey '^[[5~' beginning-of-buffer-or-history
 # page down
 bindkey '^[[6~' end-of-buffer-or-history
 
-# lfcd
-bindkey -s '^[/' 'lfcd\n'
-# fzfcd
-bindkey -s '^[\' 'fzfcd\n'
+# file manager cd
+bindkey -s '^[/' 'fmcd\n'
+# fuzzy finder cd
+bindkey -s '^[?' 'ffcd\n'

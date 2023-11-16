@@ -2,14 +2,14 @@
 
 # POSIX-compliant-syntax functions meant for use in interactive shells.
 
-# lfcd - file system navigation with lf
-lfcd () {
+# fmcd - file system navigation with a file manager
+fmcd () {
 	cd "$(command lf -print-last-dir "$@")" || return 1
 }
 
-# fzfcd - fuzzy finder file system navigation
-fzfcd () {
-	lfcd "$(command fd --type directory --color never | command fzf --tiebreak=length,end --scheme=path --preview='command ls {}' "$@")" || return 1
+# ffcd - fuzzy finder file system navigation
+ffcd () {
+	fmcd "$(command fd --type directory --color never | command fzf --tiebreak=length,end --scheme=path --preview='command ls {}' "$@")" || return 1
 }
 
 # image viewer that cycles through all the images in the current directory

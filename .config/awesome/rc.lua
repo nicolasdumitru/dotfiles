@@ -76,8 +76,8 @@ Utility = {
 	browser = "librewolf",
 	mail = "thunderbird",
 	feed_reader = "newsboat",
-	file_manager = "lfcd",
-	directory_fuzzy_finder = "fzfcd",
+	file_manager = "fmcd",
+	directory_fuzzy_finder = "ffcd",
 	chat = "profanity",
 	organizer = "calcurse",
 	address_book = "abook",
@@ -466,7 +466,7 @@ Globalkeys = gears.table.join(
 		end,
 		{ description = "Open a file manager (" .. Utility.file_manager .. ")", group = "launcher" }),
 	-- Directory fuzzy finder
-	awful.key({ Modkey, }, "\\", function()
+	awful.key({ Modkey, "Shift" }, "/", function()
 			awful.spawn(Terminal_open(Utility.directory_fuzzy_finder))
 		end,
 		{ description = "Open a directory fuzzy finder (" .. Utility.directory_fuzzy_finder .. ")", group = "launcher" }),
