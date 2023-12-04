@@ -2,3 +2,4 @@
 [Default Applications]
 application/pdf=org.pwmt.zathura.desktop
 image/png=nsxiv.desktop
+image/jpeg=nsxiv.desktop
