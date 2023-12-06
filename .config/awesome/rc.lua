@@ -39,7 +39,8 @@ Utility = {
 	},
 	display = {
 		dual = "displayctl -n dual 1>/var/log/nick/displayctl 2>&1",
-		interactive = "dmenudisplayctl 1>/var/log/nick/dmenudisplayctl 2>&1"
+		interactive = "dmenudisplayctl 1>/var/log/nick/dmenudisplayctl 2>&1",
+		temperature = "dmenudisplaytemperature",
 	},
 
 	shell = "zsh",
@@ -473,11 +474,11 @@ Globalkeys = gears.table.join(
 			awful.spawn(Utility.password_manager)
 		end,
 		{ description = "Open a password manager (" .. Utility.password_manager .. ")", group = "launcher" }),
-	-- Torrent client
+	-- Display temperature
 	awful.key({ Modkey, Modkey2 }, "t", function()
-			awful.spawn(Utility.torrent)
+			awful.spawn(Utility.display.temperature)
 		end,
-		{ description = "Open a torrent client (" .. Utility.torrent .. ")", group = "launcher" }),
+		{ description = "Set the display temperature (" .. Utility.display.temperature .. ")", group = "launcher" }),
 
 	-- Lock the screen
 	awful.key({ Modkey }, "Escape", function()
