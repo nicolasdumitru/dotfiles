@@ -34,12 +34,12 @@ Utility = {
 	usb_unmounter = "dmenuunmounter",
 	characters = "dmenucharacters",
 	screenshot = {
-		full = "screenshot -n full 1>/var/log/nick/screenshot 2>&1",
-		interactive = "dmenuscreenshot 1>/var/log/nick/dmenuscreenshot 2>&1",
+		full = "screenshot -n full",
+		interactive = "dmenuscreenshot",
 	},
 	display = {
-		dual = "displayctl -n dual 1>/var/log/nick/displayctl 2>&1",
-		interactive = "dmenudisplayctl 1>/var/log/nick/dmenudisplayctl 2>&1",
+		dual = "displayctl -n dual",
+		interactive = "dmenudisplayctl",
 		temperature = "dmenudisplaytemperature",
 	},
 

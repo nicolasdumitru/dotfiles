@@ -4,7 +4,7 @@
 pidof -sx dunst || dunst &
 
 # Display setup
-displayctl -n dual 1>/var/log/nick/displayctl 2>&1
+displayctl -n dual
 
 # Compositor
 pidof -sx picom || picom &
