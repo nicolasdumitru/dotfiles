@@ -17,3 +17,6 @@ xmodmap ~/.config/xmodmap
 
 # Internet connection applet
 pidof -sx nm-applet || nm-applet &
+
+# Display temperature
+displaytemperature -n default
