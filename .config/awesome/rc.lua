@@ -421,7 +421,7 @@ Globalkeys = gears.table.join(
 		end,
 		{ description = "Open a browser (" .. Utility.browser .. ")", group = "launcher" }),
 	awful.key({ Modkey, }, "e", function()
-			awful.spawn("emacs")
+			awful.spawn("emacsclient -c -a 'emacs'")
 		end,
 		{ description = "Open GNU Emacs", group = "launcher" }),
 	-- Email client
