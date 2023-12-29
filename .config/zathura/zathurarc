@@ -1,0 +1,9 @@
+# Clipboard
+set selection-clipboard clipboard
+
+# Colorscheme
+include ./colorschemes/gruvbox-dark-soft
+
+# Recolor the content
+set recolor "true"
+set recolor-keephue "true"
