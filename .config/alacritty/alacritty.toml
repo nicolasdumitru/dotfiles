@@ -1,0 +1,166 @@
+live_config_reload = false
+
+[env]
+TERM = "alacritty"
+
+[window]
+decorations = "none"
+decorations_theme_variant = "None"
+dynamic_padding = false
+dynamic_title = true
+opacity = 1.0
+startup_mode = "Windowed"
+title = "Alacritty"
+
+[window.dimensions]
+columns = 0
+lines = 0
+
+[window.padding]
+x = 0
+y = 0
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.position]
+x = 0
+y = 0
+
+[scrolling]
+history = 50000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+hide_when_typing = true
+
+[font]
+builtin_box_drawing = true
+size = 12.0
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrains Mono"
+style = "Bold Italic"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.cursor]
+cursor = "#ffffff"
+text = "#282828"
+
+[colors.footer_bar]
+background = "#c5c8c6"
+foreground = "#1d1f21"
+
+[colors.line_indicator]
+background = "None"
+foreground = "None"
+
+[colors.normal]
+black = "#1d2021"
+blue = "#458588"
+cyan = "#689d6a"
+green = "#32db7a"
+magenta = "#b16286"
+red = "#e7143c"
+white = "#ebdbb2"
+yellow = "#fe8019"
+
+[colors.bright]
+black = "#3c3836"
+blue = "#83a598"
+cyan = "#8ec07c"
+green = "#b8bb26"
+magenta = "#d3869b"
+red = "#fb4934"
+white = "#ebdbb2"
+yellow = "#fcae47"
+
+[colors.dim]
+black = "#131415"
+blue = "#556a7d"
+cyan = "#5b7d78"
+green = "#777c44"
+magenta = "#75617b"
+red = "#864343"
+white = "#828482"
+yellow = "#9e824c"
+
+[colors.primary]
+background = "#282828"
+foreground = "#ebdbb2"
+bright_foreground = "#eaeaea"
+dim_foreground = "#828482"
+
+[colors.hints.start]
+background = "#e9ff5e"
+foreground = "#1d1f21"
+
+[colors.hints.end]
+background = "#1d1f21"
+foreground = "#e9ff5e"
+
+[colors.search.matches]
+background = "#504945"
+foreground = "#ebdbb2"
+
+[colors.search.focused_match]
+background = "#fe8019"
+foreground = "#282828"
+
+[colors.selection]
+background = "CellForeground"
+text = "CellBackground"
+
+[colors.vi_mode_cursor]
+cursor = "#ffffff"
+text = "#282828"
+
+[cursor]
+thickness = 0.15
+vi_mode_style = "Block"
+
+[cursor.style]
+blinking = "Off"
+shape = "Beam"
+
+[[keyboard.bindings]]
+chars = "\u0017"
+key = "Back"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Escape"
+mode = "~Search"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+action = "ClearSelection"
+key = "Escape"
+mode = "Vi|~Search"
