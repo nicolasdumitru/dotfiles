@@ -11,8 +11,8 @@ local theme = {}
 
 theme.font          = "JetBrains Mono ExtraBold 9"
 
-theme.bg_normal     = "#1d2021"
-theme.bg_focus      = "#32302f"
+theme.bg_normal     = "#282828"
+theme.bg_focus      = "#3c3836"
 theme.bg_urgent     = "#fb4934"
 theme.bg_minimize   = "#1d2021"
 theme.bg_systray    = theme.bg_normal
