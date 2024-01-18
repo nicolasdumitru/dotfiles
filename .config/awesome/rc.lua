@@ -399,6 +399,11 @@ Globalkeys = gears.table.join(
 			awful.spawn(Utility.display.interactive)
 		end,
 		{ description = "configure displays interactvely", group = "launcher" }),
+	-- Dismiss notifications
+	awful.key({ Modkey, }, "n", function()
+			awful.spawn.with_shell("dunstctl close-all")
+		end,
+		{ description = "Switch to the dual screen setup", group = "screen" }),
 
 	-- Terminal
 	awful.key({ Modkey, }, "Return", function()
