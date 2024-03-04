@@ -10,7 +10,7 @@ else
 fi
 TERMINAL="$(command -v alacritty)"
 export TERMINAL
-BROWSER="$(command -v librewolf)"
+BROWSER="$(command -v chromium)"
 export BROWSER
 # sudo's askpass has to be set with an absolute path
 SUDO_ASKPASS="$(command -v dmenuaskpass)"
