@@ -9,7 +9,7 @@ fmcd () {
 
 # ffcd - fuzzy finder file system navigation
 ffcd () {
-	fmcd "$(command fd --type directory --color never | command fzf --tiebreak=length,end --scheme=path --preview='command ls {}' "$@")" || return 1
+	fmcd "$(command fd --type directory --color never | command fzf --tiebreak=chunk,begin,length --scheme=path --preview='command ls {}' "$@")" || return 1
 }
 
 # image viewer that cycles through all the images in the current directory
