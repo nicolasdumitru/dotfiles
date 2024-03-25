@@ -32,7 +32,7 @@ alias vkb='command xmodmap "${XDG_CONFIG_HOME:-$HOME/.config}"/xmodmap || comman
 
 # eza (override ls if eza is installed)
 if command -v eza 1>/dev/null 2>&1; then
-	alias ls='command eza -lghF --group-directories-first --git --icons --color=automatic'
+	alias ls='command eza -lghXF --group-directories-first --git --icons --color=automatic'
 	alias la='ls -a'
 	alias lt='ls --time-style=long-iso'
 	alias lta='lt -a'
