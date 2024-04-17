@@ -20,6 +20,8 @@ alias e='$EDITOR'
 alias g='command git'
 # git time-stamped snapshot
 alias gtss='command git add . && command git commit -m "$(command date)"'
+# cd to git repository root
+alias cdrr='\cd "$(command git rev-parse --show-toplevel)"'
 
 # abook
 alias abook='command abook --config "${XDG_CONFIG_HOME:-$HOME/.config}"/abook/abookrc --datafile "$HOME"/personal/abook/addressbook'
