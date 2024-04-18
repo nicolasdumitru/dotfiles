@@ -3,12 +3,6 @@
 # Notification Server
 pidof -sx dunst || dunst &
 
-# Display setup
-displayctl -n dual
-
-# Compositor
-pidof -sx picom || picom &
-
 # Wallpaper
 feh --no-fehbg --randomize --bg-fill "$HOME"/pictures/wallpapers/gruvbox
 
@@ -17,6 +11,12 @@ xmodmap ~/.config/xmodmap
 
 # Internet connection applet
 pidof -sx nm-applet || nm-applet &
+
+# Display setup
+displayctl -n dual
+
+# Compositor
+pidof -sx picom || picom &
 
 # Display temperature
 displaytemperature -n default
