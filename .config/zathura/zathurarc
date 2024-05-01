@@ -2,7 +2,7 @@
 set selection-clipboard clipboard
 
 # Colorscheme
-include ./colorschemes/gruvbox-dark-soft
+include ./colorschemes/gruvbox-dark
 
 # Recolor the content
 set recolor "true"
