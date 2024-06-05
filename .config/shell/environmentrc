@@ -47,6 +47,8 @@ export PYTHONUSERBASE="$XDG_DATA_HOME"/python
 # Programs:
 # GPG
 export GNUPGHOME="$PERSONAL_KEYS_HOME"/gnupg
+# Readline
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 # Pass
 export PASSWORD_STORE_DIR="$PERSONAL_KEYS_HOME"/pass
 # Ripgrep
