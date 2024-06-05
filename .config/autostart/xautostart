@@ -22,4 +22,5 @@ pidof -sx nm-applet || nm-applet &
 displaytemperature -n default
 
 # Disable DPMS
-xset -dmps
+xset -dpms
+xset s off
