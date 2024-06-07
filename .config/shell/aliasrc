@@ -1,11 +1,21 @@
 #!/bin/sh
 
 # file operations
-alias ls='command ls -l'
-alias la='ls -A'
 alias cp='command cp -i'
 alias mv='command mv -i'
 alias rsync='command rsync -Prluv'
+
+# ls
+alias ls='command ls -l'
+alias la='ls -A'
+
+# eza (override ls if eza is installed)
+if command -v eza 1>/dev/null 2>&1; then
+	alias ls='command eza --long --grid --header --dereference --classify --group-directories-first --git --icons --color=automatic --icons=automatic'
+	alias la='ls --all'
+	alias lt='ls --time-style=long-iso'
+	alias lta='lt --all'
+fi
 
 # date
 alias numdate='date "+%Y-%m-%d-%H-%M-%S"'
@@ -23,19 +33,11 @@ alias gtss='command git add . && command git commit -m "$(command date)"'
 # cd to git repository root
 alias cdrr='\cd "$(command git rev-parse --show-toplevel)"'
 
-# abook
-alias abook='command abook --config "${XDG_CONFIG_HOME:-$HOME/.config}"/abook/abookrc --datafile "$HOME"/personal/abook/addressbook'
-
 # mbsync
 alias mbsync='command mbsync --config "${PERSONAL_DATA_HOME:-$HOME/personal}"/isync/mbsyncrc'
 
 # vim keybindings
 alias vkb='command xmodmap "${XDG_CONFIG_HOME:-$HOME/.config}"/xmodmap || command  sudo loadkeys "${XDG_CONFIG_HOME:-$HOME/.config}"/ttykeymap'
 
-# eza (override ls if eza is installed)
-if command -v eza 1>/dev/null 2>&1; then
-	alias ls='command eza --long --grid --header --dereference --classify --group-directories-first --git --icons --color=automatic --icons=automatic'
-	alias la='ls --all'
-	alias lt='ls --time-style=long-iso'
-	alias lta='lt --all'
-fi
+# nix
+alias nix-shell='nix-shell --run "$SHELL -i"'
