@@ -4,8 +4,5 @@
 *.search
 *.log
 
-# ZSH
-.config/zsh/.zsh_plugins.zsh
-
 # Configuration bare repository:
 .configuration

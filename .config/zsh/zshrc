@@ -136,6 +136,9 @@ alias help=run-help
 # Show the complete history
 alias history="history 0"
 
+# This is redundant (see zshenv), but necessary for nix-env
+export SHELL="${__SHELL}"
+
 # Load aliases
 . "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc
 
