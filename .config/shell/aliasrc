@@ -11,7 +11,7 @@ alias la='ls -A'
 
 # eza (override ls if eza is installed)
 if command -v eza 1>/dev/null 2>&1; then
-	alias ls='command eza --long --grid --header --dereference --classify --group-directories-first --git --icons --color=automatic --icons=automatic'
+	alias ls='command eza --long --header --dereference --classify --group-directories-first --git --icons --color=automatic --icons=automatic'
 	alias la='ls --all'
 	alias lt='ls --time-style=long-iso'
 	alias lta='lt --all'
