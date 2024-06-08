@@ -36,6 +36,7 @@ config checkout || {
 }
 
 config config --local status.showUntrackedFiles no
+config remote set-url --push origin git@github.com:nicolasdumitru/dotfiles.git
 
 echo
 echo "The configuration files were installed successfully."
