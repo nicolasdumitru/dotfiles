@@ -7,5 +7,6 @@
 
 ## Install
 ```bash
-curl -L https://raw.githubusercontent.com/nicolasdumitru/dotfiles/main/.local/.bin/dotinstall.sh | /bin/sh
+curl -Lo temp https://raw.githubusercontent.com/nicolasdumitru/dotfiles/main/.local/.bin/dotinstall.sh && chmod +x temp && ./temp && rm temp
 ```
+Piping directly into a shell might mess up the input and cause the script to fail.
