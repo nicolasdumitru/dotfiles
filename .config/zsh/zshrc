@@ -123,7 +123,8 @@ setopt hist_verify
 # share command history data
 setopt share_history
 
-HISTFILE=~/.local/state/zsh-history
+mkdir -p "${XDG_STATE_HOME:-$HOME/.local/state}"
+HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh-history"
 HISTSIZE=10000000
 SAVEHIST=20000000
 
