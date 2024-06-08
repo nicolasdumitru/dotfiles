@@ -23,11 +23,7 @@ imgv () {
 	unset -v file
 }
 
-# git config files
-config () {
-	command git --git-dir="$HOME"/.configuration/ --work-tree="$HOME" "$@"
-}
-
-pconfig () {
-	command git --git-dir="$HOME"/.private-configuration/ --work-tree="$HOME" "$@"
+# git dotfiles
+dotfilectl () {
+	command git --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" "$@"
 }
