@@ -22,8 +22,3 @@ imgv () {
 	command rotdir "$file" | command nsxiv -i "$@" 2>/dev/null
 	unset -v file
 }
-
-# git dotfiles
-dotfilectl () {
-	command git --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME" "$@"
-}
