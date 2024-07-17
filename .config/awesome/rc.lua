@@ -52,9 +52,6 @@ Utility = {
 	feed_reader = "newsboat",
 	file_manager = "fmcd",
 	directory_fuzzy_finder = "ffcd",
-	chat = "profanity",
-	organizer = "calcurse",
-	address_book = "abook",
 	music_player = "ncmpcpp",
 	system_monitor = "btop",
 	password_manager = "keepassxc",
@@ -449,21 +446,6 @@ Globalkeys = gears.table.join(
 			awful.spawn(Terminal_open(Utility.directory_fuzzy_finder))
 		end,
 		{ description = "Open a directory fuzzy finder (" .. Utility.directory_fuzzy_finder .. ")", group = "launcher" }),
-	-- Chat client
-	awful.key({ Modkey, Modkey2, }, "c", function()
-			awful.spawn(Terminal_open(Utility.chat))
-		end,
-		{ description = "Open a chat client (" .. Utility.chat .. ")", group = "launcher" }),
-	-- Organizer
-	awful.key({ Modkey, Modkey2, }, "o", function()
-			awful.spawn(Terminal_open(Utility.organizer))
-		end,
-		{ description = "Open an organizer/calendar (" .. Utility.organizer .. ")", group = "launcher" }),
-	-- Address book
-	awful.key({ Modkey, }, "a", function()
-			awful.spawn(Terminal_open(Utility.address_book))
-		end,
-		{ description = "Open an address book (" .. Utility.address_book .. ")", group = "launcher" }),
 	-- Music player
 	awful.key({ Modkey, Modkey2 }, "p", function()
 			awful.spawn(Terminal_open(Utility.music_player))
