@@ -44,7 +44,7 @@ Utility = {
 	},
 
 	shell = "zsh",
-	terminal = "alacritty",
+	terminal = "wezterm-gui",
 	terminal_here = "terminalhere",
 	text_editor = os.getenv("nvim") or "nvim",
 	browser = "chromium",
