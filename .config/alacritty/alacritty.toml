@@ -150,17 +150,24 @@ blinking = "Off"
 shape = "Beam"
 
 [[keyboard.bindings]]
-chars = "\u0017"
-key = "Back"
+# Delete word backward
 mods = "Control"
+key = "Back"
+chars = "\u0017"
 
 [[keyboard.bindings]]
-action = "ToggleViMode"
-key = "Escape"
+# Delete line backward
+mods = "Shift|Control"
+key = "Back"
+chars = "\u0015" 
+
+[[keyboard.bindings]]
 mode = "~Search"
 mods = "Shift|Control"
+key = "Escape"
+action = "ToggleViMode" 
 
 [[keyboard.bindings]]
-action = "ClearSelection"
-key = "Escape"
 mode = "Vi|~Search"
+key = "Escape"
+action = "ClearSelection" 
