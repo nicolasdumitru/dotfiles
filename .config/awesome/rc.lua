@@ -485,23 +485,14 @@ Globalkeys = gears.table.join(
 		{ description = "Choose what kind of screenshot to take", group = "screen" }),
 
 	-- Volume control
-	awful.key({ Modkey, }, "=", function()
-		awful.spawn.with_shell("command pactl set-sink-volume @DEFAULT_SINK@ +5%")
-	end),
-	awful.key({ Modkey }, "-", function()
-		awful.spawn.with_shell("command pactl set-sink-volume @DEFAULT_SINK@ -5%")
-	end),
-	awful.key({ Modkey }, "BackSpace", function()
-		awful.spawn.with_shell("command pactl set-sink-mute @DEFAULT_SINK@ toggle")
-	end),
 	awful.key({}, "XF86AudioRaiseVolume", function()
-		awful.spawn.with_shell("command pactl set-sink-volume @DEFAULT_SINK@ +5%")
+		awful.spawn.with_shell("command wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+")
 	end),
 	awful.key({}, "XF86AudioLowerVolume", function()
-		awful.spawn.with_shell("command pactl set-sink-volume @DEFAULT_SINK@ -5%")
+		awful.spawn.with_shell("command wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-")
 	end),
 	awful.key({}, "XF86AudioMute", function()
-		awful.spawn.with_shell("command pactl set-sink-mute @DEFAULT_SINK@ toggle")
+		awful.spawn.with_shell("command wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
 	end),
 	-- Brightness control
 	awful.key({}, "XF86MonBrightnessUp", function()
