@@ -15,9 +15,6 @@ feh --no-fehbg --randomize --bg-fill "$HOME"/pictures/wallpapers/gruvbox
 # Internet connection applet
 pidof -sx nm-applet || nm-applet &
 
-# Display temperature
-displaytemperature -n default
-
 # Disable DPMS
 xset -dpms
 xset s off
