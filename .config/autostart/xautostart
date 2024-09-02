@@ -9,9 +9,6 @@ autorandr --change
 # Compositor
 pidof -sx picom || picom &
 
-# Wallpaper
-feh --no-fehbg --randomize --bg-fill "$HOME"/pictures/wallpapers/gruvbox
-
 # Internet connection applet
 pidof -sx nm-applet || nm-applet &
 
