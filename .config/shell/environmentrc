@@ -29,20 +29,6 @@ export XDG_STATE_HOME="$HOME"/.local/state
 export XDG_CACHE_HOME="$HOME"/.cache
 # Personal user directories
 export PERSONAL_KEYS_HOME="$HOME"/0-keys
-export PERSONAL_BIN_HOME="$HOME"/.local/bin
-export PERSONAL_DATA_HOME="$HOME"/personal
-
-# Programming languages:
-#Rust
-export CARGO_HOME="$HOME"/.cargo
-export RUSTUP_HOME="$HOME"/.rustup
-#Go
-export GOPATH="$XDG_DATA_HOME"/go
-export GOBIN="$PERSONAL_BIN_HOME"
-export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
-#Python
-export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME"/python
-export PYTHONUSERBASE="$XDG_DATA_HOME"/python
 
 # Programs:
 # GPG

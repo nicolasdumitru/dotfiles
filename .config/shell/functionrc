@@ -11,14 +11,3 @@ fmcd () {
 ffcd () {
 	fmcd "$(command fd --type directory --color never | command fzf --tiebreak=chunk,begin,length --scheme=path --preview='command ls {}' "$@")" || return 1
 }
-
-# image viewer that cycles through all the images in the current directory
-imgv () {
-	file=''
-	if [ -f "$1" ];then
-		file="$1"
-		shift 1
-	fi
-	command rotdir "$file" | command nsxiv -i "$@" 2>/dev/null
-	unset -v file
-}
