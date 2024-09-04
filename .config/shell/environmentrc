@@ -42,9 +42,5 @@ export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgrep/ripgreprc
 # Wget
 export WGETRC="$XDG_CONFIG_HOME"/wget/wgetrc
 
-# GTK
-export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-
 # Additions to $PATH:
 export PATH="$PATH:$XDG_CONFIG_HOME"/emacs/bin
