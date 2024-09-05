@@ -33,13 +33,10 @@ alias gtss='command git add . && command git commit -m "$(command date)"'
 # git dotfiles
 alias dotfilectl='command git --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME"'
 # cd to git repository root
-alias cdrr='\cd "$(command git rev-parse --show-toplevel)"'
-
-# mbsync
-alias mbsync='command mbsync --config "${PERSONAL_DATA_HOME:-$HOME/personal}"/isync/mbsyncrc'
+alias cdrr='cd "$(command git rev-parse --show-toplevel)"'
 
 # vim keybindings
-alias vkb='command xmodmap "${XDG_CONFIG_HOME:-$HOME/.config}"/xmodmap || command  sudo loadkeys "${XDG_CONFIG_HOME:-$HOME/.config}"/ttykeymap'
+alias vkb='command xmodmap "${XDG_CONFIG_HOME:-$HOME/.config}"/xmodmap'
 
 # nix
 alias nix-shell='nix-shell --run "$SHELL -i"'
