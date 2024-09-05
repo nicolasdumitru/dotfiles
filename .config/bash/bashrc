@@ -17,11 +17,6 @@ fi
 
 # Interactive bash shells only:
 
-# Interactive shell prompt
-PS1='(\u@\h)-[\W]-( \$ ) '
-PS2='> '
-PROMPT_COMMAND="command echo"
-
 # History configuration
 HISTFILE="$XDG_STATE_HOME"/bash/history
 
