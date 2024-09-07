@@ -1,3 +1,2 @@
 # zsh-specific ignore rules
 .zcompdump
-.zsh_plugins.zsh

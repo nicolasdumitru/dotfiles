@@ -1,8 +1,0 @@
-# Syntax highlighting
-zsh-users/zsh-syntax-highlighting
-
-# Autosuggestions
-zsh-users/zsh-autosuggestions
-
-# Completions
-zsh-users/zsh-completions
