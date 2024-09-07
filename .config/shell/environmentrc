@@ -12,9 +12,6 @@ TERMINAL="$(command -v alacritty)"
 export TERMINAL
 BROWSER="$(command -v chromium)"
 export BROWSER
-# sudo's askpass has to be set with an absolute path
-SUDO_ASKPASS="$(command -v dmenuaskpass)"
-export SUDO_ASKPASS
 # if bat is installed, use it to display man pages
 if command -v bat 1>/dev/null 2>&1; then
 	export MANPAGER="sh -c 'col -bx | command bat -l man -p'"
