@@ -30,8 +30,6 @@ export PERSONAL_KEYS_HOME="$HOME"/0-keys
 # Programs:
 # Readline
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
-# Pass
-export PASSWORD_STORE_DIR="$PERSONAL_KEYS_HOME"/pass
 # Ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgrep/ripgreprc
 # Wget
