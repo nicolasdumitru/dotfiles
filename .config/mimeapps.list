@@ -1,8 +1,12 @@
 [Added Associations]
+x-scheme-handler/magnet=userapp-transmission-gtk-QU4JT2.desktop;
+
 [Removed Associations]
+
 [Default Applications]
 x-scheme-handler/https=chromium.desktop
 x-scheme-handler/http=chromium.desktop
 application/pdf=org.pwmt.zathura.desktop
 image/png=nsxiv.desktop
 image/jpeg=nsxiv.desktop
+x-scheme-handler/magnet=userapp-transmission-gtk-QU4JT2.desktop
