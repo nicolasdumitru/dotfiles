@@ -29,23 +29,10 @@ awful.mouse.snap.edge_enabled = true
 -- Default utilities
 Utility = {
 	launcher = "dmenu_run",
-	bookmark = "dmenubookmarkinsert",
-	usb_mounter = "dmenumounter",
-	usb_unmounter = "dmenuunmounter",
-	characters = "dmenucharacters",
-	screenshot = {
-		full = "screenshot -n full",
-		interactive = "dmenuscreenshot",
-	},
-	display = {
-		dual = "displayctl -n dual",
-		interactive = "dmenudisplayctl",
-		temperature = "dmenudisplaytemperature",
-	},
+	screenshot = "spectacle",
 
 	shell = "zsh",
 	terminal = "alacritty",
-	terminal_here = "terminalhere",
 	text_editor = os.getenv("nvim") or "nvim",
 	browser = "chromium",
 	mail = "thunderbird",
@@ -366,36 +353,6 @@ Globalkeys = gears.table.join(
 			awful.spawn(Utility.launcher)
 		end,
 		{ description = "program launcher (" .. Utility.launcher .. ")", group = "launcher" }),
-	-- Bookmark inserting utility
-	awful.key({ Modkey, Modkey2, }, "b", function()
-			awful.spawn(Utility.bookmark)
-		end,
-		{ description = "bookmarks - insert a bookmark", group = "launcher" }),
-	-- Mount a USB drive
-	awful.key({ Modkey, Modkey2, }, "u", function()
-			awful.spawn.with_shell(Utility.usb_mounter)
-		end,
-		{ description = "Mount a usb drive", group = "launcher" }),
-	-- Unmount a USB drive
-	awful.key({ Modkey, Modkey2, "Shift" }, "u", function()
-			awful.spawn.with_shell(Utility.usb_unmounter)
-		end,
-		{ description = "Unmount a usb drive", group = "launcher" }),
-	-- Characters utility
-	awful.key({ Modkey, }, "c", function()
-			awful.spawn(Utility.characters)
-		end,
-		{ description = "characters - copy a unicode character/emoji/glyph etc", group = "launcher" }),
-	-- Configure dual displays
-	awful.key({ Modkey, }, "d", function()
-			awful.spawn.with_shell(Utility.display.dual)
-		end,
-		{ description = "Switch to the dual screen setup", group = "screen" }),
-	-- Interactive displays utility
-	awful.key({ Modkey, "Shift", }, "d", function()
-			awful.spawn(Utility.display.interactive)
-		end,
-		{ description = "configure displays interactvely", group = "launcher" }),
 	-- Dismiss notifications
 	awful.key({ Modkey, }, "n", function()
 			awful.spawn.with_shell("dunstctl close-all")
@@ -407,25 +364,20 @@ Globalkeys = gears.table.join(
 			awful.spawn(Utility.terminal)
 		end,
 		{ description = "open a terminal", group = "launcher" }),
-	-- Terminal here
-	awful.key({ Modkey, "Shift", }, "Return", function()
-			awful.spawn.with_shell(Utility.terminal_here)
-		end,
-		{ description = "open a terminal in the working directory of the focused window", group = "launcher" }),
 	-- Text Editor
 	awful.key({ Modkey, Modkey2, }, "Return", function()
 			awful.spawn(Editor_cmd)
 		end,
 		{ description = "Open a text editor (" .. Utility.text_editor .. ")", group = "launcher" }),
+	awful.key({ Modkey, }, "e", function()
+			awful.spawn("emacsclient -c -a 'emacs'")
+		end,
+		{ description = "Open GNU Emacs", group = "launcher" }),
 	-- Browser
 	awful.key({ Modkey, }, "b", function()
 			awful.spawn(Utility.browser)
 		end,
 		{ description = "Open a browser (" .. Utility.browser .. ")", group = "launcher" }),
-	awful.key({ Modkey, }, "e", function()
-			awful.spawn("emacsclient -c -a 'emacs'")
-		end,
-		{ description = "Open GNU Emacs", group = "launcher" }),
 	-- Email client
 	awful.key({ Modkey, Modkey2, }, "m", function()
 			awful.spawn(Utility.mail)
@@ -461,11 +413,6 @@ Globalkeys = gears.table.join(
 			awful.spawn(Utility.password_manager)
 		end,
 		{ description = "Open a password manager (" .. Utility.password_manager .. ")", group = "launcher" }),
-	-- Display temperature
-	awful.key({ Modkey, Modkey2 }, "t", function()
-			awful.spawn(Utility.display.temperature)
-		end,
-		{ description = "Set the display temperature (" .. Utility.display.temperature .. ")", group = "launcher" }),
 
 	-- Lock the screen
 	awful.key({ Modkey }, "Escape", function()
@@ -474,15 +421,9 @@ Globalkeys = gears.table.join(
 		{ description = "Lock the screen", group = "screen" }),
 	-- Take a screenshot
 	awful.key({}, "Print", function()
-			awful.spawn.with_shell(Utility.screenshot.full)
+			awful.spawn.with_shell(Utility.screenshot)
 		end,
 		{ description = "Take a full screenshot (all screens)", group = "screen" }),
-
-	-- Choose a screenshot type
-	awful.key({ "Shift", }, "Print", function()
-			awful.spawn.with_shell(Utility.screenshot.interactive)
-		end,
-		{ description = "Choose what kind of screenshot to take", group = "screen" }),
 
 	-- Volume control
 	awful.key({}, "XF86AudioRaiseVolume", function()
@@ -614,7 +555,6 @@ Clientkeys = gears.table.join(
 			c:relative_move(10, 0, 0, 0)
 		end,
 		{ description = "Floating Move Right", group = "client" })
-
 )
 
 -- Bind all key numbers to tags.
