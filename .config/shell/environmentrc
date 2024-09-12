@@ -28,8 +28,6 @@ export XDG_CACHE_HOME="$HOME"/.cache
 export PERSONAL_KEYS_HOME="$HOME"/0-keys
 
 # Programs:
-# GPG
-export GNUPGHOME="$PERSONAL_KEYS_HOME"/gnupg
 # Readline
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 # Pass
