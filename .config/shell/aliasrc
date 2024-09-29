@@ -29,7 +29,7 @@ alias e='$EDITOR'
 # git
 alias g='command git'
 # git time-stamped snapshot
-alias gtss='command git add . && command git commit -m "$(command date)"'
+alias gtss='command git add . && command git commit -m "$(command date -u)"'
 # git dotfiles
 alias dotfilectl='command git --git-dir="$HOME"/.dotfiles/ --work-tree="$HOME"'
 # cd to git repository root
