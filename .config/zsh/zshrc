@@ -113,9 +113,6 @@ HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh-history"
 HISTSIZE=10000000
 SAVEHIST=20000000
 
-# Baseline
-. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/baselinerc
-
 # Builtin command help
 alias help=run-help
 

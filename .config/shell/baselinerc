@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# Baseline - shared shell settings
-
-# Set the file mode creation mask (default file permission bits)
-umask 077
-#
-# Tab width
-command tabs -4
