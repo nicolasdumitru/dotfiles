@@ -898,4 +898,14 @@ $env.config = {
     ]
 }
 
+# file manager (quick navigation)
+def --env fm [directory?: string] {
+    cd (lf -print-last-dir ($directory | default .))
+}
+
+# directory fuzzy finder
+def --env ff [] {
+    fm (fd --type directory --color never | fzf --tiebreak=chunk,begin,length --scheme=path --preview='ls')
+}
+
 use ~/.cache/starship/init.nu
