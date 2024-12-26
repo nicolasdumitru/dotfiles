@@ -5,7 +5,7 @@ live_config_reload = false
 TERM = "alacritty"
 
 [window]
-decorations = "none"
+decorations = "Full"
 decorations_theme_variant = "None"
 dynamic_padding = false
 dynamic_title = true
