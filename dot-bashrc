@@ -9,7 +9,7 @@
 . "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/environmentrc
 
 # Bash idiosyncrasy
-export BASH_ENV="${XDG_CONFIG_HOME:-$HOME/.config}"/bash/bash-profile
+export BASH_ENV="$HOME/.bash_profile"
 
 # If not running interactively, don't do anything else
 if [[ $- != *i* ]]; then
