@@ -1,16 +1,44 @@
 #!/bin/bash
 
-# Config for bash shells
-
-# All bash shells:
-
 # Environment variables
-# Shared (these must be loaded first)
-. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/environmentrc
+# Default programs:
+if command -v nvim 1>/dev/null 2>&1; then
+	EDITOR="$(command -v nvim)"
+	export EDITOR
+else
+	EDITOR="$(command -v vi)"
+	export EDITOR
+fi
+TERMINAL="$(command -v alacritty)"
+export TERMINAL
+BROWSER="$(command -v chromium)"
+export BROWSER
+# if bat is installed, use it to display man pages
+if command -v bat 1>/dev/null 2>&1; then
+	export MANPAGER="sh -c 'col -bx | command bat -l man -p'"
+	export MANROFFOPT="-c"
+fi
+
+# XDG user directories
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_STATE_HOME="$HOME"/.local/state
+export XDG_CACHE_HOME="$HOME"/.cache
+
+# Readline
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+# Ripgrep
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME"/ripgrep/ripgreprc
+# Wget
+export WGETRC="$XDG_CONFIG_HOME"/wget/wgetrc
+
+# Additions to $PATH:
+export PATH="$PATH:$XDG_CONFIG_HOME"/emacs/bin
 
 # Bash idiosyncrasy
 export BASH_ENV="$HOME/.bash_profile"
 
+# === Interactive shell config ===
 # If not running interactively, don't do anything else
 if [[ $- != *i* ]]; then
 	return 0
@@ -18,15 +46,32 @@ fi
 
 umask 077
 
-# Interactive config
 # History configuration
 HISTFILE="$XDG_STATE_HOME"/bash/history
 
-# Load aliases
-. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/aliasrc
+# file manager (quick navigation)
+fm () {
+	cd "$(command lf -print-last-dir "$@")" || return 1
+}
 
-# Load functions
-. "${XDG_CONFIG_HOME:-$HOME/.config}"/shell/functionrc
+# directory fuzzy finder
+ff () {
+	fm "$(command fd --type directory --color never | command fzf --tiebreak=chunk,begin,length --scheme=path --preview='command ls {}' "$@")" || return 1
+}
+
+# file operations
+alias cp='command cp -i'
+alias mv='command mv -i'
+
+alias eza='command eza --long --header --classify --group-directories-first --git --icons --color=automatic --icons=automatic'
+
+# date
+alias timestamp='command date -u "+%Y-%m-%d-%H-%M-%S"'
+
+# git time-stamped snapshot
+alias gtss='command git add . && command git commit -m "$(command date -u)"'
+# cd to git repository root
+alias cdrr='cd "$(command git rev-parse --show-toplevel)"'
 
 # This ensures that, should something go catastrophically wrong with nushell,
 # a bash login shell can still be accessed from a tty for recovery purposes.
