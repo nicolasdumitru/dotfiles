@@ -7,6 +7,9 @@
 
 ## Install
 ```bash
-curl -Lo temp https://raw.githubusercontent.com/nicolasdumitru/dotfiles/main/.local/.bin/dotinstall.sh && chmod +x temp && ./temp && rm temp
+just restow
 ```
-Piping directly into a shell might mess up the input and cause the script to fail.
+## Uninstall
+```bash
+just unstow
+```
