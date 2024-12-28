@@ -163,3 +163,13 @@ action = "ToggleViMode"
 mode = "Vi|~Search"
 key = "Escape"
 action = "ClearSelection"
+
+[[keyboard.bindings]]
+mods = "Alt"
+key = "o"
+command = { program = "alacritty", args = ["msg", "config", "window.opacity=0.62",] }
+
+[[keyboard.bindings]]
+mods = "Alt|Shift"
+key = "o"
+command = { program = "alacritty", args = ["msg", "config", "window.opacity=1.0",] }
