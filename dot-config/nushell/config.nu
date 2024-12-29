@@ -1,6 +1,4 @@
 # Nushell Config File
-#
-# version = "0.100.0"
 
 # For more information on defining custom themes, see
 # https://www.nushell.sh/book/coloring_and_theming.html
@@ -909,5 +907,20 @@ def --env fm [directory?: string] {
 def --env ff [] {
     fm (fd --type directory --color never | fzf --tiebreak=chunk,begin,length --scheme=path --preview='ls')
 }
+
+# file operations
+alias cp = cp -i
+alias mv = mv -i
+
+# eza
+alias eza = eza --long --header --classify --group-directories-first --git --icons --color=automatic --icons=automatic
+
+# Git
+alias grr = git rev-parse --show-toplevel
+alias cdrr = cd (grr)
+alias gtss = do { git add (grr); git commit -m (^date -u) }
+
+# Nix shell $PATH
+alias nix-shell = nix-shell --run 'nu'
 
 use ~/.cache/starship/init.nu
