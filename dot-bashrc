@@ -47,7 +47,7 @@ fi
 umask 077
 
 # History configuration
-HISTFILE="$XDG_STATE_HOME"/bash/history
+HISTFILE="$XDG_STATE_HOME"/bash_history
 
 # file manager (quick navigation)
 fm () {
