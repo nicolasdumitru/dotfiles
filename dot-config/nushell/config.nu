@@ -763,7 +763,7 @@ $env.config = {
             name: cut_line_from_start
             modifier: control
             keycode: char_u
-            mode: emacs
+            mode: [emacs, vi_insert]
             event: { edit: cutfromstart }
         }
         {
