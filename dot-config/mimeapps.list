@@ -1,13 +1,12 @@
 [Default Applications]
-text/plain=nvim.desktop
-x-scheme-handler/https=chromium-browser.desktop
-x-scheme-handler/http=chromium-browser.desktop
-application/pdf=org.pwmt.zathura.desktop
-image/png=org.gnome.Loupe.desktop
+application/pdf=org.kde.okular.desktop
 image/jpeg=org.gnome.Loupe.desktop
+image/png=org.gnome.Loupe.desktop
+text/plain=nvim.desktop
+x-scheme-handler/http=chromium-browser.desktop
+x-scheme-handler/https=chromium-browser.desktop
 x-scheme-handler/magnet=userapp-transmission-gtk-QU4JT2.desktop
+x-scheme-handler/mailto=thunderbird.desktop
 
 [Added Associations]
-x-scheme-handler/magnet=userapp-transmission-gtk-QU4JT2.desktop;
-
-[Removed Associations]
+x-scheme-handler/magnet=userapp-transmission-gtk-QU4JT2.desktop
