@@ -908,6 +908,11 @@ def --env ff [] {
     fm (fd --type directory --color never | fzf --tiebreak=chunk,begin,length --scheme=path --preview='ls')
 }
 
+# convenient disown (Nushell does not currently support task management)
+def disown [command: string] {
+    bash -c $"($command) 1>/dev/null 2>&1 & disown"
+}
+
 # file operations
 alias cp = cp -i
 alias mv = mv -i
