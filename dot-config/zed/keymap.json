@@ -25,10 +25,10 @@
       "ctrl-k": "vim::SelectLargerSyntaxNode",
       "ctrl-j": "vim::SelectSmallerSyntaxNode",
       "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPrevDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
       "] c": "editor::GoToHunk",
-      "[ c": "editor::GoToPrevHunk",
-      "g c": ["vim::PushOperator", "ToggleComments"]
+      // "[ c": "editor::GoToPrevHunk",
+      "g c": "vim::PushToggleComments"
     }
   },
   {
@@ -42,7 +42,7 @@
     "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
     "bindings": {
       "w": "vim::Word",
-      "shift-w": ["vim::Word", { "ignorePunctuation": true }],
+      "shift-w": ["vim::Word", { "ignore_punctuation": true }],
       // Subword TextObject
       // "w": "vim::Subword",
       // "shift-w": ["vim::Subword", { "ignorePunctuation": true }],
@@ -67,7 +67,7 @@
       ">": "vim::AngleBrackets",
       "a": "vim::Argument",
       "i": "vim::IndentObj",
-      "shift-i": ["vim::IndentObj", { "includeBelow": true }],
+      "shift-i": ["vim::IndentObj", { "include_below": true }],
       "f": "vim::Method",
       "c": "vim::Class"
     }
