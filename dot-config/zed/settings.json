@@ -7,6 +7,18 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "buffer_font_family": "JetBrainsMonoNL Nerd Font",
+  "relative_line_numbers": true,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Gruvbox Dark"
+  },
+  "cursor_blink": false,
+  "always_treat_brackets_as_autoclosed": true,
   "languages": {
     "C++": {
       "show_edit_predictions": true
@@ -26,15 +38,5 @@
   "telemetry": {
     "metrics": false,
     "diagnostics": false
-  },
-  "vim_mode": true,
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
-  "buffer_font_family": "JetBrainsMonoNL Nerd Font",
-  "relative_line_numbers": true,
-  "theme": {
-    "mode": "dark",
-    "light": "One Light",
-    "dark": "Gruvbox Dark"
   }
 }
