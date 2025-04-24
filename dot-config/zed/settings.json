@@ -15,13 +15,22 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "Gruvbox Dark"
+    "dark": "Gruvbox Dark Hard"
   },
   "cursor_blink": false,
   "always_treat_brackets_as_autoclosed": true,
   "languages": {
     "C++": {
       "show_edit_predictions": true
+    },
+    "Python": {
+      "formatter": {
+        "external": {
+          "command": "black",
+          "arguments": ["-"]
+        }
+      },
+      "format_on_save": "off"
     }
   },
   "features": {
@@ -30,7 +39,7 @@
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "model": "claude-3-7-sonnet-latest"
     },
     "version": "2"
   },
