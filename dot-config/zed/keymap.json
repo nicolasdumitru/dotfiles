@@ -7,6 +7,12 @@
 // from the command palette.
 [
   {
+    "bindings": {
+      "alt-m": "workspace::ToggleZoom",
+      "shift-escape": null
+    }
+  },
+  {
     "context": "Workspace",
     "bindings": {
       // "shift shift": "file_finder::Toggle"
