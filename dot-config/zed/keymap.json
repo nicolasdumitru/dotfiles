@@ -15,13 +15,14 @@
   {
     "context": "Workspace",
     "bindings": {
-      // "shift shift": "file_finder::Toggle"
+      "shift shift": "file_finder::Toggle"
     }
   },
   {
     "context": "Editor",
     "bindings": {
       // "j k": ["workspace::SendKeystrokes", "escape"]
+      "f3": "editor::Format"
     }
   },
   {
@@ -34,7 +35,8 @@
       "[ d": "editor::GoToPreviousDiagnostic",
       "] c": "editor::GoToHunk",
       // "[ c": "editor::GoToPrevHunk",
-      "g c": "vim::PushToggleComments"
+      "g c": "vim::PushToggleComments",
+      "space f": "file_finder::Toggle"
     }
   },
   {
