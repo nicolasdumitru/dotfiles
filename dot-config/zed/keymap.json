@@ -79,5 +79,10 @@
       "f": "vim::Method",
       "c": "vim::Class"
     }
+  },
+  {
+    "bindings": {
+      "ctrl-p": "menu::SelectPrevious"
+    }
   }
 ]
