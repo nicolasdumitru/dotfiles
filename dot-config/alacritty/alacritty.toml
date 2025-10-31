@@ -9,7 +9,8 @@ decorations = "Full"
 decorations_theme_variant = "None"
 dynamic_padding = false
 dynamic_title = true
-opacity = 1.0
+opacity = 0.8
+blur = true
 startup_mode = "Windowed"
 title = "Alacritty"
 
@@ -75,7 +76,8 @@ draw_bold_text_with_bright_colors = false
 # Default colors
 [colors.primary]
 # hard contrast background = = '#1d2021'
-background = '#282828'
+# background = '#282828'
+background = '#000000'
 # soft contrast background = = '#32302f'
 foreground = '#ebdbb2'
 
@@ -143,7 +145,6 @@ action = "ClearSelection"
 [[keyboard.bindings]]
 mods = "Alt"
 key = "o"
-command = { program = "alacritty", args = ["msg", "config", "window.opacity=0.62",] }
 
 [[keyboard.bindings]]
 mods = "Alt|Shift"
