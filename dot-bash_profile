@@ -27,7 +27,7 @@ EDITOR="$(command -v nvim)"
 export EDITOR
 TERMINAL="$(command -v alacritty)"
 export TERMINAL
-BROWSER="$(command -v chromium)"
+BROWSER="$(command -v brave)"
 export BROWSER
 # if bat is installed, use it to display man pages
 if command -v bat 1>/dev/null 2>&1; then

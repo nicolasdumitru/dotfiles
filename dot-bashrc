@@ -35,18 +35,10 @@ alias gtss='command git add . && command git commit -m "$(command date -u)"'
 # cd to git repository root
 alias cdrr='cd "$(command git rev-parse --show-toplevel)"'
 
-# This ensures that, should something go catastrophically wrong with nushell,
-# a bash login shell can still be accessed from a tty for recovery purposes.
-NU="$(command -v nu)"
-if [[ -x "$NU" ]] && ! shopt -q login_shell; then
-    # Use nushell in interactive non-login shells.
-    SHELL="$NU" exec nu
-else
-    # vi keybindings
-    set -o vi
-    # ctrl-l clear
-    bind -m vi-command 'Control-l: clear-screen'
-    bind -m vi-insert 'Control-l: clear-screen'
-    eval "$(starship init bash)"
-    eval "$(direnv hook bash)" # must be the last line of the config
-fi
+# vi keybindings
+set -o vi
+# ctrl-l clear
+bind -m vi-command 'Control-l: clear-screen'
+bind -m vi-insert 'Control-l: clear-screen'
+eval "$(starship init bash)"
+eval "$(direnv hook bash)" # must be the last line of the config
