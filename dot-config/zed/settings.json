@@ -117,7 +117,7 @@
     // "scrollbar.thumb.active.background": "#00000000",
     "scrollbar.thumb.border": "#FFFFFF90",
     // "editor.line_highlight": "#00000000",
-    "editor.active_line.background": "#00000000"
+    "editor.active_line.background": "#FFFFFF15"
     // "editor.selection.background": "#00000000",
     // "editor.selection.foreground": "#00000000",
     // "editor.selection.border": "#00000000",
