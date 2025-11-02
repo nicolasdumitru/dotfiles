@@ -110,22 +110,10 @@
     "scrollbar.track.border": "#00000000",
     "scrollbar.track.background": "#00000000",
     "scrollbar.thumb.background": "#00000000",
+    "editor.active_line.background": "#FFFFFF15",
     "editor.active_line_number": "#FE8019",
     // "editor.active_line_number": "#8ec07c",
     // "editor.active_line_number": "#FB4934",
-    // "scrollbar.thumb.hover.background": "#00000000",
-    // "scrollbar.thumb.active.background": "#00000000",
-    "scrollbar.thumb.border": "#FFFFFF90",
-    // "editor.line_highlight": "#00000000",
-    "editor.active_line.background": "#FFFFFF15"
-    // "editor.selection.background": "#00000000",
-    // "editor.selection.foreground": "#00000000",
-    // "editor.selection.border": "#00000000",
-    // "editor.selection.inactive.foreground": "#00000000",
-    // "editor.selection.inactive.border": "#00000000",
-    // "editor.selection.active.background": "#00000000",
-    // "editor.selection.active.foreground": "#00000000",
-    // "editor.selection.active.border": "#00000000",
-    // "editor.selection.inactive.background": "#00000000"
+    "scrollbar.thumb.border": "#FFFFFF90"
   }
 }
