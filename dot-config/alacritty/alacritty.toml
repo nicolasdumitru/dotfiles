@@ -145,6 +145,7 @@ action = "ClearSelection"
 [[keyboard.bindings]]
 mods = "Alt"
 key = "o"
+command = { program = "alacritty", args = ["msg", "config", "window.opacity=0.8",] }
 
 [[keyboard.bindings]]
 mods = "Alt|Shift"
