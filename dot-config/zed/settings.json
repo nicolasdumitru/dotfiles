@@ -114,6 +114,55 @@
     "editor.active_line_number": "#FE8019",
     // "editor.active_line_number": "#8ec07c",
     // "editor.active_line_number": "#FB4934",
-    "scrollbar.thumb.border": "#FFFFFF90"
+    "scrollbar.thumb.border": "#FFFFFF90",
+    "text": "#FFFFFFFF",
+    "editor.foreground": "#FFFFFF",
+    "syntax": {
+      "variable": {
+        "color": "#FFFFFF"
+      },
+      // "variable.special": {
+      //   "color": "#FFFFFF"
+      // },
+      // "variable.parameter": {
+      //   "color": "#FFFFFF"
+      // },
+      "variable.member": {
+        "color": "#FFFFFF"
+      },
+      // "function": {
+      //   "color": "#FFFFFF"
+      // },
+      // "function.method": {
+      //   "color": "#FF0000"
+      // },
+      // "type": {
+      //   "color": "#FFFFFF"
+      // },
+      "property": {
+        "color": "#FFFFFF"
+      }
+      // "constant": {
+      //   "color": "#FFFFFF"
+      // },
+      // "number": {
+      //   "color": "#FFFFFF"
+      // },
+      // "boolean": {
+      //   "color": "#FFFFFF"
+      // }
+      // "operator": {
+      //   "color": "#FFFFFF"
+      // }
+      // "punctuation": {
+      //   "color": "#FFFFFF"
+      // }
+      // "punctuation.bracket": {
+      //   "color": "#FFFFFF"
+      // },
+      // "punctuation.delimiter": {
+      //   "color": "#FFFFFF"
+      // }
+    }
   }
 }
