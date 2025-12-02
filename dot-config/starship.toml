@@ -16,3 +16,6 @@ style = "cyan bold"
 truncation_length = 3
 truncate_to_repo = true
 style = "white bold"
+
+# [gcloud]
+# disabled = true
