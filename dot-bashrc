@@ -37,6 +37,9 @@ alias cdrr='cd "$(command git rev-parse --show-toplevel)"'
 
 # vi keybindings
 set -o vi
+set show-mode-in-prompt on
+bind 'set vi-ins-mode-string \1\e[5 q\2'
+bind 'set vi-cmd-mode-string \1\e[1 q\2'
 # ctrl-l clear
 bind -m vi-command 'Control-l: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'
